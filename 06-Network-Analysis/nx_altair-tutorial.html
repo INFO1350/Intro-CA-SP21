@@ -1,0 +1,1089 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Networkx and Altair &#8212; Introduction to Cultural Analytics &amp; Python</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://melaniewalsh.github.io/Intro-Cultural-Analytics/06-Network-Analysis/nx_altair-tutorial.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://melaniewalsh.github.io/Intro-Cultural-Analytics/06-Network-Analysis/nx_altair-tutorial.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Networkx and Altair" />
+<meta property="og:description" content="Networkx and Altair  %matplotlib inline import numpy as np import networkx as nx import altair as alt import nx_altair as nxa  Create a random network  Let’s ju" />
+<meta property="og:image"       content="https://melaniewalsh.github.io/Intro-Cultural-Analytics/_static/favicon.ico" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/favicon.ico" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Introduction to Cultural Analytics & Python</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  How To
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../How-To-Interact-With-This-Book.html">
+   Interact With This Book
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  The Course
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../course-schedule-2021.html">
+   Course Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Course Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../COURSE-Final-Project/Final-Project-Instructions.html">
+   Final Project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../COURSE-Final-Project/Final-Project-Instructions.html#lets-put-it-all-together">
+   Let’s Put It All Together!
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../COURSE-Final-Project/Final-Project-Instructions.html#collaboration">
+   Collaboration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../COURSE-Final-Project/Final-Project-Instructions.html#submission">
+   Submission
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../COURSE-Final-Project/Final-Project-Instructions.html#final-project-proposal-10-points">
+   Final Project Proposal (10 points)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../COURSE-Final-Project/Final-Project-Instructions.html#dataset-biography-10-points">
+   Dataset Biography (10 points)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../COURSE-Final-Project/Final-Project-Instructions.html#final-project-80-points">
+   Final Project (80 points)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../COURSE-Final-Project/Final-Project-Instructions.html#previous-student-examples">
+   Previous Student Examples
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  The Book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Command-Line/01-The-Command-Line.html">
+   1. The Command Line
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../02-Python/00-Python.html">
+   2. Python Basics
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/01-Installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/02-How-to-Use-Jupyter-Notebooks.html">
+     How to Use Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/03-Anatomy-Python-Script.html">
+     Anatomy of a Python Script
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/04-Variables.html">
+     Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/05-Data-Types.html">
+     Data Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/06-String-Methods.html">
+     String Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/07-Files-Character-Encoding.html">
+     Files and Character Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/08-Comparisons-Conditionals.html">
+     Comparisons &amp; Conditionals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/09-Lists-Loops-Part1.html">
+     Lists &amp; Loops — Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/10-Lists-Loops-Part2.html">
+     Lists &amp; Loops — Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/11-Dictionaries.html">
+     Dictionaries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/12-Functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/13-Common-Python-Errors.html">
+     Common Python Errors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/14-What-Were-Not-Covering.html">
+     What We’re Not Covering
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../03-Data-Analysis/00-Data-Analysis.html">
+   3. Data Analysis (Pandas)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Data-Analysis/01-Pandas-Basics-Part1.html">
+     Pandas Basics — Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Data-Analysis/02-Pandas-Basics-Part2.html">
+     Pandas Basics — Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Data-Analysis/03-Pandas-Basics-Part3.html">
+     Pandas Basics — Part 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Data-Analysis/04-Pandas-Merge-Datasets.html">
+     Pandas — Merge Datasets
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../04-Data-Collection/00-Data-Collection.html">
+   4. Data Collection (Web Scraping, APIs)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Data-Collection/01-User-Ethics-Legal-Concerns.html">
+     User Ethics &amp; Legal Concerns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Data-Collection/02-Web-Scraping-Part1.html">
+     Web Scraping — Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Data-Collection/03-Web-Scraping-Part2.html">
+     Web Scraping — Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Data-Collection/04-Git-GitHub.html">
+     Git and GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Data-Collection/05-APIs.html">
+     Application Programming Interfaces (APIs)
+    </a>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../04-Data-Collection/06-Song-Genius-Data-Collection.html">
+     Song Genius Data Collection
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04-Data-Collection/07-Genius-API.html">
+       Song Genius API
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04-Data-Collection/08-LyricsGenius.html">
+       Song Lyrics Collection
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04-Data-Collection/09-Song-Lyrics-Analysis.html">
+       Song Lyrics Analysis
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../04-Data-Collection/10-Twitter-Data-Collection-Home.html">
+     Twitter Data Collection
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04-Data-Collection/11-Twitter-API-Setup.html">
+       Twitter API Setup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04-Data-Collection/12-Twitter-Data-Collection.html">
+       Twitter Data Collection
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04-Data-Collection/13-Twitter-Data-Analysis.html">
+       Twitter Data Analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04-Data-Collection/14-Twitter-Data-Sharing.html">
+       Twitter Data Sharing
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Data-Collection/15-Reddit-Data-Collection-With-PSAW.html">
+     Reddit Data Collection
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../05-Text-Analysis/00-Text-Analysis.html">
+   5. Text Analysis
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../05-Text-Analysis/01-TF-IDF.html">
+     TF-IDF
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05-Text-Analysis/02-TF-IDF-HathiTrust.html">
+       TF-IDF with HathiTrust Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05-Text-Analysis/03-TF-IDF-Scikit-Learn.html">
+       TF-IDF with Scikit-Learn
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../05-Text-Analysis/04-Topic-Modeling.html">
+     Topic Modeling
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05-Text-Analysis/05-Topic-Modeling-Overview.html">
+       Topic Modeling — Overview
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05-Text-Analysis/06-Topic-Modeling-Set-Up.html">
+       Topic Modeling — Set Up
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05-Text-Analysis/07-Topic-Modeling-Text-Files.html">
+       Topic Modeling — Text Files
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05-Text-Analysis/08-Topic-Modeling-CSV.html">
+       Topic Modeling — CSV Files
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05-Text-Analysis/09-Topic-Modeling-Time-Series.html">
+       Topic Modeling — Time Series
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Text-Analysis/07-Topic-Modeling-Without-Mallet.html">
+     Topic Modeling — With Tomotopy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Text-Analysis/10-Named-Entity-Recognition.html">
+     Named Entity Recognition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Text-Analysis/11-POS-Keywords.html">
+     Part-of-Speech Tagging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Text-Analysis/11-POS-Keywords.html#keyword-extraction">
+     Keyword Extraction
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="00-Network-Analysis-Home.html">
+   6. Network Analysis
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-Network-Analysis.html">
+     Network Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-Making-Network-Viz-with-Bokeh.html">
+     Make an Interactive Network Visualization
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../07-Mapping/01-Mapping-Home.html">
+   7. Mapping
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Mapping/02-Mapping.html">
+     Mapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Mapping/02-Mapping.html#geocoding-with-geopy">
+     Geocoding with GeoPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Mapping/02-Mapping.html#making-interactive-maps">
+     Making Interactive Maps
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Mapping/03-Custom-Maps.html">
+     Custom Map Backgrounds
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Mapping/04-Publish-Your-Map.html">
+     Publish Your Map on the Web
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Datasets
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-Datasets/Datasets.html">
+   Datasets
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Extra Materials
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Python/EXTRA-Jupyter-Tips-Tricks.html">
+   Jupyter Tips and Tricks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Python/EXTRA-Randomize-Students.html">
+   Make Random Student Groups
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/06-Network-Analysis/nx_altair-tutorial.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/INFO1350/Intro-CA-SP21"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/INFO1350/Intro-CA-SP21/issues/new?title=Issue%20on%20page%20%2F06-Network-Analysis/nx_altair-tutorial.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/INFO1350/Intro-CA-SP21/master?urlpath=lab/tree/book/06-Network-Analysis/nx_altair-tutorial.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Networkx and Altair
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-a-random-network">
+     Create a random network
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#drawing-the-graph">
+     Drawing the graph.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#leveraging-altair">
+   Leveraging Altair
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="networkx-and-altair">
+<h1>Networkx and Altair<a class="headerlink" href="#networkx-and-altair" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+<span class="kn">import</span> <span class="nn">nx_altair</span> <span class="k">as</span> <span class="nn">nxa</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="create-a-random-network">
+<h2>Create a random network<a class="headerlink" href="#create-a-random-network" title="Permalink to this headline">¶</a></h2>
+<p>Let’s just create a random network.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a random graph</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">fast_gnp_random_graph</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+
+<span class="c1"># Compute positions for viz.</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+<span class="c1"># Add attributes to each node.</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">()</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s1">&#39;viable&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">])</span>
+    
+
+<span class="c1"># Add attributes to edge.    </span>
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">():</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[(</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">])][</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="drawing-the-graph">
+<h2>Drawing the graph.<a class="headerlink" href="#drawing-the-graph" title="Permalink to this headline">¶</a></h2>
+<p>Let’s draw the graph using NetworkX.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span>
+    <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span>
+    <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/nx_altair-tutorial_5_0.png" src="../_images/nx_altair-tutorial_5_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nxa</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span>
+    <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span>
+    <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="altair-viz-d0c1a15fd4714b5780ef901dd03acb6c"></div>
+<script type="text/javascript">
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-d0c1a15fd4714b5780ef901dd03acb6c") {
+      outputDiv = document.getElementById("altair-viz-d0c1a15fd4714b5780ef901dd03acb6c");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm//vega-lite@4.8.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
+    };
+
+    function loadScript(lib) {
+      return new Promise(function(resolve, reject) {
+        var s = document.createElement('script');
+        s.src = paths[lib];
+        s.async = true;
+        s.onload = () => resolve(paths[lib]);
+        s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+        document.getElementsByTagName("head")[0].appendChild(s);
+      });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else if (typeof vegaEmbed === "function") {
+      displayChart(vegaEmbed);
+    } else {
+      loadScript("vega")
+        .then(() => loadScript("vega-lite"))
+        .then(() => loadScript("vega-embed"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-1d7ee752f6015449e1ad20bcf32e592f"}, "mark": {"type": "line", "color": "black", "opacity": 1, "strokeWidth": 1}, "encoding": {"detail": {"type": "quantitative", "field": "edge"}, "x": {"type": "quantitative", "axis": {"grid": false, "labels": false, "ticks": false, "title": ""}, "field": "x"}, "y": {"type": "quantitative", "axis": {"grid": false, "labels": false, "ticks": false, "title": ""}, "field": "y"}}}, {"data": {"name": "data-8bd0918e749a3dac8c97d3f9d17ee892"}, "mark": {"type": "point", "fill": "red", "opacity": 1, "size": 300, "strokeWidth": 1.0}, "encoding": {"x": {"type": "quantitative", "axis": {"grid": false, "labels": false, "ticks": false}, "field": "x"}, "y": {"type": "quantitative", "axis": {"grid": false, "labels": false, "ticks": false}, "field": "y"}}}], "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-1d7ee752f6015449e1ad20bcf32e592f": [{"pair": [0, 2], "target": 2, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 9.613120077624844, "edge": 0, "source": 0}, {"pair": [0, 2], "target": 2, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 9.613120077624844, "edge": 0, "source": 0}, {"pair": [0, 5], "target": 5, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 8.846422155412448, "edge": 1, "source": 0}, {"pair": [0, 5], "target": 5, "y": 0.6723839244728887, "x": 0.9748349094398729, "weight": 8.846422155412448, "edge": 1, "source": 0}, {"pair": [0, 6], "target": 6, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 2.880628777893805, "edge": 2, "source": 0}, {"pair": [0, 6], "target": 6, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 2.880628777893805, "edge": 2, "source": 0}, {"pair": [0, 7], "target": 7, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 2.1281158783717675, "edge": 3, "source": 0}, {"pair": [0, 7], "target": 7, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 2.1281158783717675, "edge": 3, "source": 0}, {"pair": [0, 11], "target": 11, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 7.098976147875225, "edge": 4, "source": 0}, {"pair": [0, 11], "target": 11, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 7.098976147875225, "edge": 4, "source": 0}, {"pair": [0, 13], "target": 13, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 5.849264702374195, "edge": 5, "source": 0}, {"pair": [0, 13], "target": 13, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 5.849264702374195, "edge": 5, "source": 0}, {"pair": [0, 15], "target": 15, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 5.804554769428481, "edge": 6, "source": 0}, {"pair": [0, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 5.804554769428481, "edge": 6, "source": 0}, {"pair": [0, 17], "target": 17, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 2.626038567584561, "edge": 7, "source": 0}, {"pair": [0, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 2.626038567584561, "edge": 7, "source": 0}, {"pair": [0, 19], "target": 19, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 6.090893618564864, "edge": 8, "source": 0}, {"pair": [0, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 6.090893618564864, "edge": 8, "source": 0}, {"pair": [0, 21], "target": 21, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 9.121382046826586, "edge": 9, "source": 0}, {"pair": [0, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 9.121382046826586, "edge": 9, "source": 0}, {"pair": [1, 8], "target": 8, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 5.593528023906727, "edge": 10, "source": 1}, {"pair": [1, 8], "target": 8, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 5.593528023906727, "edge": 10, "source": 1}, {"pair": [1, 11], "target": 11, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 6.270452424356834, "edge": 11, "source": 1}, {"pair": [1, 11], "target": 11, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 6.270452424356834, "edge": 11, "source": 1}, {"pair": [1, 17], "target": 17, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 6.310859024478931, "edge": 12, "source": 1}, {"pair": [1, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 6.310859024478931, "edge": 12, "source": 1}, {"pair": [1, 19], "target": 19, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 3.901848728453326, "edge": 13, "source": 1}, {"pair": [1, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 3.901848728453326, "edge": 13, "source": 1}, {"pair": [1, 22], "target": 22, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 3.189965296992244, "edge": 14, "source": 1}, {"pair": [1, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 3.189965296992244, "edge": 14, "source": 1}, {"pair": [2, 9], "target": 9, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 1.2466756934952246, "edge": 15, "source": 2}, {"pair": [2, 9], "target": 9, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 1.2466756934952246, "edge": 15, "source": 2}, {"pair": [2, 12], "target": 12, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 4.313804988272131, "edge": 16, "source": 2}, {"pair": [2, 12], "target": 12, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 4.313804988272131, "edge": 16, "source": 2}, {"pair": [2, 16], "target": 16, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 3.6216601757516003, "edge": 17, "source": 2}, {"pair": [2, 16], "target": 16, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 3.6216601757516003, "edge": 17, "source": 2}, {"pair": [2, 20], "target": 20, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 2.9133703677333287, "edge": 18, "source": 2}, {"pair": [2, 20], "target": 20, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 2.9133703677333287, "edge": 18, "source": 2}, {"pair": [2, 22], "target": 22, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 2.8115167348877415, "edge": 19, "source": 2}, {"pair": [2, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 2.8115167348877415, "edge": 19, "source": 2}, {"pair": [2, 24], "target": 24, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 6.596540628377665, "edge": 20, "source": 2}, {"pair": [2, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 6.596540628377665, "edge": 20, "source": 2}, {"pair": [2, 28], "target": 28, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 9.254374133866637, "edge": 21, "source": 2}, {"pair": [2, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 9.254374133866637, "edge": 21, "source": 2}, {"pair": [3, 4], "target": 4, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 2.649239415532159, "edge": 22, "source": 3}, {"pair": [3, 4], "target": 4, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 2.649239415532159, "edge": 22, "source": 3}, {"pair": [3, 6], "target": 6, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 5.582190805415887, "edge": 23, "source": 3}, {"pair": [3, 6], "target": 6, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 5.582190805415887, "edge": 23, "source": 3}, {"pair": [3, 11], "target": 11, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 6.912895649891383, "edge": 24, "source": 3}, {"pair": [3, 11], "target": 11, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 6.912895649891383, "edge": 24, "source": 3}, {"pair": [3, 13], "target": 13, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 7.87604007587885, "edge": 25, "source": 3}, {"pair": [3, 13], "target": 13, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 7.87604007587885, "edge": 25, "source": 3}, {"pair": [3, 17], "target": 17, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 8.861565250844949, "edge": 26, "source": 3}, {"pair": [3, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 8.861565250844949, "edge": 26, "source": 3}, {"pair": [3, 21], "target": 21, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 3.9036810440488354, "edge": 27, "source": 3}, {"pair": [3, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 3.9036810440488354, "edge": 27, "source": 3}, {"pair": [3, 24], "target": 24, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 2.631952004284379, "edge": 28, "source": 3}, {"pair": [3, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 2.631952004284379, "edge": 28, "source": 3}, {"pair": [3, 27], "target": 27, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 6.908533157196448, "edge": 29, "source": 3}, {"pair": [3, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 6.908533157196448, "edge": 29, "source": 3}, {"pair": [3, 28], "target": 28, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 9.765520177089442, "edge": 30, "source": 3}, {"pair": [3, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 9.765520177089442, "edge": 30, "source": 3}, {"pair": [3, 29], "target": 29, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 5.415249284246691, "edge": 31, "source": 3}, {"pair": [3, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 5.415249284246691, "edge": 31, "source": 3}, {"pair": [4, 6], "target": 6, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 6.376624806658484, "edge": 32, "source": 4}, {"pair": [4, 6], "target": 6, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 6.376624806658484, "edge": 32, "source": 4}, {"pair": [4, 7], "target": 7, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 2.1693665744695574, "edge": 33, "source": 4}, {"pair": [4, 7], "target": 7, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 2.1693665744695574, "edge": 33, "source": 4}, {"pair": [4, 19], "target": 19, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 6.298392064365104, "edge": 34, "source": 4}, {"pair": [4, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 6.298392064365104, "edge": 34, "source": 4}, {"pair": [4, 21], "target": 21, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 3.6964498333749023, "edge": 35, "source": 4}, {"pair": [4, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 3.6964498333749023, "edge": 35, "source": 4}, {"pair": [4, 22], "target": 22, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 5.519195366247141, "edge": 36, "source": 4}, {"pair": [4, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 5.519195366247141, "edge": 36, "source": 4}, {"pair": [4, 23], "target": 23, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 9.761438168139552, "edge": 37, "source": 4}, {"pair": [4, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 9.761438168139552, "edge": 37, "source": 4}, {"pair": [4, 26], "target": 26, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 4.659292354143224, "edge": 38, "source": 4}, {"pair": [4, 26], "target": 26, "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": 4.659292354143224, "edge": 38, "source": 4}, {"pair": [5, 17], "target": 17, "y": 0.6723839244728887, "x": 0.9748349094398729, "weight": 7.638580177457449, "edge": 39, "source": 5}, {"pair": [5, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 7.638580177457449, "edge": 39, "source": 5}, {"pair": [5, 18], "target": 18, "y": 0.6723839244728887, "x": 0.9748349094398729, "weight": 2.2492939495265336, "edge": 40, "source": 5}, {"pair": [5, 18], "target": 18, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 2.2492939495265336, "edge": 40, "source": 5}, {"pair": [6, 7], "target": 7, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 2.835344635437508, "edge": 41, "source": 6}, {"pair": [6, 7], "target": 7, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 2.835344635437508, "edge": 41, "source": 6}, {"pair": [6, 12], "target": 12, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 7.750347346358828, "edge": 42, "source": 6}, {"pair": [6, 12], "target": 12, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 7.750347346358828, "edge": 42, "source": 6}, {"pair": [6, 19], "target": 19, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 9.477765199047205, "edge": 43, "source": 6}, {"pair": [6, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 9.477765199047205, "edge": 43, "source": 6}, {"pair": [6, 20], "target": 20, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 4.21217126126383, "edge": 44, "source": 6}, {"pair": [6, 20], "target": 20, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 4.21217126126383, "edge": 44, "source": 6}, {"pair": [6, 28], "target": 28, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 6.358707147909234, "edge": 45, "source": 6}, {"pair": [6, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 6.358707147909234, "edge": 45, "source": 6}, {"pair": [7, 21], "target": 21, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 3.982925775611715, "edge": 46, "source": 7}, {"pair": [7, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 3.982925775611715, "edge": 46, "source": 7}, {"pair": [7, 23], "target": 23, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 1.4610412945136941, "edge": 47, "source": 7}, {"pair": [7, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 1.4610412945136941, "edge": 47, "source": 7}, {"pair": [7, 24], "target": 24, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 6.738068579724963, "edge": 48, "source": 7}, {"pair": [7, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 6.738068579724963, "edge": 48, "source": 7}, {"pair": [7, 28], "target": 28, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 7.826761703036125, "edge": 49, "source": 7}, {"pair": [7, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 7.826761703036125, "edge": 49, "source": 7}, {"pair": [7, 29], "target": 29, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 3.473674998705487, "edge": 50, "source": 7}, {"pair": [7, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 3.473674998705487, "edge": 50, "source": 7}, {"pair": [8, 11], "target": 11, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 9.212778031957955, "edge": 51, "source": 8}, {"pair": [8, 11], "target": 11, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 9.212778031957955, "edge": 51, "source": 8}, {"pair": [8, 15], "target": 15, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 3.9317219192940156, "edge": 52, "source": 8}, {"pair": [8, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 3.9317219192940156, "edge": 52, "source": 8}, {"pair": [8, 16], "target": 16, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 6.541619965403998, "edge": 53, "source": 8}, {"pair": [8, 16], "target": 16, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 6.541619965403998, "edge": 53, "source": 8}, {"pair": [8, 22], "target": 22, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 4.531415843912312, "edge": 54, "source": 8}, {"pair": [8, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 4.531415843912312, "edge": 54, "source": 8}, {"pair": [8, 24], "target": 24, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 6.322248088735517, "edge": 55, "source": 8}, {"pair": [8, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 6.322248088735517, "edge": 55, "source": 8}, {"pair": [8, 26], "target": 26, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 2.0167237753002487, "edge": 56, "source": 8}, {"pair": [8, 26], "target": 26, "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": 2.0167237753002487, "edge": 56, "source": 8}, {"pair": [8, 29], "target": 29, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 3.2564071950956612, "edge": 57, "source": 8}, {"pair": [8, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 3.2564071950956612, "edge": 57, "source": 8}, {"pair": [9, 12], "target": 12, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 1.0310185970038102, "edge": 58, "source": 9}, {"pair": [9, 12], "target": 12, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 1.0310185970038102, "edge": 58, "source": 9}, {"pair": [9, 13], "target": 13, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 3.4632944187289523, "edge": 59, "source": 9}, {"pair": [9, 13], "target": 13, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 3.4632944187289523, "edge": 59, "source": 9}, {"pair": [9, 14], "target": 14, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 5.088167956878854, "edge": 60, "source": 9}, {"pair": [9, 14], "target": 14, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 5.088167956878854, "edge": 60, "source": 9}, {"pair": [9, 15], "target": 15, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 4.060122667443949, "edge": 61, "source": 9}, {"pair": [9, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 4.060122667443949, "edge": 61, "source": 9}, {"pair": [9, 16], "target": 16, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 8.259899333548606, "edge": 62, "source": 9}, {"pair": [9, 16], "target": 16, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 8.259899333548606, "edge": 62, "source": 9}, {"pair": [9, 22], "target": 22, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 9.909896971244253, "edge": 63, "source": 9}, {"pair": [9, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 9.909896971244253, "edge": 63, "source": 9}, {"pair": [9, 29], "target": 29, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 3.338739435800087, "edge": 64, "source": 9}, {"pair": [9, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 3.338739435800087, "edge": 64, "source": 9}, {"pair": [10, 14], "target": 14, "y": 0.9999999999999999, "x": -0.13075072249443015, "weight": 2.5903829502624856, "edge": 65, "source": 10}, {"pair": [10, 14], "target": 14, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 2.5903829502624856, "edge": 65, "source": 10}, {"pair": [10, 17], "target": 17, "y": 0.9999999999999999, "x": -0.13075072249443015, "weight": 7.226726222703608, "edge": 66, "source": 10}, {"pair": [10, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 7.226726222703608, "edge": 66, "source": 10}, {"pair": [10, 21], "target": 21, "y": 0.9999999999999999, "x": -0.13075072249443015, "weight": 6.278623878749935, "edge": 67, "source": 10}, {"pair": [10, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 6.278623878749935, "edge": 67, "source": 10}, {"pair": [11, 12], "target": 12, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 6.866000429792766, "edge": 68, "source": 11}, {"pair": [11, 12], "target": 12, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 6.866000429792766, "edge": 68, "source": 11}, {"pair": [11, 15], "target": 15, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 1.7286567774080113, "edge": 69, "source": 11}, {"pair": [11, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 1.7286567774080113, "edge": 69, "source": 11}, {"pair": [11, 17], "target": 17, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 7.272757057460101, "edge": 70, "source": 11}, {"pair": [11, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 7.272757057460101, "edge": 70, "source": 11}, {"pair": [11, 19], "target": 19, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 5.920862755265697, "edge": 71, "source": 11}, {"pair": [11, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 5.920862755265697, "edge": 71, "source": 11}, {"pair": [11, 23], "target": 23, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 2.3944506322644634, "edge": 72, "source": 11}, {"pair": [11, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 2.3944506322644634, "edge": 72, "source": 11}, {"pair": [11, 24], "target": 24, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 1.3067251382203762, "edge": 73, "source": 11}, {"pair": [11, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 1.3067251382203762, "edge": 73, "source": 11}, {"pair": [11, 25], "target": 25, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 9.545230552562117, "edge": 74, "source": 11}, {"pair": [11, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 9.545230552562117, "edge": 74, "source": 11}, {"pair": [11, 27], "target": 27, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 6.350205828943886, "edge": 75, "source": 11}, {"pair": [11, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 6.350205828943886, "edge": 75, "source": 11}, {"pair": [12, 13], "target": 13, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 5.571132883568092, "edge": 76, "source": 12}, {"pair": [12, 13], "target": 13, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 5.571132883568092, "edge": 76, "source": 12}, {"pair": [12, 14], "target": 14, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 2.1557529928511787, "edge": 77, "source": 12}, {"pair": [12, 14], "target": 14, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 2.1557529928511787, "edge": 77, "source": 12}, {"pair": [12, 15], "target": 15, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 4.6870970100084755, "edge": 78, "source": 12}, {"pair": [12, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 4.6870970100084755, "edge": 78, "source": 12}, {"pair": [12, 17], "target": 17, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 1.354457717241196, "edge": 79, "source": 12}, {"pair": [12, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 1.354457717241196, "edge": 79, "source": 12}, {"pair": [12, 18], "target": 18, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 9.172853439296075, "edge": 80, "source": 12}, {"pair": [12, 18], "target": 18, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 9.172853439296075, "edge": 80, "source": 12}, {"pair": [12, 22], "target": 22, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 8.71647679866366, "edge": 81, "source": 12}, {"pair": [12, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 8.71647679866366, "edge": 81, "source": 12}, {"pair": [13, 21], "target": 21, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 1.6721691481650196, "edge": 82, "source": 13}, {"pair": [13, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 1.6721691481650196, "edge": 82, "source": 13}, {"pair": [13, 25], "target": 25, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 5.540739677621704, "edge": 83, "source": 13}, {"pair": [13, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 5.540739677621704, "edge": 83, "source": 13}, {"pair": [13, 29], "target": 29, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 1.986030817131829, "edge": 84, "source": 13}, {"pair": [13, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 1.986030817131829, "edge": 84, "source": 13}, {"pair": [14, 25], "target": 25, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 1.1568438228216884, "edge": 85, "source": 14}, {"pair": [14, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 1.1568438228216884, "edge": 85, "source": 14}, {"pair": [14, 26], "target": 26, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 8.124553192394483, "edge": 86, "source": 14}, {"pair": [14, 26], "target": 26, "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": 8.124553192394483, "edge": 86, "source": 14}, {"pair": [14, 29], "target": 29, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 9.798868386678876, "edge": 87, "source": 14}, {"pair": [14, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 9.798868386678876, "edge": 87, "source": 14}, {"pair": [15, 25], "target": 25, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 5.496307066872678, "edge": 88, "source": 15}, {"pair": [15, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 5.496307066872678, "edge": 88, "source": 15}, {"pair": [15, 27], "target": 27, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 3.191500964036531, "edge": 89, "source": 15}, {"pair": [15, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 3.191500964036531, "edge": 89, "source": 15}, {"pair": [15, 28], "target": 28, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 1.049154983184873, "edge": 90, "source": 15}, {"pair": [15, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 1.049154983184873, "edge": 90, "source": 15}, {"pair": [16, 20], "target": 20, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 2.839420466327155, "edge": 91, "source": 16}, {"pair": [16, 20], "target": 20, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 2.839420466327155, "edge": 91, "source": 16}, {"pair": [16, 23], "target": 23, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 2.777686566890035, "edge": 92, "source": 16}, {"pair": [16, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 2.777686566890035, "edge": 92, "source": 16}, {"pair": [17, 19], "target": 19, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 2.4827725522897595, "edge": 93, "source": 17}, {"pair": [17, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 2.4827725522897595, "edge": 93, "source": 17}, {"pair": [17, 29], "target": 29, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 3.5552742209493235, "edge": 94, "source": 17}, {"pair": [17, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 3.5552742209493235, "edge": 94, "source": 17}, {"pair": [18, 25], "target": 25, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 3.662530588458192, "edge": 95, "source": 18}, {"pair": [18, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 3.662530588458192, "edge": 95, "source": 18}, {"pair": [18, 27], "target": 27, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 9.926077496296486, "edge": 96, "source": 18}, {"pair": [18, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 9.926077496296486, "edge": 96, "source": 18}, {"pair": [18, 28], "target": 28, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 2.422213593574149, "edge": 97, "source": 18}, {"pair": [18, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 2.422213593574149, "edge": 97, "source": 18}, {"pair": [19, 21], "target": 21, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 3.5611521605616305, "edge": 98, "source": 19}, {"pair": [19, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 3.5611521605616305, "edge": 98, "source": 19}, {"pair": [20, 25], "target": 25, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 3.260398442734367, "edge": 99, "source": 20}, {"pair": [20, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 3.260398442734367, "edge": 99, "source": 20}, {"pair": [20, 27], "target": 27, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 9.34816710203689, "edge": 100, "source": 20}, {"pair": [20, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 9.34816710203689, "edge": 100, "source": 20}, {"pair": [22, 23], "target": 23, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 1.5860134450210985, "edge": 101, "source": 22}, {"pair": [22, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 1.5860134450210985, "edge": 101, "source": 22}, {"pair": [23, 24], "target": 24, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 9.323516151788246, "edge": 102, "source": 23}, {"pair": [23, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 9.323516151788246, "edge": 102, "source": 23}, {"pair": [23, 25], "target": 25, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 1.1147970864524264, "edge": 103, "source": 23}, {"pair": [23, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 1.1147970864524264, "edge": 103, "source": 23}, {"pair": [23, 26], "target": 26, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 8.314099493497505, "edge": 104, "source": 23}, {"pair": [23, 26], "target": 26, "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": 8.314099493497505, "edge": 104, "source": 23}, {"pair": [25, 28], "target": 28, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 9.10674694183697, "edge": 105, "source": 25}, {"pair": [25, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 9.10674694183697, "edge": 105, "source": 25}, {"pair": [28, 29], "target": 29, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 1.2706215017005391, "edge": 106, "source": 28}, {"pair": [28, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 1.2706215017005391, "edge": 106, "source": 28}], "data-8bd0918e749a3dac8c97d3f9d17ee892": [{"viable": "yes", "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 0.09000818270942744, "name": 370}, {"viable": "no", "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": -0.32108552118981804, "name": 87}, {"viable": "yes", "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 1.7632197398197151, "name": 190}, {"viable": "no", "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": -0.9178014123787246, "name": 80}, {"viable": "no", "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": -0.5906576882156674, "name": 360}, {"viable": "yes", "y": 0.6723839244728887, "x": 0.9748349094398729, "weight": -0.35752028967483246, "name": 480}, {"viable": "yes", "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 1.1214672458375083, "name": 64}, {"viable": "yes", "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": -0.3376629650291154, "name": 677}, {"viable": "yes", "y": -0.37928959372227, "x": -0.5089539697474081, "weight": -1.063690275883264, "name": 29}, {"viable": "yes", "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 2.691969689662521, "name": 158}, {"viable": "no", "y": 0.9999999999999999, "x": -0.13075072249443015, "weight": 1.4236893640150154, "name": 935}, {"viable": "no", "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 0.4743467533803975, "name": 736}, {"viable": "yes", "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 0.6501469035392892, "name": 361}, {"viable": "yes", "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 2.1245637760367395, "name": 905}, {"viable": "no", "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 0.505189519324072, "name": 430}, {"viable": "yes", "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 0.2931209101021088, "name": 8}, {"viable": "no", "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 1.4328305145246456, "name": 496}, {"viable": "no", "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 1.3714554665514156, "name": 417}, {"viable": "no", "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 1.5798243606914875, "name": 395}, {"viable": "yes", "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": -0.5558066688279328, "name": 364}, {"viable": "no", "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 0.6376154552041343, "name": 804}, {"viable": "yes", "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": -0.23582762111229388, "name": 348}, {"viable": "no", "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": -0.856023947208739, "name": 16}, {"viable": "yes", "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": -0.6592325141572747, "name": 750}, {"viable": "yes", "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 2.001708016805625, "name": 562}, {"viable": "yes", "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": -1.171980704668275, "name": 637}, {"viable": "no", "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": -1.9113185174455143, "name": 617}, {"viable": "yes", "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 0.2815411023035194, "name": 419}, {"viable": "yes", "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 0.4792626605249321, "name": 403}, {"viable": "yes", "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 0.8991983163429017, "name": 961}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nxa</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span>
+    <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span>
+    <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
+    <span class="n">node_tooltip</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="s1">&#39;viable&#39;</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="altair-viz-cdcadd4206f948cd92086d513ddd54b4"></div>
+<script type="text/javascript">
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-cdcadd4206f948cd92086d513ddd54b4") {
+      outputDiv = document.getElementById("altair-viz-cdcadd4206f948cd92086d513ddd54b4");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm//vega-lite@4.8.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
+    };
+
+    function loadScript(lib) {
+      return new Promise(function(resolve, reject) {
+        var s = document.createElement('script');
+        s.src = paths[lib];
+        s.async = true;
+        s.onload = () => resolve(paths[lib]);
+        s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+        document.getElementsByTagName("head")[0].appendChild(s);
+      });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else if (typeof vegaEmbed === "function") {
+      displayChart(vegaEmbed);
+    } else {
+      loadScript("vega")
+        .then(() => loadScript("vega-lite"))
+        .then(() => loadScript("vega-embed"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-1d7ee752f6015449e1ad20bcf32e592f"}, "mark": {"type": "line", "color": "black", "opacity": 1, "strokeWidth": 1}, "encoding": {"detail": {"type": "quantitative", "field": "edge"}, "x": {"type": "quantitative", "axis": {"grid": false, "labels": false, "ticks": false, "title": ""}, "field": "x"}, "y": {"type": "quantitative", "axis": {"grid": false, "labels": false, "ticks": false, "title": ""}, "field": "y"}}, "selection": {"selector001": {"type": "interval", "bind": "scales", "encodings": ["x", "y"]}}}, {"data": {"name": "data-8bd0918e749a3dac8c97d3f9d17ee892"}, "mark": {"type": "point", "fill": "red", "opacity": 1, "size": 300, "strokeWidth": 1.0}, "encoding": {"tooltip": [{"type": "quantitative", "field": "name"}, {"type": "quantitative", "field": "weight"}, {"type": "nominal", "field": "viable"}], "x": {"type": "quantitative", "axis": {"grid": false, "labels": false, "ticks": false}, "field": "x"}, "y": {"type": "quantitative", "axis": {"grid": false, "labels": false, "ticks": false}, "field": "y"}}}], "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-1d7ee752f6015449e1ad20bcf32e592f": [{"pair": [0, 2], "target": 2, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 9.613120077624844, "edge": 0, "source": 0}, {"pair": [0, 2], "target": 2, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 9.613120077624844, "edge": 0, "source": 0}, {"pair": [0, 5], "target": 5, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 8.846422155412448, "edge": 1, "source": 0}, {"pair": [0, 5], "target": 5, "y": 0.6723839244728887, "x": 0.9748349094398729, "weight": 8.846422155412448, "edge": 1, "source": 0}, {"pair": [0, 6], "target": 6, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 2.880628777893805, "edge": 2, "source": 0}, {"pair": [0, 6], "target": 6, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 2.880628777893805, "edge": 2, "source": 0}, {"pair": [0, 7], "target": 7, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 2.1281158783717675, "edge": 3, "source": 0}, {"pair": [0, 7], "target": 7, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 2.1281158783717675, "edge": 3, "source": 0}, {"pair": [0, 11], "target": 11, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 7.098976147875225, "edge": 4, "source": 0}, {"pair": [0, 11], "target": 11, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 7.098976147875225, "edge": 4, "source": 0}, {"pair": [0, 13], "target": 13, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 5.849264702374195, "edge": 5, "source": 0}, {"pair": [0, 13], "target": 13, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 5.849264702374195, "edge": 5, "source": 0}, {"pair": [0, 15], "target": 15, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 5.804554769428481, "edge": 6, "source": 0}, {"pair": [0, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 5.804554769428481, "edge": 6, "source": 0}, {"pair": [0, 17], "target": 17, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 2.626038567584561, "edge": 7, "source": 0}, {"pair": [0, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 2.626038567584561, "edge": 7, "source": 0}, {"pair": [0, 19], "target": 19, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 6.090893618564864, "edge": 8, "source": 0}, {"pair": [0, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 6.090893618564864, "edge": 8, "source": 0}, {"pair": [0, 21], "target": 21, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 9.121382046826586, "edge": 9, "source": 0}, {"pair": [0, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 9.121382046826586, "edge": 9, "source": 0}, {"pair": [1, 8], "target": 8, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 5.593528023906727, "edge": 10, "source": 1}, {"pair": [1, 8], "target": 8, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 5.593528023906727, "edge": 10, "source": 1}, {"pair": [1, 11], "target": 11, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 6.270452424356834, "edge": 11, "source": 1}, {"pair": [1, 11], "target": 11, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 6.270452424356834, "edge": 11, "source": 1}, {"pair": [1, 17], "target": 17, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 6.310859024478931, "edge": 12, "source": 1}, {"pair": [1, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 6.310859024478931, "edge": 12, "source": 1}, {"pair": [1, 19], "target": 19, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 3.901848728453326, "edge": 13, "source": 1}, {"pair": [1, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 3.901848728453326, "edge": 13, "source": 1}, {"pair": [1, 22], "target": 22, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 3.189965296992244, "edge": 14, "source": 1}, {"pair": [1, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 3.189965296992244, "edge": 14, "source": 1}, {"pair": [2, 9], "target": 9, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 1.2466756934952246, "edge": 15, "source": 2}, {"pair": [2, 9], "target": 9, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 1.2466756934952246, "edge": 15, "source": 2}, {"pair": [2, 12], "target": 12, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 4.313804988272131, "edge": 16, "source": 2}, {"pair": [2, 12], "target": 12, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 4.313804988272131, "edge": 16, "source": 2}, {"pair": [2, 16], "target": 16, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 3.6216601757516003, "edge": 17, "source": 2}, {"pair": [2, 16], "target": 16, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 3.6216601757516003, "edge": 17, "source": 2}, {"pair": [2, 20], "target": 20, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 2.9133703677333287, "edge": 18, "source": 2}, {"pair": [2, 20], "target": 20, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 2.9133703677333287, "edge": 18, "source": 2}, {"pair": [2, 22], "target": 22, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 2.8115167348877415, "edge": 19, "source": 2}, {"pair": [2, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 2.8115167348877415, "edge": 19, "source": 2}, {"pair": [2, 24], "target": 24, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 6.596540628377665, "edge": 20, "source": 2}, {"pair": [2, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 6.596540628377665, "edge": 20, "source": 2}, {"pair": [2, 28], "target": 28, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 9.254374133866637, "edge": 21, "source": 2}, {"pair": [2, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 9.254374133866637, "edge": 21, "source": 2}, {"pair": [3, 4], "target": 4, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 2.649239415532159, "edge": 22, "source": 3}, {"pair": [3, 4], "target": 4, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 2.649239415532159, "edge": 22, "source": 3}, {"pair": [3, 6], "target": 6, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 5.582190805415887, "edge": 23, "source": 3}, {"pair": [3, 6], "target": 6, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 5.582190805415887, "edge": 23, "source": 3}, {"pair": [3, 11], "target": 11, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 6.912895649891383, "edge": 24, "source": 3}, {"pair": [3, 11], "target": 11, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 6.912895649891383, "edge": 24, "source": 3}, {"pair": [3, 13], "target": 13, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 7.87604007587885, "edge": 25, "source": 3}, {"pair": [3, 13], "target": 13, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 7.87604007587885, "edge": 25, "source": 3}, {"pair": [3, 17], "target": 17, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 8.861565250844949, "edge": 26, "source": 3}, {"pair": [3, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 8.861565250844949, "edge": 26, "source": 3}, {"pair": [3, 21], "target": 21, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 3.9036810440488354, "edge": 27, "source": 3}, {"pair": [3, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 3.9036810440488354, "edge": 27, "source": 3}, {"pair": [3, 24], "target": 24, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 2.631952004284379, "edge": 28, "source": 3}, {"pair": [3, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 2.631952004284379, "edge": 28, "source": 3}, {"pair": [3, 27], "target": 27, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 6.908533157196448, "edge": 29, "source": 3}, {"pair": [3, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 6.908533157196448, "edge": 29, "source": 3}, {"pair": [3, 28], "target": 28, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 9.765520177089442, "edge": 30, "source": 3}, {"pair": [3, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 9.765520177089442, "edge": 30, "source": 3}, {"pair": [3, 29], "target": 29, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 5.415249284246691, "edge": 31, "source": 3}, {"pair": [3, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 5.415249284246691, "edge": 31, "source": 3}, {"pair": [4, 6], "target": 6, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 6.376624806658484, "edge": 32, "source": 4}, {"pair": [4, 6], "target": 6, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 6.376624806658484, "edge": 32, "source": 4}, {"pair": [4, 7], "target": 7, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 2.1693665744695574, "edge": 33, "source": 4}, {"pair": [4, 7], "target": 7, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 2.1693665744695574, "edge": 33, "source": 4}, {"pair": [4, 19], "target": 19, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 6.298392064365104, "edge": 34, "source": 4}, {"pair": [4, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 6.298392064365104, "edge": 34, "source": 4}, {"pair": [4, 21], "target": 21, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 3.6964498333749023, "edge": 35, "source": 4}, {"pair": [4, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 3.6964498333749023, "edge": 35, "source": 4}, {"pair": [4, 22], "target": 22, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 5.519195366247141, "edge": 36, "source": 4}, {"pair": [4, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 5.519195366247141, "edge": 36, "source": 4}, {"pair": [4, 23], "target": 23, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 9.761438168139552, "edge": 37, "source": 4}, {"pair": [4, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 9.761438168139552, "edge": 37, "source": 4}, {"pair": [4, 26], "target": 26, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 4.659292354143224, "edge": 38, "source": 4}, {"pair": [4, 26], "target": 26, "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": 4.659292354143224, "edge": 38, "source": 4}, {"pair": [5, 17], "target": 17, "y": 0.6723839244728887, "x": 0.9748349094398729, "weight": 7.638580177457449, "edge": 39, "source": 5}, {"pair": [5, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 7.638580177457449, "edge": 39, "source": 5}, {"pair": [5, 18], "target": 18, "y": 0.6723839244728887, "x": 0.9748349094398729, "weight": 2.2492939495265336, "edge": 40, "source": 5}, {"pair": [5, 18], "target": 18, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 2.2492939495265336, "edge": 40, "source": 5}, {"pair": [6, 7], "target": 7, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 2.835344635437508, "edge": 41, "source": 6}, {"pair": [6, 7], "target": 7, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 2.835344635437508, "edge": 41, "source": 6}, {"pair": [6, 12], "target": 12, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 7.750347346358828, "edge": 42, "source": 6}, {"pair": [6, 12], "target": 12, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 7.750347346358828, "edge": 42, "source": 6}, {"pair": [6, 19], "target": 19, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 9.477765199047205, "edge": 43, "source": 6}, {"pair": [6, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 9.477765199047205, "edge": 43, "source": 6}, {"pair": [6, 20], "target": 20, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 4.21217126126383, "edge": 44, "source": 6}, {"pair": [6, 20], "target": 20, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 4.21217126126383, "edge": 44, "source": 6}, {"pair": [6, 28], "target": 28, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 6.358707147909234, "edge": 45, "source": 6}, {"pair": [6, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 6.358707147909234, "edge": 45, "source": 6}, {"pair": [7, 21], "target": 21, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 3.982925775611715, "edge": 46, "source": 7}, {"pair": [7, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 3.982925775611715, "edge": 46, "source": 7}, {"pair": [7, 23], "target": 23, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 1.4610412945136941, "edge": 47, "source": 7}, {"pair": [7, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 1.4610412945136941, "edge": 47, "source": 7}, {"pair": [7, 24], "target": 24, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 6.738068579724963, "edge": 48, "source": 7}, {"pair": [7, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 6.738068579724963, "edge": 48, "source": 7}, {"pair": [7, 28], "target": 28, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 7.826761703036125, "edge": 49, "source": 7}, {"pair": [7, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 7.826761703036125, "edge": 49, "source": 7}, {"pair": [7, 29], "target": 29, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 3.473674998705487, "edge": 50, "source": 7}, {"pair": [7, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 3.473674998705487, "edge": 50, "source": 7}, {"pair": [8, 11], "target": 11, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 9.212778031957955, "edge": 51, "source": 8}, {"pair": [8, 11], "target": 11, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 9.212778031957955, "edge": 51, "source": 8}, {"pair": [8, 15], "target": 15, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 3.9317219192940156, "edge": 52, "source": 8}, {"pair": [8, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 3.9317219192940156, "edge": 52, "source": 8}, {"pair": [8, 16], "target": 16, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 6.541619965403998, "edge": 53, "source": 8}, {"pair": [8, 16], "target": 16, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 6.541619965403998, "edge": 53, "source": 8}, {"pair": [8, 22], "target": 22, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 4.531415843912312, "edge": 54, "source": 8}, {"pair": [8, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 4.531415843912312, "edge": 54, "source": 8}, {"pair": [8, 24], "target": 24, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 6.322248088735517, "edge": 55, "source": 8}, {"pair": [8, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 6.322248088735517, "edge": 55, "source": 8}, {"pair": [8, 26], "target": 26, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 2.0167237753002487, "edge": 56, "source": 8}, {"pair": [8, 26], "target": 26, "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": 2.0167237753002487, "edge": 56, "source": 8}, {"pair": [8, 29], "target": 29, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 3.2564071950956612, "edge": 57, "source": 8}, {"pair": [8, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 3.2564071950956612, "edge": 57, "source": 8}, {"pair": [9, 12], "target": 12, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 1.0310185970038102, "edge": 58, "source": 9}, {"pair": [9, 12], "target": 12, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 1.0310185970038102, "edge": 58, "source": 9}, {"pair": [9, 13], "target": 13, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 3.4632944187289523, "edge": 59, "source": 9}, {"pair": [9, 13], "target": 13, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 3.4632944187289523, "edge": 59, "source": 9}, {"pair": [9, 14], "target": 14, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 5.088167956878854, "edge": 60, "source": 9}, {"pair": [9, 14], "target": 14, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 5.088167956878854, "edge": 60, "source": 9}, {"pair": [9, 15], "target": 15, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 4.060122667443949, "edge": 61, "source": 9}, {"pair": [9, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 4.060122667443949, "edge": 61, "source": 9}, {"pair": [9, 16], "target": 16, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 8.259899333548606, "edge": 62, "source": 9}, {"pair": [9, 16], "target": 16, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 8.259899333548606, "edge": 62, "source": 9}, {"pair": [9, 22], "target": 22, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 9.909896971244253, "edge": 63, "source": 9}, {"pair": [9, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 9.909896971244253, "edge": 63, "source": 9}, {"pair": [9, 29], "target": 29, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 3.338739435800087, "edge": 64, "source": 9}, {"pair": [9, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 3.338739435800087, "edge": 64, "source": 9}, {"pair": [10, 14], "target": 14, "y": 0.9999999999999999, "x": -0.13075072249443015, "weight": 2.5903829502624856, "edge": 65, "source": 10}, {"pair": [10, 14], "target": 14, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 2.5903829502624856, "edge": 65, "source": 10}, {"pair": [10, 17], "target": 17, "y": 0.9999999999999999, "x": -0.13075072249443015, "weight": 7.226726222703608, "edge": 66, "source": 10}, {"pair": [10, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 7.226726222703608, "edge": 66, "source": 10}, {"pair": [10, 21], "target": 21, "y": 0.9999999999999999, "x": -0.13075072249443015, "weight": 6.278623878749935, "edge": 67, "source": 10}, {"pair": [10, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 6.278623878749935, "edge": 67, "source": 10}, {"pair": [11, 12], "target": 12, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 6.866000429792766, "edge": 68, "source": 11}, {"pair": [11, 12], "target": 12, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 6.866000429792766, "edge": 68, "source": 11}, {"pair": [11, 15], "target": 15, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 1.7286567774080113, "edge": 69, "source": 11}, {"pair": [11, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 1.7286567774080113, "edge": 69, "source": 11}, {"pair": [11, 17], "target": 17, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 7.272757057460101, "edge": 70, "source": 11}, {"pair": [11, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 7.272757057460101, "edge": 70, "source": 11}, {"pair": [11, 19], "target": 19, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 5.920862755265697, "edge": 71, "source": 11}, {"pair": [11, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 5.920862755265697, "edge": 71, "source": 11}, {"pair": [11, 23], "target": 23, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 2.3944506322644634, "edge": 72, "source": 11}, {"pair": [11, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 2.3944506322644634, "edge": 72, "source": 11}, {"pair": [11, 24], "target": 24, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 1.3067251382203762, "edge": 73, "source": 11}, {"pair": [11, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 1.3067251382203762, "edge": 73, "source": 11}, {"pair": [11, 25], "target": 25, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 9.545230552562117, "edge": 74, "source": 11}, {"pair": [11, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 9.545230552562117, "edge": 74, "source": 11}, {"pair": [11, 27], "target": 27, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 6.350205828943886, "edge": 75, "source": 11}, {"pair": [11, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 6.350205828943886, "edge": 75, "source": 11}, {"pair": [12, 13], "target": 13, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 5.571132883568092, "edge": 76, "source": 12}, {"pair": [12, 13], "target": 13, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 5.571132883568092, "edge": 76, "source": 12}, {"pair": [12, 14], "target": 14, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 2.1557529928511787, "edge": 77, "source": 12}, {"pair": [12, 14], "target": 14, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 2.1557529928511787, "edge": 77, "source": 12}, {"pair": [12, 15], "target": 15, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 4.6870970100084755, "edge": 78, "source": 12}, {"pair": [12, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 4.6870970100084755, "edge": 78, "source": 12}, {"pair": [12, 17], "target": 17, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 1.354457717241196, "edge": 79, "source": 12}, {"pair": [12, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 1.354457717241196, "edge": 79, "source": 12}, {"pair": [12, 18], "target": 18, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 9.172853439296075, "edge": 80, "source": 12}, {"pair": [12, 18], "target": 18, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 9.172853439296075, "edge": 80, "source": 12}, {"pair": [12, 22], "target": 22, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 8.71647679866366, "edge": 81, "source": 12}, {"pair": [12, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 8.71647679866366, "edge": 81, "source": 12}, {"pair": [13, 21], "target": 21, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 1.6721691481650196, "edge": 82, "source": 13}, {"pair": [13, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 1.6721691481650196, "edge": 82, "source": 13}, {"pair": [13, 25], "target": 25, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 5.540739677621704, "edge": 83, "source": 13}, {"pair": [13, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 5.540739677621704, "edge": 83, "source": 13}, {"pair": [13, 29], "target": 29, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 1.986030817131829, "edge": 84, "source": 13}, {"pair": [13, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 1.986030817131829, "edge": 84, "source": 13}, {"pair": [14, 25], "target": 25, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 1.1568438228216884, "edge": 85, "source": 14}, {"pair": [14, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 1.1568438228216884, "edge": 85, "source": 14}, {"pair": [14, 26], "target": 26, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 8.124553192394483, "edge": 86, "source": 14}, {"pair": [14, 26], "target": 26, "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": 8.124553192394483, "edge": 86, "source": 14}, {"pair": [14, 29], "target": 29, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 9.798868386678876, "edge": 87, "source": 14}, {"pair": [14, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 9.798868386678876, "edge": 87, "source": 14}, {"pair": [15, 25], "target": 25, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 5.496307066872678, "edge": 88, "source": 15}, {"pair": [15, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 5.496307066872678, "edge": 88, "source": 15}, {"pair": [15, 27], "target": 27, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 3.191500964036531, "edge": 89, "source": 15}, {"pair": [15, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 3.191500964036531, "edge": 89, "source": 15}, {"pair": [15, 28], "target": 28, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 1.049154983184873, "edge": 90, "source": 15}, {"pair": [15, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 1.049154983184873, "edge": 90, "source": 15}, {"pair": [16, 20], "target": 20, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 2.839420466327155, "edge": 91, "source": 16}, {"pair": [16, 20], "target": 20, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 2.839420466327155, "edge": 91, "source": 16}, {"pair": [16, 23], "target": 23, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 2.777686566890035, "edge": 92, "source": 16}, {"pair": [16, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 2.777686566890035, "edge": 92, "source": 16}, {"pair": [17, 19], "target": 19, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 2.4827725522897595, "edge": 93, "source": 17}, {"pair": [17, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 2.4827725522897595, "edge": 93, "source": 17}, {"pair": [17, 29], "target": 29, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 3.5552742209493235, "edge": 94, "source": 17}, {"pair": [17, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 3.5552742209493235, "edge": 94, "source": 17}, {"pair": [18, 25], "target": 25, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 3.662530588458192, "edge": 95, "source": 18}, {"pair": [18, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 3.662530588458192, "edge": 95, "source": 18}, {"pair": [18, 27], "target": 27, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 9.926077496296486, "edge": 96, "source": 18}, {"pair": [18, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 9.926077496296486, "edge": 96, "source": 18}, {"pair": [18, 28], "target": 28, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 2.422213593574149, "edge": 97, "source": 18}, {"pair": [18, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 2.422213593574149, "edge": 97, "source": 18}, {"pair": [19, 21], "target": 21, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 3.5611521605616305, "edge": 98, "source": 19}, {"pair": [19, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 3.5611521605616305, "edge": 98, "source": 19}, {"pair": [20, 25], "target": 25, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 3.260398442734367, "edge": 99, "source": 20}, {"pair": [20, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 3.260398442734367, "edge": 99, "source": 20}, {"pair": [20, 27], "target": 27, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 9.34816710203689, "edge": 100, "source": 20}, {"pair": [20, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 9.34816710203689, "edge": 100, "source": 20}, {"pair": [22, 23], "target": 23, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 1.5860134450210985, "edge": 101, "source": 22}, {"pair": [22, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 1.5860134450210985, "edge": 101, "source": 22}, {"pair": [23, 24], "target": 24, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 9.323516151788246, "edge": 102, "source": 23}, {"pair": [23, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 9.323516151788246, "edge": 102, "source": 23}, {"pair": [23, 25], "target": 25, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 1.1147970864524264, "edge": 103, "source": 23}, {"pair": [23, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 1.1147970864524264, "edge": 103, "source": 23}, {"pair": [23, 26], "target": 26, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 8.314099493497505, "edge": 104, "source": 23}, {"pair": [23, 26], "target": 26, "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": 8.314099493497505, "edge": 104, "source": 23}, {"pair": [25, 28], "target": 28, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 9.10674694183697, "edge": 105, "source": 25}, {"pair": [25, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 9.10674694183697, "edge": 105, "source": 25}, {"pair": [28, 29], "target": 29, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 1.2706215017005391, "edge": 106, "source": 28}, {"pair": [28, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 1.2706215017005391, "edge": 106, "source": 28}], "data-8bd0918e749a3dac8c97d3f9d17ee892": [{"viable": "yes", "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 0.09000818270942744, "name": 370}, {"viable": "no", "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": -0.32108552118981804, "name": 87}, {"viable": "yes", "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 1.7632197398197151, "name": 190}, {"viable": "no", "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": -0.9178014123787246, "name": 80}, {"viable": "no", "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": -0.5906576882156674, "name": 360}, {"viable": "yes", "y": 0.6723839244728887, "x": 0.9748349094398729, "weight": -0.35752028967483246, "name": 480}, {"viable": "yes", "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 1.1214672458375083, "name": 64}, {"viable": "yes", "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": -0.3376629650291154, "name": 677}, {"viable": "yes", "y": -0.37928959372227, "x": -0.5089539697474081, "weight": -1.063690275883264, "name": 29}, {"viable": "yes", "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 2.691969689662521, "name": 158}, {"viable": "no", "y": 0.9999999999999999, "x": -0.13075072249443015, "weight": 1.4236893640150154, "name": 935}, {"viable": "no", "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 0.4743467533803975, "name": 736}, {"viable": "yes", "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 0.6501469035392892, "name": 361}, {"viable": "yes", "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 2.1245637760367395, "name": 905}, {"viable": "no", "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 0.505189519324072, "name": 430}, {"viable": "yes", "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 0.2931209101021088, "name": 8}, {"viable": "no", "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 1.4328305145246456, "name": 496}, {"viable": "no", "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 1.3714554665514156, "name": 417}, {"viable": "no", "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 1.5798243606914875, "name": 395}, {"viable": "yes", "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": -0.5558066688279328, "name": 364}, {"viable": "no", "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 0.6376154552041343, "name": 804}, {"viable": "yes", "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": -0.23582762111229388, "name": 348}, {"viable": "no", "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": -0.856023947208739, "name": 16}, {"viable": "yes", "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": -0.6592325141572747, "name": 750}, {"viable": "yes", "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 2.001708016805625, "name": 562}, {"viable": "yes", "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": -1.171980704668275, "name": 637}, {"viable": "no", "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": -1.9113185174455143, "name": 617}, {"viable": "yes", "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 0.2815411023035194, "name": 419}, {"viable": "yes", "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 0.4792626605249321, "name": 403}, {"viable": "yes", "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 0.8991983163429017, "name": 961}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="leveraging-altair">
+<h1>Leveraging Altair<a class="headerlink" href="#leveraging-altair" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">nxa</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span>
+    <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span>
+    <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
+    <span class="n">node_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;viable&#39;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span>
+    <span class="n">node_tooltip</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;viable&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="altair-viz-753a95eaf40d497c871038db573603ae"></div>
+<script type="text/javascript">
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-753a95eaf40d497c871038db573603ae") {
+      outputDiv = document.getElementById("altair-viz-753a95eaf40d497c871038db573603ae");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm//vega-lite@4.8.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
+    };
+
+    function loadScript(lib) {
+      return new Promise(function(resolve, reject) {
+        var s = document.createElement('script');
+        s.src = paths[lib];
+        s.async = true;
+        s.onload = () => resolve(paths[lib]);
+        s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+        document.getElementsByTagName("head")[0].appendChild(s);
+      });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else if (typeof vegaEmbed === "function") {
+      displayChart(vegaEmbed);
+    } else {
+      loadScript("vega")
+        .then(() => loadScript("vega-lite"))
+        .then(() => loadScript("vega-embed"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-1d7ee752f6015449e1ad20bcf32e592f"}, "mark": {"type": "line", "color": "black", "opacity": 1}, "encoding": {"detail": {"type": "quantitative", "field": "edge"}, "size": {"type": "quantitative", "field": "weight", "legend": null}, "x": {"type": "quantitative", "axis": {"grid": false, "labels": false, "ticks": false, "title": ""}, "field": "x"}, "y": {"type": "quantitative", "axis": {"grid": false, "labels": false, "ticks": false, "title": ""}, "field": "y"}}, "selection": {"selector003": {"type": "interval", "bind": "scales", "encodings": ["x", "y"]}}}, {"data": {"name": "data-8bd0918e749a3dac8c97d3f9d17ee892"}, "mark": {"type": "point", "opacity": 1, "size": 200, "strokeWidth": 1.0}, "encoding": {"fill": {"type": "nominal", "field": "viable", "scale": {"scheme": "viridis"}}, "tooltip": [{"type": "quantitative", "field": "weight"}, {"type": "quantitative", "field": "name"}, {"type": "nominal", "field": "viable"}], "x": {"type": "quantitative", "axis": {"grid": false, "labels": false, "ticks": false}, "field": "x"}, "y": {"type": "quantitative", "axis": {"grid": false, "labels": false, "ticks": false}, "field": "y"}}}], "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-1d7ee752f6015449e1ad20bcf32e592f": [{"pair": [0, 2], "target": 2, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 9.613120077624844, "edge": 0, "source": 0}, {"pair": [0, 2], "target": 2, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 9.613120077624844, "edge": 0, "source": 0}, {"pair": [0, 5], "target": 5, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 8.846422155412448, "edge": 1, "source": 0}, {"pair": [0, 5], "target": 5, "y": 0.6723839244728887, "x": 0.9748349094398729, "weight": 8.846422155412448, "edge": 1, "source": 0}, {"pair": [0, 6], "target": 6, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 2.880628777893805, "edge": 2, "source": 0}, {"pair": [0, 6], "target": 6, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 2.880628777893805, "edge": 2, "source": 0}, {"pair": [0, 7], "target": 7, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 2.1281158783717675, "edge": 3, "source": 0}, {"pair": [0, 7], "target": 7, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 2.1281158783717675, "edge": 3, "source": 0}, {"pair": [0, 11], "target": 11, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 7.098976147875225, "edge": 4, "source": 0}, {"pair": [0, 11], "target": 11, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 7.098976147875225, "edge": 4, "source": 0}, {"pair": [0, 13], "target": 13, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 5.849264702374195, "edge": 5, "source": 0}, {"pair": [0, 13], "target": 13, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 5.849264702374195, "edge": 5, "source": 0}, {"pair": [0, 15], "target": 15, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 5.804554769428481, "edge": 6, "source": 0}, {"pair": [0, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 5.804554769428481, "edge": 6, "source": 0}, {"pair": [0, 17], "target": 17, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 2.626038567584561, "edge": 7, "source": 0}, {"pair": [0, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 2.626038567584561, "edge": 7, "source": 0}, {"pair": [0, 19], "target": 19, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 6.090893618564864, "edge": 8, "source": 0}, {"pair": [0, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 6.090893618564864, "edge": 8, "source": 0}, {"pair": [0, 21], "target": 21, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 9.121382046826586, "edge": 9, "source": 0}, {"pair": [0, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 9.121382046826586, "edge": 9, "source": 0}, {"pair": [1, 8], "target": 8, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 5.593528023906727, "edge": 10, "source": 1}, {"pair": [1, 8], "target": 8, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 5.593528023906727, "edge": 10, "source": 1}, {"pair": [1, 11], "target": 11, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 6.270452424356834, "edge": 11, "source": 1}, {"pair": [1, 11], "target": 11, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 6.270452424356834, "edge": 11, "source": 1}, {"pair": [1, 17], "target": 17, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 6.310859024478931, "edge": 12, "source": 1}, {"pair": [1, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 6.310859024478931, "edge": 12, "source": 1}, {"pair": [1, 19], "target": 19, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 3.901848728453326, "edge": 13, "source": 1}, {"pair": [1, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 3.901848728453326, "edge": 13, "source": 1}, {"pair": [1, 22], "target": 22, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 3.189965296992244, "edge": 14, "source": 1}, {"pair": [1, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 3.189965296992244, "edge": 14, "source": 1}, {"pair": [2, 9], "target": 9, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 1.2466756934952246, "edge": 15, "source": 2}, {"pair": [2, 9], "target": 9, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 1.2466756934952246, "edge": 15, "source": 2}, {"pair": [2, 12], "target": 12, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 4.313804988272131, "edge": 16, "source": 2}, {"pair": [2, 12], "target": 12, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 4.313804988272131, "edge": 16, "source": 2}, {"pair": [2, 16], "target": 16, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 3.6216601757516003, "edge": 17, "source": 2}, {"pair": [2, 16], "target": 16, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 3.6216601757516003, "edge": 17, "source": 2}, {"pair": [2, 20], "target": 20, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 2.9133703677333287, "edge": 18, "source": 2}, {"pair": [2, 20], "target": 20, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 2.9133703677333287, "edge": 18, "source": 2}, {"pair": [2, 22], "target": 22, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 2.8115167348877415, "edge": 19, "source": 2}, {"pair": [2, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 2.8115167348877415, "edge": 19, "source": 2}, {"pair": [2, 24], "target": 24, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 6.596540628377665, "edge": 20, "source": 2}, {"pair": [2, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 6.596540628377665, "edge": 20, "source": 2}, {"pair": [2, 28], "target": 28, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 9.254374133866637, "edge": 21, "source": 2}, {"pair": [2, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 9.254374133866637, "edge": 21, "source": 2}, {"pair": [3, 4], "target": 4, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 2.649239415532159, "edge": 22, "source": 3}, {"pair": [3, 4], "target": 4, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 2.649239415532159, "edge": 22, "source": 3}, {"pair": [3, 6], "target": 6, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 5.582190805415887, "edge": 23, "source": 3}, {"pair": [3, 6], "target": 6, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 5.582190805415887, "edge": 23, "source": 3}, {"pair": [3, 11], "target": 11, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 6.912895649891383, "edge": 24, "source": 3}, {"pair": [3, 11], "target": 11, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 6.912895649891383, "edge": 24, "source": 3}, {"pair": [3, 13], "target": 13, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 7.87604007587885, "edge": 25, "source": 3}, {"pair": [3, 13], "target": 13, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 7.87604007587885, "edge": 25, "source": 3}, {"pair": [3, 17], "target": 17, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 8.861565250844949, "edge": 26, "source": 3}, {"pair": [3, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 8.861565250844949, "edge": 26, "source": 3}, {"pair": [3, 21], "target": 21, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 3.9036810440488354, "edge": 27, "source": 3}, {"pair": [3, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 3.9036810440488354, "edge": 27, "source": 3}, {"pair": [3, 24], "target": 24, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 2.631952004284379, "edge": 28, "source": 3}, {"pair": [3, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 2.631952004284379, "edge": 28, "source": 3}, {"pair": [3, 27], "target": 27, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 6.908533157196448, "edge": 29, "source": 3}, {"pair": [3, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 6.908533157196448, "edge": 29, "source": 3}, {"pair": [3, 28], "target": 28, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 9.765520177089442, "edge": 30, "source": 3}, {"pair": [3, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 9.765520177089442, "edge": 30, "source": 3}, {"pair": [3, 29], "target": 29, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 5.415249284246691, "edge": 31, "source": 3}, {"pair": [3, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 5.415249284246691, "edge": 31, "source": 3}, {"pair": [4, 6], "target": 6, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 6.376624806658484, "edge": 32, "source": 4}, {"pair": [4, 6], "target": 6, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 6.376624806658484, "edge": 32, "source": 4}, {"pair": [4, 7], "target": 7, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 2.1693665744695574, "edge": 33, "source": 4}, {"pair": [4, 7], "target": 7, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 2.1693665744695574, "edge": 33, "source": 4}, {"pair": [4, 19], "target": 19, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 6.298392064365104, "edge": 34, "source": 4}, {"pair": [4, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 6.298392064365104, "edge": 34, "source": 4}, {"pair": [4, 21], "target": 21, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 3.6964498333749023, "edge": 35, "source": 4}, {"pair": [4, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 3.6964498333749023, "edge": 35, "source": 4}, {"pair": [4, 22], "target": 22, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 5.519195366247141, "edge": 36, "source": 4}, {"pair": [4, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 5.519195366247141, "edge": 36, "source": 4}, {"pair": [4, 23], "target": 23, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 9.761438168139552, "edge": 37, "source": 4}, {"pair": [4, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 9.761438168139552, "edge": 37, "source": 4}, {"pair": [4, 26], "target": 26, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 4.659292354143224, "edge": 38, "source": 4}, {"pair": [4, 26], "target": 26, "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": 4.659292354143224, "edge": 38, "source": 4}, {"pair": [5, 17], "target": 17, "y": 0.6723839244728887, "x": 0.9748349094398729, "weight": 7.638580177457449, "edge": 39, "source": 5}, {"pair": [5, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 7.638580177457449, "edge": 39, "source": 5}, {"pair": [5, 18], "target": 18, "y": 0.6723839244728887, "x": 0.9748349094398729, "weight": 2.2492939495265336, "edge": 40, "source": 5}, {"pair": [5, 18], "target": 18, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 2.2492939495265336, "edge": 40, "source": 5}, {"pair": [6, 7], "target": 7, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 2.835344635437508, "edge": 41, "source": 6}, {"pair": [6, 7], "target": 7, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 2.835344635437508, "edge": 41, "source": 6}, {"pair": [6, 12], "target": 12, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 7.750347346358828, "edge": 42, "source": 6}, {"pair": [6, 12], "target": 12, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 7.750347346358828, "edge": 42, "source": 6}, {"pair": [6, 19], "target": 19, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 9.477765199047205, "edge": 43, "source": 6}, {"pair": [6, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 9.477765199047205, "edge": 43, "source": 6}, {"pair": [6, 20], "target": 20, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 4.21217126126383, "edge": 44, "source": 6}, {"pair": [6, 20], "target": 20, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 4.21217126126383, "edge": 44, "source": 6}, {"pair": [6, 28], "target": 28, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 6.358707147909234, "edge": 45, "source": 6}, {"pair": [6, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 6.358707147909234, "edge": 45, "source": 6}, {"pair": [7, 21], "target": 21, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 3.982925775611715, "edge": 46, "source": 7}, {"pair": [7, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 3.982925775611715, "edge": 46, "source": 7}, {"pair": [7, 23], "target": 23, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 1.4610412945136941, "edge": 47, "source": 7}, {"pair": [7, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 1.4610412945136941, "edge": 47, "source": 7}, {"pair": [7, 24], "target": 24, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 6.738068579724963, "edge": 48, "source": 7}, {"pair": [7, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 6.738068579724963, "edge": 48, "source": 7}, {"pair": [7, 28], "target": 28, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 7.826761703036125, "edge": 49, "source": 7}, {"pair": [7, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 7.826761703036125, "edge": 49, "source": 7}, {"pair": [7, 29], "target": 29, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 3.473674998705487, "edge": 50, "source": 7}, {"pair": [7, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 3.473674998705487, "edge": 50, "source": 7}, {"pair": [8, 11], "target": 11, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 9.212778031957955, "edge": 51, "source": 8}, {"pair": [8, 11], "target": 11, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 9.212778031957955, "edge": 51, "source": 8}, {"pair": [8, 15], "target": 15, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 3.9317219192940156, "edge": 52, "source": 8}, {"pair": [8, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 3.9317219192940156, "edge": 52, "source": 8}, {"pair": [8, 16], "target": 16, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 6.541619965403998, "edge": 53, "source": 8}, {"pair": [8, 16], "target": 16, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 6.541619965403998, "edge": 53, "source": 8}, {"pair": [8, 22], "target": 22, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 4.531415843912312, "edge": 54, "source": 8}, {"pair": [8, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 4.531415843912312, "edge": 54, "source": 8}, {"pair": [8, 24], "target": 24, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 6.322248088735517, "edge": 55, "source": 8}, {"pair": [8, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 6.322248088735517, "edge": 55, "source": 8}, {"pair": [8, 26], "target": 26, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 2.0167237753002487, "edge": 56, "source": 8}, {"pair": [8, 26], "target": 26, "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": 2.0167237753002487, "edge": 56, "source": 8}, {"pair": [8, 29], "target": 29, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 3.2564071950956612, "edge": 57, "source": 8}, {"pair": [8, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 3.2564071950956612, "edge": 57, "source": 8}, {"pair": [9, 12], "target": 12, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 1.0310185970038102, "edge": 58, "source": 9}, {"pair": [9, 12], "target": 12, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 1.0310185970038102, "edge": 58, "source": 9}, {"pair": [9, 13], "target": 13, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 3.4632944187289523, "edge": 59, "source": 9}, {"pair": [9, 13], "target": 13, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 3.4632944187289523, "edge": 59, "source": 9}, {"pair": [9, 14], "target": 14, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 5.088167956878854, "edge": 60, "source": 9}, {"pair": [9, 14], "target": 14, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 5.088167956878854, "edge": 60, "source": 9}, {"pair": [9, 15], "target": 15, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 4.060122667443949, "edge": 61, "source": 9}, {"pair": [9, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 4.060122667443949, "edge": 61, "source": 9}, {"pair": [9, 16], "target": 16, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 8.259899333548606, "edge": 62, "source": 9}, {"pair": [9, 16], "target": 16, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 8.259899333548606, "edge": 62, "source": 9}, {"pair": [9, 22], "target": 22, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 9.909896971244253, "edge": 63, "source": 9}, {"pair": [9, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 9.909896971244253, "edge": 63, "source": 9}, {"pair": [9, 29], "target": 29, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 3.338739435800087, "edge": 64, "source": 9}, {"pair": [9, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 3.338739435800087, "edge": 64, "source": 9}, {"pair": [10, 14], "target": 14, "y": 0.9999999999999999, "x": -0.13075072249443015, "weight": 2.5903829502624856, "edge": 65, "source": 10}, {"pair": [10, 14], "target": 14, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 2.5903829502624856, "edge": 65, "source": 10}, {"pair": [10, 17], "target": 17, "y": 0.9999999999999999, "x": -0.13075072249443015, "weight": 7.226726222703608, "edge": 66, "source": 10}, {"pair": [10, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 7.226726222703608, "edge": 66, "source": 10}, {"pair": [10, 21], "target": 21, "y": 0.9999999999999999, "x": -0.13075072249443015, "weight": 6.278623878749935, "edge": 67, "source": 10}, {"pair": [10, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 6.278623878749935, "edge": 67, "source": 10}, {"pair": [11, 12], "target": 12, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 6.866000429792766, "edge": 68, "source": 11}, {"pair": [11, 12], "target": 12, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 6.866000429792766, "edge": 68, "source": 11}, {"pair": [11, 15], "target": 15, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 1.7286567774080113, "edge": 69, "source": 11}, {"pair": [11, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 1.7286567774080113, "edge": 69, "source": 11}, {"pair": [11, 17], "target": 17, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 7.272757057460101, "edge": 70, "source": 11}, {"pair": [11, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 7.272757057460101, "edge": 70, "source": 11}, {"pair": [11, 19], "target": 19, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 5.920862755265697, "edge": 71, "source": 11}, {"pair": [11, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 5.920862755265697, "edge": 71, "source": 11}, {"pair": [11, 23], "target": 23, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 2.3944506322644634, "edge": 72, "source": 11}, {"pair": [11, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 2.3944506322644634, "edge": 72, "source": 11}, {"pair": [11, 24], "target": 24, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 1.3067251382203762, "edge": 73, "source": 11}, {"pair": [11, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 1.3067251382203762, "edge": 73, "source": 11}, {"pair": [11, 25], "target": 25, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 9.545230552562117, "edge": 74, "source": 11}, {"pair": [11, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 9.545230552562117, "edge": 74, "source": 11}, {"pair": [11, 27], "target": 27, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 6.350205828943886, "edge": 75, "source": 11}, {"pair": [11, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 6.350205828943886, "edge": 75, "source": 11}, {"pair": [12, 13], "target": 13, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 5.571132883568092, "edge": 76, "source": 12}, {"pair": [12, 13], "target": 13, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 5.571132883568092, "edge": 76, "source": 12}, {"pair": [12, 14], "target": 14, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 2.1557529928511787, "edge": 77, "source": 12}, {"pair": [12, 14], "target": 14, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 2.1557529928511787, "edge": 77, "source": 12}, {"pair": [12, 15], "target": 15, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 4.6870970100084755, "edge": 78, "source": 12}, {"pair": [12, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 4.6870970100084755, "edge": 78, "source": 12}, {"pair": [12, 17], "target": 17, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 1.354457717241196, "edge": 79, "source": 12}, {"pair": [12, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 1.354457717241196, "edge": 79, "source": 12}, {"pair": [12, 18], "target": 18, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 9.172853439296075, "edge": 80, "source": 12}, {"pair": [12, 18], "target": 18, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 9.172853439296075, "edge": 80, "source": 12}, {"pair": [12, 22], "target": 22, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 8.71647679866366, "edge": 81, "source": 12}, {"pair": [12, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 8.71647679866366, "edge": 81, "source": 12}, {"pair": [13, 21], "target": 21, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 1.6721691481650196, "edge": 82, "source": 13}, {"pair": [13, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 1.6721691481650196, "edge": 82, "source": 13}, {"pair": [13, 25], "target": 25, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 5.540739677621704, "edge": 83, "source": 13}, {"pair": [13, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 5.540739677621704, "edge": 83, "source": 13}, {"pair": [13, 29], "target": 29, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 1.986030817131829, "edge": 84, "source": 13}, {"pair": [13, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 1.986030817131829, "edge": 84, "source": 13}, {"pair": [14, 25], "target": 25, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 1.1568438228216884, "edge": 85, "source": 14}, {"pair": [14, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 1.1568438228216884, "edge": 85, "source": 14}, {"pair": [14, 26], "target": 26, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 8.124553192394483, "edge": 86, "source": 14}, {"pair": [14, 26], "target": 26, "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": 8.124553192394483, "edge": 86, "source": 14}, {"pair": [14, 29], "target": 29, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 9.798868386678876, "edge": 87, "source": 14}, {"pair": [14, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 9.798868386678876, "edge": 87, "source": 14}, {"pair": [15, 25], "target": 25, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 5.496307066872678, "edge": 88, "source": 15}, {"pair": [15, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 5.496307066872678, "edge": 88, "source": 15}, {"pair": [15, 27], "target": 27, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 3.191500964036531, "edge": 89, "source": 15}, {"pair": [15, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 3.191500964036531, "edge": 89, "source": 15}, {"pair": [15, 28], "target": 28, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 1.049154983184873, "edge": 90, "source": 15}, {"pair": [15, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 1.049154983184873, "edge": 90, "source": 15}, {"pair": [16, 20], "target": 20, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 2.839420466327155, "edge": 91, "source": 16}, {"pair": [16, 20], "target": 20, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 2.839420466327155, "edge": 91, "source": 16}, {"pair": [16, 23], "target": 23, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 2.777686566890035, "edge": 92, "source": 16}, {"pair": [16, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 2.777686566890035, "edge": 92, "source": 16}, {"pair": [17, 19], "target": 19, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 2.4827725522897595, "edge": 93, "source": 17}, {"pair": [17, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 2.4827725522897595, "edge": 93, "source": 17}, {"pair": [17, 29], "target": 29, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 3.5552742209493235, "edge": 94, "source": 17}, {"pair": [17, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 3.5552742209493235, "edge": 94, "source": 17}, {"pair": [18, 25], "target": 25, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 3.662530588458192, "edge": 95, "source": 18}, {"pair": [18, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 3.662530588458192, "edge": 95, "source": 18}, {"pair": [18, 27], "target": 27, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 9.926077496296486, "edge": 96, "source": 18}, {"pair": [18, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 9.926077496296486, "edge": 96, "source": 18}, {"pair": [18, 28], "target": 28, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 2.422213593574149, "edge": 97, "source": 18}, {"pair": [18, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 2.422213593574149, "edge": 97, "source": 18}, {"pair": [19, 21], "target": 21, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 3.5611521605616305, "edge": 98, "source": 19}, {"pair": [19, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 3.5611521605616305, "edge": 98, "source": 19}, {"pair": [20, 25], "target": 25, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 3.260398442734367, "edge": 99, "source": 20}, {"pair": [20, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 3.260398442734367, "edge": 99, "source": 20}, {"pair": [20, 27], "target": 27, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 9.34816710203689, "edge": 100, "source": 20}, {"pair": [20, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 9.34816710203689, "edge": 100, "source": 20}, {"pair": [22, 23], "target": 23, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 1.5860134450210985, "edge": 101, "source": 22}, {"pair": [22, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 1.5860134450210985, "edge": 101, "source": 22}, {"pair": [23, 24], "target": 24, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 9.323516151788246, "edge": 102, "source": 23}, {"pair": [23, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 9.323516151788246, "edge": 102, "source": 23}, {"pair": [23, 25], "target": 25, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 1.1147970864524264, "edge": 103, "source": 23}, {"pair": [23, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 1.1147970864524264, "edge": 103, "source": 23}, {"pair": [23, 26], "target": 26, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 8.314099493497505, "edge": 104, "source": 23}, {"pair": [23, 26], "target": 26, "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": 8.314099493497505, "edge": 104, "source": 23}, {"pair": [25, 28], "target": 28, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 9.10674694183697, "edge": 105, "source": 25}, {"pair": [25, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 9.10674694183697, "edge": 105, "source": 25}, {"pair": [28, 29], "target": 29, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 1.2706215017005391, "edge": 106, "source": 28}, {"pair": [28, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 1.2706215017005391, "edge": 106, "source": 28}], "data-8bd0918e749a3dac8c97d3f9d17ee892": [{"viable": "yes", "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 0.09000818270942744, "name": 370}, {"viable": "no", "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": -0.32108552118981804, "name": 87}, {"viable": "yes", "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 1.7632197398197151, "name": 190}, {"viable": "no", "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": -0.9178014123787246, "name": 80}, {"viable": "no", "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": -0.5906576882156674, "name": 360}, {"viable": "yes", "y": 0.6723839244728887, "x": 0.9748349094398729, "weight": -0.35752028967483246, "name": 480}, {"viable": "yes", "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 1.1214672458375083, "name": 64}, {"viable": "yes", "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": -0.3376629650291154, "name": 677}, {"viable": "yes", "y": -0.37928959372227, "x": -0.5089539697474081, "weight": -1.063690275883264, "name": 29}, {"viable": "yes", "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 2.691969689662521, "name": 158}, {"viable": "no", "y": 0.9999999999999999, "x": -0.13075072249443015, "weight": 1.4236893640150154, "name": 935}, {"viable": "no", "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 0.4743467533803975, "name": 736}, {"viable": "yes", "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 0.6501469035392892, "name": 361}, {"viable": "yes", "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 2.1245637760367395, "name": 905}, {"viable": "no", "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 0.505189519324072, "name": 430}, {"viable": "yes", "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 0.2931209101021088, "name": 8}, {"viable": "no", "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 1.4328305145246456, "name": 496}, {"viable": "no", "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 1.3714554665514156, "name": 417}, {"viable": "no", "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 1.5798243606914875, "name": 395}, {"viable": "yes", "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": -0.5558066688279328, "name": 364}, {"viable": "no", "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 0.6376154552041343, "name": 804}, {"viable": "yes", "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": -0.23582762111229388, "name": 348}, {"viable": "no", "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": -0.856023947208739, "name": 16}, {"viable": "yes", "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": -0.6592325141572747, "name": 750}, {"viable": "yes", "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 2.001708016805625, "name": 562}, {"viable": "yes", "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": -1.171980704668275, "name": 637}, {"viable": "no", "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": -1.9113185174455143, "name": 617}, {"viable": "yes", "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 0.2815411023035194, "name": 419}, {"viable": "yes", "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 0.4792626605249321, "name": 403}, {"viable": "yes", "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 0.8991983163429017, "name": 961}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>Let’s add some advanced exploration features using Altair.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the node layer</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="n">chart</span><span class="o">.</span><span class="n">layer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="n">chart</span><span class="o">.</span><span class="n">layer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Build a brush</span>
+<span class="n">brush</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_interval</span><span class="p">(</span><span class="n">encodings</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span>
+<span class="n">color</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;viable:N&#39;</span><span class="p">,</span>  <span class="n">legend</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># Condition nodes based on brush</span>
+<span class="c1">#nodes = nodes.encode(</span>
+ <span class="c1">#   fill=alt.condition(brush, color, alt.value(&#39;gray&#39;)),</span>
+<span class="c1">#).add_selection(</span>
+ <span class="c1">#   brush</span>
+<span class="c1">#)</span>
+
+<span class="c1"># Create a bar graph to show highlighted nodes.</span>
+<span class="n">bars</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;count()&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">))),</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;viable&#39;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;viable&#39;</span><span class="p">,</span>
+<span class="p">)</span><span class="o">.</span><span class="n">transform_filter</span><span class="p">(</span>
+    <span class="n">brush</span>
+<span class="p">)</span>
+
+<span class="n">alt</span><span class="o">.</span><span class="n">vconcat</span><span class="p">(</span><span class="n">edges</span><span class="o">+</span><span class="n">nodes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="altair-viz-cc77c485e92648c782dee750133249f7"></div>
+<script type="text/javascript">
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-cc77c485e92648c782dee750133249f7") {
+      outputDiv = document.getElementById("altair-viz-cc77c485e92648c782dee750133249f7");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm//vega-lite@4.8.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
+    };
+
+    function loadScript(lib) {
+      return new Promise(function(resolve, reject) {
+        var s = document.createElement('script');
+        s.src = paths[lib];
+        s.async = true;
+        s.onload = () => resolve(paths[lib]);
+        s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+        document.getElementsByTagName("head")[0].appendChild(s);
+      });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else if (typeof vegaEmbed === "function") {
+      displayChart(vegaEmbed);
+    } else {
+      loadScript("vega")
+        .then(() => loadScript("vega-lite"))
+        .then(() => loadScript("vega-embed"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "vconcat": [{"layer": [{"data": {"name": "data-1d7ee752f6015449e1ad20bcf32e592f"}, "mark": {"type": "line", "color": "black", "opacity": 1}, "encoding": {"detail": {"type": "quantitative", "field": "edge"}, "size": {"type": "quantitative", "field": "weight", "legend": null}, "x": {"type": "quantitative", "axis": {"grid": false, "labels": false, "ticks": false, "title": ""}, "field": "x"}, "y": {"type": "quantitative", "axis": {"grid": false, "labels": false, "ticks": false, "title": ""}, "field": "y"}}}, {"data": {"name": "data-8bd0918e749a3dac8c97d3f9d17ee892"}, "mark": {"type": "point", "opacity": 1, "size": 200, "strokeWidth": 1.0}, "encoding": {"fill": {"type": "nominal", "field": "viable", "scale": {"scheme": "viridis"}}, "tooltip": [{"type": "quantitative", "field": "weight"}, {"type": "quantitative", "field": "name"}, {"type": "nominal", "field": "viable"}], "x": {"type": "quantitative", "axis": {"grid": false, "labels": false, "ticks": false}, "field": "x"}, "y": {"type": "quantitative", "axis": {"grid": false, "labels": false, "ticks": false}, "field": "y"}}}]}], "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-1d7ee752f6015449e1ad20bcf32e592f": [{"pair": [0, 2], "target": 2, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 9.613120077624844, "edge": 0, "source": 0}, {"pair": [0, 2], "target": 2, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 9.613120077624844, "edge": 0, "source": 0}, {"pair": [0, 5], "target": 5, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 8.846422155412448, "edge": 1, "source": 0}, {"pair": [0, 5], "target": 5, "y": 0.6723839244728887, "x": 0.9748349094398729, "weight": 8.846422155412448, "edge": 1, "source": 0}, {"pair": [0, 6], "target": 6, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 2.880628777893805, "edge": 2, "source": 0}, {"pair": [0, 6], "target": 6, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 2.880628777893805, "edge": 2, "source": 0}, {"pair": [0, 7], "target": 7, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 2.1281158783717675, "edge": 3, "source": 0}, {"pair": [0, 7], "target": 7, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 2.1281158783717675, "edge": 3, "source": 0}, {"pair": [0, 11], "target": 11, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 7.098976147875225, "edge": 4, "source": 0}, {"pair": [0, 11], "target": 11, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 7.098976147875225, "edge": 4, "source": 0}, {"pair": [0, 13], "target": 13, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 5.849264702374195, "edge": 5, "source": 0}, {"pair": [0, 13], "target": 13, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 5.849264702374195, "edge": 5, "source": 0}, {"pair": [0, 15], "target": 15, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 5.804554769428481, "edge": 6, "source": 0}, {"pair": [0, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 5.804554769428481, "edge": 6, "source": 0}, {"pair": [0, 17], "target": 17, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 2.626038567584561, "edge": 7, "source": 0}, {"pair": [0, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 2.626038567584561, "edge": 7, "source": 0}, {"pair": [0, 19], "target": 19, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 6.090893618564864, "edge": 8, "source": 0}, {"pair": [0, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 6.090893618564864, "edge": 8, "source": 0}, {"pair": [0, 21], "target": 21, "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 9.121382046826586, "edge": 9, "source": 0}, {"pair": [0, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 9.121382046826586, "edge": 9, "source": 0}, {"pair": [1, 8], "target": 8, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 5.593528023906727, "edge": 10, "source": 1}, {"pair": [1, 8], "target": 8, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 5.593528023906727, "edge": 10, "source": 1}, {"pair": [1, 11], "target": 11, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 6.270452424356834, "edge": 11, "source": 1}, {"pair": [1, 11], "target": 11, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 6.270452424356834, "edge": 11, "source": 1}, {"pair": [1, 17], "target": 17, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 6.310859024478931, "edge": 12, "source": 1}, {"pair": [1, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 6.310859024478931, "edge": 12, "source": 1}, {"pair": [1, 19], "target": 19, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 3.901848728453326, "edge": 13, "source": 1}, {"pair": [1, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 3.901848728453326, "edge": 13, "source": 1}, {"pair": [1, 22], "target": 22, "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": 3.189965296992244, "edge": 14, "source": 1}, {"pair": [1, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 3.189965296992244, "edge": 14, "source": 1}, {"pair": [2, 9], "target": 9, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 1.2466756934952246, "edge": 15, "source": 2}, {"pair": [2, 9], "target": 9, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 1.2466756934952246, "edge": 15, "source": 2}, {"pair": [2, 12], "target": 12, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 4.313804988272131, "edge": 16, "source": 2}, {"pair": [2, 12], "target": 12, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 4.313804988272131, "edge": 16, "source": 2}, {"pair": [2, 16], "target": 16, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 3.6216601757516003, "edge": 17, "source": 2}, {"pair": [2, 16], "target": 16, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 3.6216601757516003, "edge": 17, "source": 2}, {"pair": [2, 20], "target": 20, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 2.9133703677333287, "edge": 18, "source": 2}, {"pair": [2, 20], "target": 20, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 2.9133703677333287, "edge": 18, "source": 2}, {"pair": [2, 22], "target": 22, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 2.8115167348877415, "edge": 19, "source": 2}, {"pair": [2, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 2.8115167348877415, "edge": 19, "source": 2}, {"pair": [2, 24], "target": 24, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 6.596540628377665, "edge": 20, "source": 2}, {"pair": [2, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 6.596540628377665, "edge": 20, "source": 2}, {"pair": [2, 28], "target": 28, "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 9.254374133866637, "edge": 21, "source": 2}, {"pair": [2, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 9.254374133866637, "edge": 21, "source": 2}, {"pair": [3, 4], "target": 4, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 2.649239415532159, "edge": 22, "source": 3}, {"pair": [3, 4], "target": 4, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 2.649239415532159, "edge": 22, "source": 3}, {"pair": [3, 6], "target": 6, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 5.582190805415887, "edge": 23, "source": 3}, {"pair": [3, 6], "target": 6, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 5.582190805415887, "edge": 23, "source": 3}, {"pair": [3, 11], "target": 11, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 6.912895649891383, "edge": 24, "source": 3}, {"pair": [3, 11], "target": 11, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 6.912895649891383, "edge": 24, "source": 3}, {"pair": [3, 13], "target": 13, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 7.87604007587885, "edge": 25, "source": 3}, {"pair": [3, 13], "target": 13, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 7.87604007587885, "edge": 25, "source": 3}, {"pair": [3, 17], "target": 17, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 8.861565250844949, "edge": 26, "source": 3}, {"pair": [3, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 8.861565250844949, "edge": 26, "source": 3}, {"pair": [3, 21], "target": 21, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 3.9036810440488354, "edge": 27, "source": 3}, {"pair": [3, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 3.9036810440488354, "edge": 27, "source": 3}, {"pair": [3, 24], "target": 24, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 2.631952004284379, "edge": 28, "source": 3}, {"pair": [3, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 2.631952004284379, "edge": 28, "source": 3}, {"pair": [3, 27], "target": 27, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 6.908533157196448, "edge": 29, "source": 3}, {"pair": [3, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 6.908533157196448, "edge": 29, "source": 3}, {"pair": [3, 28], "target": 28, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 9.765520177089442, "edge": 30, "source": 3}, {"pair": [3, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 9.765520177089442, "edge": 30, "source": 3}, {"pair": [3, 29], "target": 29, "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": 5.415249284246691, "edge": 31, "source": 3}, {"pair": [3, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 5.415249284246691, "edge": 31, "source": 3}, {"pair": [4, 6], "target": 6, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 6.376624806658484, "edge": 32, "source": 4}, {"pair": [4, 6], "target": 6, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 6.376624806658484, "edge": 32, "source": 4}, {"pair": [4, 7], "target": 7, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 2.1693665744695574, "edge": 33, "source": 4}, {"pair": [4, 7], "target": 7, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 2.1693665744695574, "edge": 33, "source": 4}, {"pair": [4, 19], "target": 19, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 6.298392064365104, "edge": 34, "source": 4}, {"pair": [4, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 6.298392064365104, "edge": 34, "source": 4}, {"pair": [4, 21], "target": 21, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 3.6964498333749023, "edge": 35, "source": 4}, {"pair": [4, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 3.6964498333749023, "edge": 35, "source": 4}, {"pair": [4, 22], "target": 22, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 5.519195366247141, "edge": 36, "source": 4}, {"pair": [4, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 5.519195366247141, "edge": 36, "source": 4}, {"pair": [4, 23], "target": 23, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 9.761438168139552, "edge": 37, "source": 4}, {"pair": [4, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 9.761438168139552, "edge": 37, "source": 4}, {"pair": [4, 26], "target": 26, "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": 4.659292354143224, "edge": 38, "source": 4}, {"pair": [4, 26], "target": 26, "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": 4.659292354143224, "edge": 38, "source": 4}, {"pair": [5, 17], "target": 17, "y": 0.6723839244728887, "x": 0.9748349094398729, "weight": 7.638580177457449, "edge": 39, "source": 5}, {"pair": [5, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 7.638580177457449, "edge": 39, "source": 5}, {"pair": [5, 18], "target": 18, "y": 0.6723839244728887, "x": 0.9748349094398729, "weight": 2.2492939495265336, "edge": 40, "source": 5}, {"pair": [5, 18], "target": 18, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 2.2492939495265336, "edge": 40, "source": 5}, {"pair": [6, 7], "target": 7, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 2.835344635437508, "edge": 41, "source": 6}, {"pair": [6, 7], "target": 7, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 2.835344635437508, "edge": 41, "source": 6}, {"pair": [6, 12], "target": 12, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 7.750347346358828, "edge": 42, "source": 6}, {"pair": [6, 12], "target": 12, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 7.750347346358828, "edge": 42, "source": 6}, {"pair": [6, 19], "target": 19, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 9.477765199047205, "edge": 43, "source": 6}, {"pair": [6, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 9.477765199047205, "edge": 43, "source": 6}, {"pair": [6, 20], "target": 20, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 4.21217126126383, "edge": 44, "source": 6}, {"pair": [6, 20], "target": 20, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 4.21217126126383, "edge": 44, "source": 6}, {"pair": [6, 28], "target": 28, "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 6.358707147909234, "edge": 45, "source": 6}, {"pair": [6, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 6.358707147909234, "edge": 45, "source": 6}, {"pair": [7, 21], "target": 21, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 3.982925775611715, "edge": 46, "source": 7}, {"pair": [7, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 3.982925775611715, "edge": 46, "source": 7}, {"pair": [7, 23], "target": 23, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 1.4610412945136941, "edge": 47, "source": 7}, {"pair": [7, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 1.4610412945136941, "edge": 47, "source": 7}, {"pair": [7, 24], "target": 24, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 6.738068579724963, "edge": 48, "source": 7}, {"pair": [7, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 6.738068579724963, "edge": 48, "source": 7}, {"pair": [7, 28], "target": 28, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 7.826761703036125, "edge": 49, "source": 7}, {"pair": [7, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 7.826761703036125, "edge": 49, "source": 7}, {"pair": [7, 29], "target": 29, "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": 3.473674998705487, "edge": 50, "source": 7}, {"pair": [7, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 3.473674998705487, "edge": 50, "source": 7}, {"pair": [8, 11], "target": 11, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 9.212778031957955, "edge": 51, "source": 8}, {"pair": [8, 11], "target": 11, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 9.212778031957955, "edge": 51, "source": 8}, {"pair": [8, 15], "target": 15, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 3.9317219192940156, "edge": 52, "source": 8}, {"pair": [8, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 3.9317219192940156, "edge": 52, "source": 8}, {"pair": [8, 16], "target": 16, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 6.541619965403998, "edge": 53, "source": 8}, {"pair": [8, 16], "target": 16, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 6.541619965403998, "edge": 53, "source": 8}, {"pair": [8, 22], "target": 22, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 4.531415843912312, "edge": 54, "source": 8}, {"pair": [8, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 4.531415843912312, "edge": 54, "source": 8}, {"pair": [8, 24], "target": 24, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 6.322248088735517, "edge": 55, "source": 8}, {"pair": [8, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 6.322248088735517, "edge": 55, "source": 8}, {"pair": [8, 26], "target": 26, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 2.0167237753002487, "edge": 56, "source": 8}, {"pair": [8, 26], "target": 26, "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": 2.0167237753002487, "edge": 56, "source": 8}, {"pair": [8, 29], "target": 29, "y": -0.37928959372227, "x": -0.5089539697474081, "weight": 3.2564071950956612, "edge": 57, "source": 8}, {"pair": [8, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 3.2564071950956612, "edge": 57, "source": 8}, {"pair": [9, 12], "target": 12, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 1.0310185970038102, "edge": 58, "source": 9}, {"pair": [9, 12], "target": 12, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 1.0310185970038102, "edge": 58, "source": 9}, {"pair": [9, 13], "target": 13, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 3.4632944187289523, "edge": 59, "source": 9}, {"pair": [9, 13], "target": 13, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 3.4632944187289523, "edge": 59, "source": 9}, {"pair": [9, 14], "target": 14, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 5.088167956878854, "edge": 60, "source": 9}, {"pair": [9, 14], "target": 14, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 5.088167956878854, "edge": 60, "source": 9}, {"pair": [9, 15], "target": 15, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 4.060122667443949, "edge": 61, "source": 9}, {"pair": [9, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 4.060122667443949, "edge": 61, "source": 9}, {"pair": [9, 16], "target": 16, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 8.259899333548606, "edge": 62, "source": 9}, {"pair": [9, 16], "target": 16, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 8.259899333548606, "edge": 62, "source": 9}, {"pair": [9, 22], "target": 22, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 9.909896971244253, "edge": 63, "source": 9}, {"pair": [9, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 9.909896971244253, "edge": 63, "source": 9}, {"pair": [9, 29], "target": 29, "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 3.338739435800087, "edge": 64, "source": 9}, {"pair": [9, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 3.338739435800087, "edge": 64, "source": 9}, {"pair": [10, 14], "target": 14, "y": 0.9999999999999999, "x": -0.13075072249443015, "weight": 2.5903829502624856, "edge": 65, "source": 10}, {"pair": [10, 14], "target": 14, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 2.5903829502624856, "edge": 65, "source": 10}, {"pair": [10, 17], "target": 17, "y": 0.9999999999999999, "x": -0.13075072249443015, "weight": 7.226726222703608, "edge": 66, "source": 10}, {"pair": [10, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 7.226726222703608, "edge": 66, "source": 10}, {"pair": [10, 21], "target": 21, "y": 0.9999999999999999, "x": -0.13075072249443015, "weight": 6.278623878749935, "edge": 67, "source": 10}, {"pair": [10, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 6.278623878749935, "edge": 67, "source": 10}, {"pair": [11, 12], "target": 12, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 6.866000429792766, "edge": 68, "source": 11}, {"pair": [11, 12], "target": 12, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 6.866000429792766, "edge": 68, "source": 11}, {"pair": [11, 15], "target": 15, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 1.7286567774080113, "edge": 69, "source": 11}, {"pair": [11, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 1.7286567774080113, "edge": 69, "source": 11}, {"pair": [11, 17], "target": 17, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 7.272757057460101, "edge": 70, "source": 11}, {"pair": [11, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 7.272757057460101, "edge": 70, "source": 11}, {"pair": [11, 19], "target": 19, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 5.920862755265697, "edge": 71, "source": 11}, {"pair": [11, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 5.920862755265697, "edge": 71, "source": 11}, {"pair": [11, 23], "target": 23, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 2.3944506322644634, "edge": 72, "source": 11}, {"pair": [11, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 2.3944506322644634, "edge": 72, "source": 11}, {"pair": [11, 24], "target": 24, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 1.3067251382203762, "edge": 73, "source": 11}, {"pair": [11, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 1.3067251382203762, "edge": 73, "source": 11}, {"pair": [11, 25], "target": 25, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 9.545230552562117, "edge": 74, "source": 11}, {"pair": [11, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 9.545230552562117, "edge": 74, "source": 11}, {"pair": [11, 27], "target": 27, "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 6.350205828943886, "edge": 75, "source": 11}, {"pair": [11, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 6.350205828943886, "edge": 75, "source": 11}, {"pair": [12, 13], "target": 13, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 5.571132883568092, "edge": 76, "source": 12}, {"pair": [12, 13], "target": 13, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 5.571132883568092, "edge": 76, "source": 12}, {"pair": [12, 14], "target": 14, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 2.1557529928511787, "edge": 77, "source": 12}, {"pair": [12, 14], "target": 14, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 2.1557529928511787, "edge": 77, "source": 12}, {"pair": [12, 15], "target": 15, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 4.6870970100084755, "edge": 78, "source": 12}, {"pair": [12, 15], "target": 15, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 4.6870970100084755, "edge": 78, "source": 12}, {"pair": [12, 17], "target": 17, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 1.354457717241196, "edge": 79, "source": 12}, {"pair": [12, 17], "target": 17, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 1.354457717241196, "edge": 79, "source": 12}, {"pair": [12, 18], "target": 18, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 9.172853439296075, "edge": 80, "source": 12}, {"pair": [12, 18], "target": 18, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 9.172853439296075, "edge": 80, "source": 12}, {"pair": [12, 22], "target": 22, "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 8.71647679866366, "edge": 81, "source": 12}, {"pair": [12, 22], "target": 22, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 8.71647679866366, "edge": 81, "source": 12}, {"pair": [13, 21], "target": 21, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 1.6721691481650196, "edge": 82, "source": 13}, {"pair": [13, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 1.6721691481650196, "edge": 82, "source": 13}, {"pair": [13, 25], "target": 25, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 5.540739677621704, "edge": 83, "source": 13}, {"pair": [13, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 5.540739677621704, "edge": 83, "source": 13}, {"pair": [13, 29], "target": 29, "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 1.986030817131829, "edge": 84, "source": 13}, {"pair": [13, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 1.986030817131829, "edge": 84, "source": 13}, {"pair": [14, 25], "target": 25, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 1.1568438228216884, "edge": 85, "source": 14}, {"pair": [14, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 1.1568438228216884, "edge": 85, "source": 14}, {"pair": [14, 26], "target": 26, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 8.124553192394483, "edge": 86, "source": 14}, {"pair": [14, 26], "target": 26, "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": 8.124553192394483, "edge": 86, "source": 14}, {"pair": [14, 29], "target": 29, "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 9.798868386678876, "edge": 87, "source": 14}, {"pair": [14, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 9.798868386678876, "edge": 87, "source": 14}, {"pair": [15, 25], "target": 25, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 5.496307066872678, "edge": 88, "source": 15}, {"pair": [15, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 5.496307066872678, "edge": 88, "source": 15}, {"pair": [15, 27], "target": 27, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 3.191500964036531, "edge": 89, "source": 15}, {"pair": [15, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 3.191500964036531, "edge": 89, "source": 15}, {"pair": [15, 28], "target": 28, "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 1.049154983184873, "edge": 90, "source": 15}, {"pair": [15, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 1.049154983184873, "edge": 90, "source": 15}, {"pair": [16, 20], "target": 20, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 2.839420466327155, "edge": 91, "source": 16}, {"pair": [16, 20], "target": 20, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 2.839420466327155, "edge": 91, "source": 16}, {"pair": [16, 23], "target": 23, "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 2.777686566890035, "edge": 92, "source": 16}, {"pair": [16, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 2.777686566890035, "edge": 92, "source": 16}, {"pair": [17, 19], "target": 19, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 2.4827725522897595, "edge": 93, "source": 17}, {"pair": [17, 19], "target": 19, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 2.4827725522897595, "edge": 93, "source": 17}, {"pair": [17, 29], "target": 29, "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 3.5552742209493235, "edge": 94, "source": 17}, {"pair": [17, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 3.5552742209493235, "edge": 94, "source": 17}, {"pair": [18, 25], "target": 25, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 3.662530588458192, "edge": 95, "source": 18}, {"pair": [18, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 3.662530588458192, "edge": 95, "source": 18}, {"pair": [18, 27], "target": 27, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 9.926077496296486, "edge": 96, "source": 18}, {"pair": [18, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 9.926077496296486, "edge": 96, "source": 18}, {"pair": [18, 28], "target": 28, "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 2.422213593574149, "edge": 97, "source": 18}, {"pair": [18, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 2.422213593574149, "edge": 97, "source": 18}, {"pair": [19, 21], "target": 21, "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": 3.5611521605616305, "edge": 98, "source": 19}, {"pair": [19, 21], "target": 21, "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": 3.5611521605616305, "edge": 98, "source": 19}, {"pair": [20, 25], "target": 25, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 3.260398442734367, "edge": 99, "source": 20}, {"pair": [20, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 3.260398442734367, "edge": 99, "source": 20}, {"pair": [20, 27], "target": 27, "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 9.34816710203689, "edge": 100, "source": 20}, {"pair": [20, 27], "target": 27, "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 9.34816710203689, "edge": 100, "source": 20}, {"pair": [22, 23], "target": 23, "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": 1.5860134450210985, "edge": 101, "source": 22}, {"pair": [22, 23], "target": 23, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 1.5860134450210985, "edge": 101, "source": 22}, {"pair": [23, 24], "target": 24, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 9.323516151788246, "edge": 102, "source": 23}, {"pair": [23, 24], "target": 24, "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 9.323516151788246, "edge": 102, "source": 23}, {"pair": [23, 25], "target": 25, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 1.1147970864524264, "edge": 103, "source": 23}, {"pair": [23, 25], "target": 25, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 1.1147970864524264, "edge": 103, "source": 23}, {"pair": [23, 26], "target": 26, "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": 8.314099493497505, "edge": 104, "source": 23}, {"pair": [23, 26], "target": 26, "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": 8.314099493497505, "edge": 104, "source": 23}, {"pair": [25, 28], "target": 28, "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": 9.10674694183697, "edge": 105, "source": 25}, {"pair": [25, 28], "target": 28, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 9.10674694183697, "edge": 105, "source": 25}, {"pair": [28, 29], "target": 29, "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 1.2706215017005391, "edge": 106, "source": 28}, {"pair": [28, 29], "target": 29, "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 1.2706215017005391, "edge": 106, "source": 28}], "data-8bd0918e749a3dac8c97d3f9d17ee892": [{"viable": "yes", "y": 0.1840919719657714, "x": 0.4798458671830624, "weight": 0.09000818270942744, "name": 370}, {"viable": "no", "y": -0.5708828115141024, "x": 0.13513653368087494, "weight": -0.32108552118981804, "name": 87}, {"viable": "yes", "y": -0.3674016031353262, "x": -0.10041332776315683, "weight": 1.7632197398197151, "name": 190}, {"viable": "no", "y": 0.09216737089193795, "x": 0.2090975509284547, "weight": -0.9178014123787246, "name": 80}, {"viable": "no", "y": -0.12901319062981664, "x": -0.21231412230801497, "weight": -0.5906576882156674, "name": 360}, {"viable": "yes", "y": 0.6723839244728887, "x": 0.9748349094398729, "weight": -0.35752028967483246, "name": 480}, {"viable": "yes", "y": -0.14570301971723493, "x": 0.37647043828093985, "weight": 1.1214672458375083, "name": 64}, {"viable": "yes", "y": -0.08225520850812161, "x": 0.08868187995704196, "weight": -0.3376629650291154, "name": 677}, {"viable": "yes", "y": -0.37928959372227, "x": -0.5089539697474081, "weight": -1.063690275883264, "name": 29}, {"viable": "yes", "y": -0.04378397205589358, "x": -0.5806085413043173, "weight": 2.691969689662521, "name": 158}, {"viable": "no", "y": 0.9999999999999999, "x": -0.13075072249443015, "weight": 1.4236893640150154, "name": 935}, {"viable": "no", "y": -0.2531389923799862, "x": 0.1763186279375905, "weight": 0.4743467533803975, "name": 736}, {"viable": "yes", "y": 0.13342440083591983, "x": -0.19506511316008174, "weight": 0.6501469035392892, "name": 361}, {"viable": "yes", "y": 0.5444693897026748, "x": -0.1595356580328427, "weight": 2.1245637760367395, "name": 905}, {"viable": "no", "y": 0.49242071613003163, "x": -0.6669074242580171, "weight": 0.505189519324072, "name": 430}, {"viable": "yes", "y": -0.025265144766322287, "x": -0.027407492380606455, "weight": 0.2931209101021088, "name": 8}, {"viable": "no", "y": -0.8119657223095781, "x": -0.38184492144292825, "weight": 1.4328305145246456, "name": 496}, {"viable": "no", "y": 0.3295618234988382, "x": 0.3315430183719086, "weight": 1.3714554665514156, "name": 417}, {"viable": "no", "y": 0.5494224361781003, "x": 0.5501895643647198, "weight": 1.5798243606914875, "name": 395}, {"viable": "yes", "y": -0.1499526141496991, "x": 0.5492003893596303, "weight": -0.5558066688279328, "name": 364}, {"viable": "no", "y": -0.5980014113158142, "x": 0.3655705807087224, "weight": 0.6376154552041343, "name": 804}, {"viable": "yes", "y": 0.5286025199013403, "x": 0.20824698186155918, "weight": -0.23582762111229388, "name": 348}, {"viable": "no", "y": -0.5559383410911207, "x": -0.5348193975002951, "weight": -0.856023947208739, "name": 16}, {"viable": "yes", "y": -0.4082017505740846, "x": -0.3714061634518235, "weight": -0.6592325141572747, "name": 750}, {"viable": "yes", "y": -0.6446619068777514, "x": -0.07781142670277542, "weight": 2.001708016805625, "name": 562}, {"viable": "yes", "y": 0.19836517533141823, "x": -0.046940302428281885, "weight": -1.171980704668275, "name": 637}, {"viable": "no", "y": -0.1059496540403694, "x": -0.9526183214070802, "weight": -1.9113185174455143, "name": 617}, {"viable": "yes", "y": -0.08309415986732178, "x": 0.7430415918796748, "weight": 0.2815411023035194, "name": 419}, {"viable": "yes", "y": 0.32228999318808194, "x": 0.11780298668180544, "weight": 0.4792626605249321, "name": 403}, {"viable": "yes", "y": 0.30729937455781, "x": -0.35858401625379804, "weight": 0.8991983163429017, "name": 961}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python37664bitbase6432d8efa05d46678f1215b95b76978d",
+            path: "./06-Network-Analysis"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python37664bitbase6432d8efa05d46678f1215b95b76978d'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By <a href="https://melaniewalsh.org/">Melanie Walsh</a><br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            <div>
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This book is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>. The code is licensed under a <a href="https://choosealicense.com/licenses/gpl-3.0/#">GNU General Public License v3.0</a>.
+</div>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-86905362-3', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

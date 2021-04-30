@@ -1,0 +1,1422 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mapping Part 2 — Workbook &#8212; Introduction to Cultural Analytics &amp; Python</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://melaniewalsh.github.io/Intro-Cultural-Analytics/07-Mapping/01.5-Mapping-SOLUTIONS-Copy1.html" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://melaniewalsh.github.io/Intro-Cultural-Analytics/07-Mapping/01.5-Mapping-SOLUTIONS-Copy1.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Mapping Part 2 — Workbook" />
+<meta property="og:description" content="Mapping Part 2 — Workbook  In this lesson, we’re going to learn how to analyze and visualize geographic data.  Note: You can explore this workbook in the cloud " />
+<meta property="og:image"       content="https://melaniewalsh.github.io/Intro-Cultural-Analytics/_static/favicon.ico" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/favicon.ico" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Introduction to Cultural Analytics & Python</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  How To
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../How-To-Interact-With-This-Book.html">
+   Interact With This Book
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  The Course
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../course-schedule-2021.html">
+   Course Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Course Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../COURSE-Final-Project/Final-Project-Instructions.html">
+   Final Project
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  The Book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Command-Line/01-The-Command-Line.html">
+   1. The Command Line
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../02-Python/00-Python.html">
+   2. Python Basics
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/01-Installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/02-How-to-Use-Jupyter-Notebooks.html">
+     How to Use Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/03-Anatomy-Python-Script.html">
+     Anatomy of a Python Script
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/04-Variables.html">
+     Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/05-Data-Types.html">
+     Data Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/06-String-Methods.html">
+     String Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/07-Files-Character-Encoding.html">
+     Files and Character Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/08-Comparisons-Conditionals.html">
+     Comparisons &amp; Conditionals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/09-Lists-Loops-Part1.html">
+     Lists &amp; Loops — Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/10-Lists-Loops-Part2.html">
+     Lists &amp; Loops — Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/11-Dictionaries.html">
+     Dictionaries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/12-Functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/13-Common-Python-Errors.html">
+     Common Python Errors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Python/14-What-Were-Not-Covering.html">
+     What We’re Not Covering
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../03-Data-Analysis/00-Data-Analysis.html">
+   3. Data Analysis (Pandas)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Data-Analysis/01-Pandas-Basics-Part1.html">
+     Pandas Basics — Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Data-Analysis/02-Pandas-Basics-Part2.html">
+     Pandas Basics — Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Data-Analysis/03-Pandas-Basics-Part3.html">
+     Pandas Basics — Part 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Data-Analysis/04-Pandas-Merge-Datasets.html">
+     Pandas — Merge Datasets
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../04-Data-Collection/00-Data-Collection.html">
+   4. Data Collection (Web Scraping, APIs)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Data-Collection/01-User-Ethics-Legal-Concerns.html">
+     User Ethics &amp; Legal Concerns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Data-Collection/02-Web-Scraping-Part1.html">
+     Web Scraping — Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Data-Collection/03-Web-Scraping-Part2.html">
+     Web Scraping — Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Data-Collection/04-Git-GitHub.html">
+     Git and GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Data-Collection/05-APIs.html">
+     Application Programming Interfaces (APIs)
+    </a>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../04-Data-Collection/06-Song-Genius-Data-Collection.html">
+     Song Genius Data Collection
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04-Data-Collection/07-Genius-API.html">
+       Song Genius API
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04-Data-Collection/08-LyricsGenius.html">
+       Song Lyrics Collection
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04-Data-Collection/09-Song-Lyrics-Analysis.html">
+       Song Lyrics Analysis
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../04-Data-Collection/10-Twitter-Data-Collection-Home.html">
+     Twitter Data Collection
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04-Data-Collection/11-Twitter-API-Setup.html">
+       Twitter API Setup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04-Data-Collection/12-Twitter-Data-Collection.html">
+       Twitter Data Collection
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04-Data-Collection/13-Twitter-Data-Analysis.html">
+       Twitter Data Analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04-Data-Collection/14-Twitter-Data-Sharing.html">
+       Twitter Data Sharing
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Data-Collection/15-Reddit-Data-Collection-With-PSAW.html">
+     Reddit Data Collection
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../05-Text-Analysis/00-Text-Analysis.html">
+   5. Text Analysis
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../05-Text-Analysis/01-TF-IDF.html">
+     TF-IDF
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05-Text-Analysis/02-TF-IDF-HathiTrust.html">
+       TF-IDF with HathiTrust Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05-Text-Analysis/03-TF-IDF-Scikit-Learn.html">
+       TF-IDF with Scikit-Learn
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../05-Text-Analysis/04-Topic-Modeling.html">
+     Topic Modeling
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05-Text-Analysis/05-Topic-Modeling-Overview.html">
+       Topic Modeling — Overview
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05-Text-Analysis/06-Topic-Modeling-Set-Up.html">
+       Topic Modeling — Set Up
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05-Text-Analysis/07-Topic-Modeling-Text-Files.html">
+       Topic Modeling — Text Files
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05-Text-Analysis/08-Topic-Modeling-CSV.html">
+       Topic Modeling — CSV Files
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../05-Text-Analysis/09-Topic-Modeling-Time-Series.html">
+       Topic Modeling — Time Series
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Text-Analysis/07-Topic-Modeling-Without-Mallet.html">
+     Topic Modeling — With Tomotopy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Text-Analysis/10-Named-Entity-Recognition.html">
+     Named Entity Recognition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Text-Analysis/11-POS-Keywords.html">
+     Part-of-Speech Tagging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Text-Analysis/11-POS-Keywords.html#keyword-extraction">
+     Keyword Extraction
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../06-Network-Analysis/00-Network-Analysis-Home.html">
+   6. Network Analysis
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Network-Analysis/01-Network-Analysis.html">
+     Network Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Network-Analysis/02-Making-Network-Viz-with-Bokeh.html">
+     Make an Interactive Network Visualization
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="01-Mapping-Home.html">
+   7. Mapping
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-Mapping.html">
+     Mapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-Mapping.html#geocoding-with-geopy">
+     Geocoding with GeoPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-Mapping.html#making-interactive-maps">
+     Making Interactive Maps
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-Custom-Maps.html">
+     Custom Map Backgrounds
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04-Publish-Your-Map.html">
+     Publish Your Map on the Web
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Datasets
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-Datasets/Datasets.html">
+   Datasets
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Extra Materials
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Python/EXTRA-Jupyter-Tips-Tricks.html">
+   Jupyter Tips and Tricks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Python/EXTRA-Randomize-Students.html">
+   Make Random Student Groups
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/07-Mapping/01.5-Mapping-SOLUTIONS-Copy1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/INFO1350/Intro-CA-SP21"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/INFO1350/Intro-CA-SP21/issues/new?title=Issue%20on%20page%20%2F07-Mapping/01.5-Mapping-SOLUTIONS-Copy1.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/INFO1350/Intro-CA-SP21/master?urlpath=lab/tree/book/07-Mapping/01.5-Mapping-SOLUTIONS-Copy1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Mapping Part 2 — Workbook
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#making-interactive-maps">
+   Making Interactive Maps
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nominatim-openstreetmap">
+     Nominatim &amp; OpenStreetMap
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#geocode-with-pandas">
+     Geocode with Pandas
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#option-1">
+       Option 1
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#option-2">
+     Option 2
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#install-folium">
+       Install Folium
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#import-python-packages">
+       Import Python packages
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#base-map">
+       Base Map
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#geocoding-with-geopy">
+   Geocoding with GeoPy
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-geopy">
+     Install GeoPy
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-nominatim">
+     Import Nominatim
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-markers-from-pandas-data">
+     Add Markers From Pandas Data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Option 1
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Option 2
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#save-map">
+     Save Map
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="mapping-part-2-workbook">
+<h1>Mapping Part 2 — Workbook<a class="headerlink" href="#mapping-part-2-workbook" title="Permalink to this headline">¶</a></h1>
+<p>In this lesson, we’re going to learn how to analyze and visualize geographic data.</p>
+<p><em>Note: You can explore this <a class="reference external" href="https://mybinder.org/v2/gh/INFO1350/Intro-CA-SP21/master?urlpath=lab/tree/book/07-Mapping/01.5-Mapping-WORKBOOK.ipynb">workbook</a> in the cloud via Binder.</em></p>
+</div>
+<div class="section" id="making-interactive-maps">
+<h1>Making Interactive Maps<a class="headerlink" href="#making-interactive-maps" title="Permalink to this headline">¶</a></h1>
+<p>To create interactive maps, we’re going to use the Python library <a class="reference external" href="https://python-visualization.github.io/folium/">Folium</a>. Folium is built on top of the popular JavaScript library <a class="reference external" href="https://leafletjs.com/">Leaflet</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ithaca_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;confirmed-places.csv&quot;</span><span class="p">)</span>
+<span class="n">ithaca_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>place</th>
+      <th>count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mexico</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Texas</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Loomis</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Paulina</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>France</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Puerto Rico</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>North Broadway</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Chicago</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Milwaukee</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Uptown</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Tennessee</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Egypt</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Kentucky</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Mars</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>India</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Mango Street</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geopy.geocoders</span> <span class="kn">import</span> <span class="n">Nominatim</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="nominatim-openstreetmap">
+<h2>Nominatim &amp; OpenStreetMap<a class="headerlink" href="#nominatim-openstreetmap" title="Permalink to this headline">¶</a></h2>
+<p>Nominatim (which means “name” in Latin) uses <a class="reference external" href="https://www.openstreetmap.org/relation/174979">OpenStreetMap data</a> to match addresses with geopgraphic coordinates. Though we don’t need an API key to use Nominatim, we do need to create a unique <a class="reference external" href="https://operations.osmfoundation.org/policies/nominatim/">application name</a>.</p>
+<p>Here we’re initializing Nominatim as a variable called <code class="docutils literal notranslate"><span class="pre">geolocator</span></code>. Change the application name below to your own application name:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geolocator</span> <span class="o">=</span> <span class="n">Nominatim</span><span class="p">(</span><span class="n">user_agent</span><span class="o">=</span><span class="s2">&quot;YOUR NAME&#39;s mapping app&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To geocode an address or location, we simply use the <code class="docutils literal notranslate"><span class="pre">.geocode()</span></code> function:</p>
+</div>
+<div class="section" id="geocode-with-pandas">
+<h2>Geocode with Pandas<a class="headerlink" href="#geocode-with-pandas" title="Permalink to this headline">¶</a></h2>
+<p>To geocode every place in a Pandas DataFrame, we can use two options.</p>
+<div class="section" id="option-1">
+<h3>Option 1<a class="headerlink" href="#option-1" title="Permalink to this headline">¶</a></h3>
+<p>First, we can make a list of place dictionaries, and then turn that list into a DataFrame.</p>
+<p>Fill in the correct <code class="docutils literal notranslate"><span class="pre">values</span></code> for the <code class="docutils literal notranslate"><span class="pre">keys</span></code> “address,” “latitude,” “longitude,” and “importance” in the dictionary below.</p>
+<p>If you need help, look back at how we were accessing this information above. To test your code, see what the <code class="docutils literal notranslate"><span class="pre">ithaca_df</span></code> DataFrame looks like by running the cell below this cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Empty list</span>
+<span class="n">locations</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Loop through every place in the columns &quot;places&quot;</span>
+<span class="k">for</span> <span class="n">place</span> <span class="ow">in</span> <span class="n">ithaca_df</span><span class="p">[</span><span class="s1">&#39;place&#39;</span><span class="p">]:</span>
+    
+    <span class="c1">#Geolocate the place</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="n">geolocator</span><span class="o">.</span><span class="n">geocode</span><span class="p">(</span><span class="n">place</span><span class="p">,</span> <span class="n">exactly_one</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
+    <span class="c1"># Append a dictionary to the list locations</span>
+    <span class="n">locations</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;place&#39;</span><span class="p">:</span> <span class="n">place</span><span class="p">,</span>
+                      <span class="s1">&#39;address&#39;</span><span class="p">:</span> <span class="n">location</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
+                      <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="n">location</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+                      <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="n">location</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
+                      <span class="s1">&#39;importance&#39;</span><span class="p">:</span> <span class="n">location</span><span class="o">.</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;importance&#39;</span><span class="p">]})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ithaca_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">locations</span><span class="p">)</span>
+<span class="n">ithaca_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>place</th>
+      <th>address</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>importance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mexico</td>
+      <td>México</td>
+      <td>22.500048</td>
+      <td>-100.000038</td>
+      <td>0.839924</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Texas</td>
+      <td>Texas, United States</td>
+      <td>31.816038</td>
+      <td>-99.512099</td>
+      <td>0.868052</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Loomis</td>
+      <td>Loomis, Placer County, California, 95650, Unit...</td>
+      <td>38.821289</td>
+      <td>-121.193004</td>
+      <td>0.530535</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Paulina</td>
+      <td>Paulina, gmina Kcynia, powiat nakielski, wojew...</td>
+      <td>53.092920</td>
+      <td>17.492263</td>
+      <td>0.429019</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>France</td>
+      <td>France</td>
+      <td>46.603354</td>
+      <td>1.888334</td>
+      <td>1.023326</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Puerto Rico</td>
+      <td>Puerto Rico, United States</td>
+      <td>18.221415</td>
+      <td>-66.413282</td>
+      <td>0.931797</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>North Broadway</td>
+      <td>North Broadway, White Plains, Westchester Coun...</td>
+      <td>41.041942</td>
+      <td>-73.768170</td>
+      <td>0.300000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Chicago</td>
+      <td>Chicago, Cook County, Illinois, United States</td>
+      <td>41.875562</td>
+      <td>-87.624421</td>
+      <td>0.861530</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Milwaukee</td>
+      <td>Milwaukee, Milwaukee County, Wisconsin, United...</td>
+      <td>43.034993</td>
+      <td>-87.922497</td>
+      <td>0.685259</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Uptown</td>
+      <td>Uptown, Houston, Harris County, Texas, 77056, ...</td>
+      <td>29.745802</td>
+      <td>-95.464244</td>
+      <td>0.483582</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Tennessee</td>
+      <td>Tennessee, United States</td>
+      <td>35.773008</td>
+      <td>-86.282008</td>
+      <td>0.830268</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Egypt</td>
+      <td>مصر</td>
+      <td>26.254049</td>
+      <td>29.267547</td>
+      <td>0.785164</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Kentucky</td>
+      <td>Kentucky, United States</td>
+      <td>37.572603</td>
+      <td>-85.155141</td>
+      <td>0.821405</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Mars</td>
+      <td>Mars, Tournon-sur-Rhône, Ardèche, Auvergne-Rhô...</td>
+      <td>45.022172</td>
+      <td>4.322155</td>
+      <td>0.622054</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>India</td>
+      <td>India</td>
+      <td>22.351115</td>
+      <td>78.667743</td>
+      <td>0.957689</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Mango Street</td>
+      <td>Mango Street, Mango, Hillsborough County, Flor...</td>
+      <td>27.978502</td>
+      <td>-82.307336</td>
+      <td>0.310000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="option-2">
+<h2>Option 2<a class="headerlink" href="#option-2" title="Permalink to this headline">¶</a></h2>
+<p>Second, we can create a function, and then <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> that function to the existing DataFrame. This code should run without alteration.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_location</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    
+    <span class="n">place</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;place&#39;</span><span class="p">]</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="n">geolocator</span><span class="o">.</span><span class="n">geocode</span><span class="p">(</span><span class="n">place</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">location</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">location</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">location</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">location</span><span class="o">.</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;importance&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ithaca_df</span><span class="p">[[</span><span class="s1">&#39;address&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="s1">&#39;importance&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">ithaca_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">find_location</span><span class="p">,</span>
+                                                                     <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">,</span>
+                                                                     <span class="n">result_type</span><span class="o">=</span><span class="s2">&quot;expand&quot;</span><span class="p">)</span>
+<span class="n">ithaca_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>place</th>
+      <th>address</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>importance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>College Town Bagels</td>
+      <td>Collegetown Bagels, 415, College Avenue, East ...</td>
+      <td>42.442254</td>
+      <td>-76.485473</td>
+      <td>0.350000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ithaca Falls</td>
+      <td>Ithaca Falls, Ithaca, Ithaca Town, Tompkins Co...</td>
+      <td>42.452821</td>
+      <td>-76.491637</td>
+      <td>0.480840</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Moosewood Restaurant</td>
+      <td>Moosewood Restaurant, 215, North Cayuga Street...</td>
+      <td>42.440603</td>
+      <td>-76.498632</td>
+      <td>0.475949</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Cascadilla Gorge Trail</td>
+      <td>Cascadilla Gorge Trail, University Hill, Ithac...</td>
+      <td>42.442968</td>
+      <td>-76.493513</td>
+      <td>0.375000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Goldwin-Smith Hall</td>
+      <td>Goldwin Smith Hall, 232, Feeney Way, Ithaca, I...</td>
+      <td>42.449069</td>
+      <td>-76.483479</td>
+      <td>0.301000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Carriage House Cafe</td>
+      <td>Carriage House Cafe, Stewart Avenue, Ithaca, I...</td>
+      <td>42.442009</td>
+      <td>-76.489704</td>
+      <td>0.301000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Olin Library</td>
+      <td>Olin Library, Ho Plaza, Ithaca, Ithaca Town, T...</td>
+      <td>42.447823</td>
+      <td>-76.484281</td>
+      <td>0.201000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Purity Ice Cream</td>
+      <td>Purity Ice Cream, 700, Cascadilla Street, Itha...</td>
+      <td>42.444465</td>
+      <td>-76.508855</td>
+      <td>0.301000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Buttermilk Falls State Park</td>
+      <td>Buttermilk Falls State Park, Ithaca Town, Tomp...</td>
+      <td>42.416166</td>
+      <td>-76.516440</td>
+      <td>0.771981</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Libe Slope</td>
+      <td>Libe Slope, Ithaca, Ithaca Town, Tompkins Coun...</td>
+      <td>42.448371</td>
+      <td>-76.486638</td>
+      <td>0.400000</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Mundy Wildflower Garden</td>
+      <td>Mundy Wildflower Garden, Forest Home, Ithaca T...</td>
+      <td>42.450460</td>
+      <td>-76.469228</td>
+      <td>0.450000</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Gimme! Coffee</td>
+      <td>Gimme! Coffee, 506, West State Street, Ithaca,...</td>
+      <td>42.439523</td>
+      <td>-76.506449</td>
+      <td>0.201000</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Beebe Lake</td>
+      <td>Beebe Lake, Hatton Township, Clare County, Mic...</td>
+      <td>43.945238</td>
+      <td>-84.759243</td>
+      <td>0.400000</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Ithaca Tompkins Airport</td>
+      <td>Ithaca Tompkins Regional Airport, Brown Road, ...</td>
+      <td>42.491000</td>
+      <td>-76.458700</td>
+      <td>0.624671</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Wharton Studio Inc.</td>
+      <td>Totally Tots Inc., 1512, Mifflin Street, Whart...</td>
+      <td>39.927041</td>
+      <td>-75.171344</td>
+      <td>0.211000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="section" id="install-folium">
+<h3>Install Folium<a class="headerlink" href="#install-folium" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install folium
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="import-python-packages">
+<h3>Import Python packages<a class="headerlink" href="#import-python-packages" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">folium</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="base-map">
+<h3>Base Map<a class="headerlink" href="#base-map" title="Permalink to this headline">¶</a></h3>
+<p>First, we need to establish a base map. To do so, we’re going to call <code class="docutils literal notranslate"><span class="pre">folium.Map()</span></code>and enter the general latitude/longitude coordinates of the Ithaca area at a particular zoom.</p>
+<p>(To find latitude/longitude coordintes for a particular location, you can use Google Maps, <a class="reference external" href="https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&amp;hl=en">as described here</a>.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_map</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">41.908114613735904</span><span class="p">,</span> <span class="o">-</span><span class="mf">87.6231507038231</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">base_map</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="about:blank" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" data-html=PCFET0NUWVBFIGh0bWw+CjxoZWFkPiAgICAKICAgIDxtZXRhIGh0dHAtZXF1aXY9ImNvbnRlbnQtdHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVURi04IiAvPgogICAgCiAgICAgICAgPHNjcmlwdD4KICAgICAgICAgICAgTF9OT19UT1VDSCA9IGZhbHNlOwogICAgICAgICAgICBMX0RJU0FCTEVfM0QgPSBmYWxzZTsKICAgICAgICA8L3NjcmlwdD4KICAgIAogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vbGVhZmxldEAxLjUuMS9kaXN0L2xlYWZsZXQuanMiPjwvc2NyaXB0PgogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZS5qcXVlcnkuY29tL2pxdWVyeS0xLjEyLjQubWluLmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9qcy9ib290c3RyYXAubWluLmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9MZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy8yLjAuMi9sZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy5qcyI+PC9zY3JpcHQ+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vbGVhZmxldEAxLjUuMS9kaXN0L2xlYWZsZXQuY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vbWF4Y2RuLmJvb3RzdHJhcGNkbi5jb20vYm9vdHN0cmFwLzMuMi4wL2Nzcy9ib290c3RyYXAubWluLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9jc3MvYm9vdHN0cmFwLXRoZW1lLm1pbi5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9mb250LWF3ZXNvbWUvNC42LjMvY3NzL2ZvbnQtYXdlc29tZS5taW4uY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2RuanMuY2xvdWRmbGFyZS5jb20vYWpheC9saWJzL0xlYWZsZXQuYXdlc29tZS1tYXJrZXJzLzIuMC4yL2xlYWZsZXQuYXdlc29tZS1tYXJrZXJzLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL3Jhd2Nkbi5naXRoYWNrLmNvbS9weXRob24tdmlzdWFsaXphdGlvbi9mb2xpdW0vbWFzdGVyL2ZvbGl1bS90ZW1wbGF0ZXMvbGVhZmxldC5hd2Vzb21lLnJvdGF0ZS5jc3MiLz4KICAgIDxzdHlsZT5odG1sLCBib2R5IHt3aWR0aDogMTAwJTtoZWlnaHQ6IDEwMCU7bWFyZ2luOiAwO3BhZGRpbmc6IDA7fTwvc3R5bGU+CiAgICA8c3R5bGU+I21hcCB7cG9zaXRpb246YWJzb2x1dGU7dG9wOjA7Ym90dG9tOjA7cmlnaHQ6MDtsZWZ0OjA7fTwvc3R5bGU+CiAgICAKICAgICAgICAgICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwKICAgICAgICAgICAgICAgIGluaXRpYWwtc2NhbGU9MS4wLCBtYXhpbXVtLXNjYWxlPTEuMCwgdXNlci1zY2FsYWJsZT1ubyIgLz4KICAgICAgICAgICAgPHN0eWxlPgogICAgICAgICAgICAgICAgI21hcF8yNzI5M2E1NmRjMmI0Mzc3YTgwOWRmYWFiOTE0NGQyNSB7CiAgICAgICAgICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlOwogICAgICAgICAgICAgICAgICAgIHdpZHRoOiAxMDAuMCU7CiAgICAgICAgICAgICAgICAgICAgaGVpZ2h0OiAxMDAuMCU7CiAgICAgICAgICAgICAgICAgICAgbGVmdDogMC4wJTsKICAgICAgICAgICAgICAgICAgICB0b3A6IDAuMCU7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIDwvc3R5bGU+CiAgICAgICAgCjwvaGVhZD4KPGJvZHk+ICAgIAogICAgCiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImZvbGl1bS1tYXAiIGlkPSJtYXBfMjcyOTNhNTZkYzJiNDM3N2E4MDlkZmFhYjkxNDRkMjUiID48L2Rpdj4KICAgICAgICAKPC9ib2R5Pgo8c2NyaXB0PiAgICAKICAgIAogICAgICAgICAgICB2YXIgbWFwXzI3MjkzYTU2ZGMyYjQzNzdhODA5ZGZhYWI5MTQ0ZDI1ID0gTC5tYXAoCiAgICAgICAgICAgICAgICAibWFwXzI3MjkzYTU2ZGMyYjQzNzdhODA5ZGZhYWI5MTQ0ZDI1IiwKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBjZW50ZXI6IFs0MS45MDgxMTQ2MTM3MzU5MDQsIC04Ny42MjMxNTA3MDM4MjMxXSwKICAgICAgICAgICAgICAgICAgICBjcnM6IEwuQ1JTLkVQU0czODU3LAogICAgICAgICAgICAgICAgICAgIHpvb206IDE0LAogICAgICAgICAgICAgICAgICAgIHpvb21Db250cm9sOiB0cnVlLAogICAgICAgICAgICAgICAgICAgIHByZWZlckNhbnZhczogZmFsc2UsCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICk7CgogICAgICAgICAgICAKCiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIHRpbGVfbGF5ZXJfZGI0MzJmZjM3YjEyNGZmOWJiNWIwNWZlY2EyMjQzMmQgPSBMLnRpbGVMYXllcigKICAgICAgICAgICAgICAgICJodHRwczovL3tzfS50aWxlLm9wZW5zdHJlZXRtYXAub3JnL3t6fS97eH0ve3l9LnBuZyIsCiAgICAgICAgICAgICAgICB7ImF0dHJpYnV0aW9uIjogIkRhdGEgYnkgXHUwMDI2Y29weTsgXHUwMDNjYSBocmVmPVwiaHR0cDovL29wZW5zdHJlZXRtYXAub3JnXCJcdTAwM2VPcGVuU3RyZWV0TWFwXHUwMDNjL2FcdTAwM2UsIHVuZGVyIFx1MDAzY2EgaHJlZj1cImh0dHA6Ly93d3cub3BlbnN0cmVldG1hcC5vcmcvY29weXJpZ2h0XCJcdTAwM2VPRGJMXHUwMDNjL2FcdTAwM2UuIiwgImRldGVjdFJldGluYSI6IGZhbHNlLCAibWF4TmF0aXZlWm9vbSI6IDE4LCAibWF4Wm9vbSI6IDE4LCAibWluWm9vbSI6IDAsICJub1dyYXAiOiBmYWxzZSwgIm9wYWNpdHkiOiAxLCAic3ViZG9tYWlucyI6ICJhYmMiLCAidG1zIjogZmFsc2V9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzI3MjkzYTU2ZGMyYjQzNzdhODA5ZGZhYWI5MTQ0ZDI1KTsKICAgICAgICAKPC9zY3JpcHQ+ onload="this.contentDocument.open();this.contentDocument.write(atob(this.getAttribute('data-html')));this.contentDocument.close();" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
+</div>
+<p>What if we wanted to map a bunch of places in the Ithaca area?</p>
+</div>
+</div>
+</div>
+<div class="section" id="geocoding-with-geopy">
+<h1>Geocoding with GeoPy<a class="headerlink" href="#geocoding-with-geopy" title="Permalink to this headline">¶</a></h1>
+<p>To mape these places, we need their latitude/longitude coordinates. So we’re going to geocode them with the Python package <a class="reference external" href="https://geopy.readthedocs.io/en/stable/">GeoPy</a>.</p>
+<p>GeoPy makes it easier to use a range of third-party <a class="reference external" href="https://geopy.readthedocs.io/en/stable/">geocoding API services</a>, such as Google, Bing, ArcGIS, and OpenStreetMap.</p>
+<p>Though most of these services require an API key, Nominatim, which uses OpenStreetMap data, does not, which is why we’re going to use it here.</p>
+<div class="section" id="install-geopy">
+<h2>Install GeoPy<a class="headerlink" href="#install-geopy" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install geopy
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="import-nominatim">
+<h2>Import Nominatim<a class="headerlink" href="#import-nominatim" title="Permalink to this headline">¶</a></h2>
+<p>From GeoPy’s list of possible geocoding services, we’re going to import Nominatim:</p>
+</div>
+<div class="section" id="add-markers-from-pandas-data">
+<h2>Add Markers From Pandas Data<a class="headerlink" href="#add-markers-from-pandas-data" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">folium.Marker(location=[Latitude,</span> <span class="pre">Longitude],</span> <span class="pre">popup=&quot;Place</span> <span class="pre">Name&quot;).add_to(base_map)</span></code></p>
+<p>To add markers for every location in our Pandas dataframe, we can similarly use two options.</p>
+</div>
+<div class="section" id="id1">
+<h2>Option 1<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>We can loop through the DataFrame with <code class="docutils literal notranslate"><span class="pre">.iterrows()</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">ithaca_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]],</span> <span class="n">popup</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;place&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">base_map</span><span class="p">)</span>
+
+<span class="n">base_map</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="about:blank" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" data-html=PCFET0NUWVBFIGh0bWw+CjxoZWFkPiAgICAKICAgIDxtZXRhIGh0dHAtZXF1aXY9ImNvbnRlbnQtdHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVURi04IiAvPgogICAgCiAgICAgICAgPHNjcmlwdD4KICAgICAgICAgICAgTF9OT19UT1VDSCA9IGZhbHNlOwogICAgICAgICAgICBMX0RJU0FCTEVfM0QgPSBmYWxzZTsKICAgICAgICA8L3NjcmlwdD4KICAgIAogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vbGVhZmxldEAxLjUuMS9kaXN0L2xlYWZsZXQuanMiPjwvc2NyaXB0PgogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZS5qcXVlcnkuY29tL2pxdWVyeS0xLjEyLjQubWluLmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9qcy9ib290c3RyYXAubWluLmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9MZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy8yLjAuMi9sZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy5qcyI+PC9zY3JpcHQ+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vbGVhZmxldEAxLjUuMS9kaXN0L2xlYWZsZXQuY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vbWF4Y2RuLmJvb3RzdHJhcGNkbi5jb20vYm9vdHN0cmFwLzMuMi4wL2Nzcy9ib290c3RyYXAubWluLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9jc3MvYm9vdHN0cmFwLXRoZW1lLm1pbi5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9mb250LWF3ZXNvbWUvNC42LjMvY3NzL2ZvbnQtYXdlc29tZS5taW4uY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2RuanMuY2xvdWRmbGFyZS5jb20vYWpheC9saWJzL0xlYWZsZXQuYXdlc29tZS1tYXJrZXJzLzIuMC4yL2xlYWZsZXQuYXdlc29tZS1tYXJrZXJzLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL3Jhd2Nkbi5naXRoYWNrLmNvbS9weXRob24tdmlzdWFsaXphdGlvbi9mb2xpdW0vbWFzdGVyL2ZvbGl1bS90ZW1wbGF0ZXMvbGVhZmxldC5hd2Vzb21lLnJvdGF0ZS5jc3MiLz4KICAgIDxzdHlsZT5odG1sLCBib2R5IHt3aWR0aDogMTAwJTtoZWlnaHQ6IDEwMCU7bWFyZ2luOiAwO3BhZGRpbmc6IDA7fTwvc3R5bGU+CiAgICA8c3R5bGU+I21hcCB7cG9zaXRpb246YWJzb2x1dGU7dG9wOjA7Ym90dG9tOjA7cmlnaHQ6MDtsZWZ0OjA7fTwvc3R5bGU+CiAgICAKICAgICAgICAgICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwKICAgICAgICAgICAgICAgIGluaXRpYWwtc2NhbGU9MS4wLCBtYXhpbXVtLXNjYWxlPTEuMCwgdXNlci1zY2FsYWJsZT1ubyIgLz4KICAgICAgICAgICAgPHN0eWxlPgogICAgICAgICAgICAgICAgI21hcF8yNzI5M2E1NmRjMmI0Mzc3YTgwOWRmYWFiOTE0NGQyNSB7CiAgICAgICAgICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlOwogICAgICAgICAgICAgICAgICAgIHdpZHRoOiAxMDAuMCU7CiAgICAgICAgICAgICAgICAgICAgaGVpZ2h0OiAxMDAuMCU7CiAgICAgICAgICAgICAgICAgICAgbGVmdDogMC4wJTsKICAgICAgICAgICAgICAgICAgICB0b3A6IDAuMCU7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIDwvc3R5bGU+CiAgICAgICAgCjwvaGVhZD4KPGJvZHk+ICAgIAogICAgCiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImZvbGl1bS1tYXAiIGlkPSJtYXBfMjcyOTNhNTZkYzJiNDM3N2E4MDlkZmFhYjkxNDRkMjUiID48L2Rpdj4KICAgICAgICAKPC9ib2R5Pgo8c2NyaXB0PiAgICAKICAgIAogICAgICAgICAgICB2YXIgbWFwXzI3MjkzYTU2ZGMyYjQzNzdhODA5ZGZhYWI5MTQ0ZDI1ID0gTC5tYXAoCiAgICAgICAgICAgICAgICAibWFwXzI3MjkzYTU2ZGMyYjQzNzdhODA5ZGZhYWI5MTQ0ZDI1IiwKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBjZW50ZXI6IFs0MS45MDgxMTQ2MTM3MzU5MDQsIC04Ny42MjMxNTA3MDM4MjMxXSwKICAgICAgICAgICAgICAgICAgICBjcnM6IEwuQ1JTLkVQU0czODU3LAogICAgICAgICAgICAgICAgICAgIHpvb206IDE0LAogICAgICAgICAgICAgICAgICAgIHpvb21Db250cm9sOiB0cnVlLAogICAgICAgICAgICAgICAgICAgIHByZWZlckNhbnZhczogZmFsc2UsCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICk7CgogICAgICAgICAgICAKCiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIHRpbGVfbGF5ZXJfZGI0MzJmZjM3YjEyNGZmOWJiNWIwNWZlY2EyMjQzMmQgPSBMLnRpbGVMYXllcigKICAgICAgICAgICAgICAgICJodHRwczovL3tzfS50aWxlLm9wZW5zdHJlZXRtYXAub3JnL3t6fS97eH0ve3l9LnBuZyIsCiAgICAgICAgICAgICAgICB7ImF0dHJpYnV0aW9uIjogIkRhdGEgYnkgXHUwMDI2Y29weTsgXHUwMDNjYSBocmVmPVwiaHR0cDovL29wZW5zdHJlZXRtYXAub3JnXCJcdTAwM2VPcGVuU3RyZWV0TWFwXHUwMDNjL2FcdTAwM2UsIHVuZGVyIFx1MDAzY2EgaHJlZj1cImh0dHA6Ly93d3cub3BlbnN0cmVldG1hcC5vcmcvY29weXJpZ2h0XCJcdTAwM2VPRGJMXHUwMDNjL2FcdTAwM2UuIiwgImRldGVjdFJldGluYSI6IGZhbHNlLCAibWF4TmF0aXZlWm9vbSI6IDE4LCAibWF4Wm9vbSI6IDE4LCAibWluWm9vbSI6IDAsICJub1dyYXAiOiBmYWxzZSwgIm9wYWNpdHkiOiAxLCAic3ViZG9tYWlucyI6ICJhYmMiLCAidG1zIjogZmFsc2V9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzI3MjkzYTU2ZGMyYjQzNzdhODA5ZGZhYWI5MTQ0ZDI1KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgbWFya2VyX2Q1OWZjMzc3MWI0YzQ2YzhhZGI5MjE2NGNjZGFmODVlID0gTC5tYXJrZXIoCiAgICAgICAgICAgICAgICBbMjIuNTAwMDQ4NSwgLTEwMC4wMDAwMzc1XSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzI3MjkzYTU2ZGMyYjQzNzdhODA5ZGZhYWI5MTQ0ZDI1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF84YWNlM2RlZGViNjE0OGUxOTA1NTA1NzU1MGJhZjk1NiA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfOTQzYjg3OTZlNDVmNGMzMWJmYjMxZDc1MDc2OWE5YzMgPSAkKGA8ZGl2IGlkPSJodG1sXzk0M2I4Nzk2ZTQ1ZjRjMzFiZmIzMWQ3NTA3NjlhOWMzIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5NZXhpY288L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfOGFjZTNkZWRlYjYxNDhlMTkwNTUwNTc1NTBiYWY5NTYuc2V0Q29udGVudChodG1sXzk0M2I4Nzk2ZTQ1ZjRjMzFiZmIzMWQ3NTA3NjlhOWMzKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyX2Q1OWZjMzc3MWI0YzQ2YzhhZGI5MjE2NGNjZGFmODVlLmJpbmRQb3B1cChwb3B1cF84YWNlM2RlZGViNjE0OGUxOTA1NTA1NzU1MGJhZjk1NikKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl8xMDk2MTk5YWQ2MjQ0NjliYTYyNGE3NWZkN2QxOGIyYiA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzMxLjgxNjAzODEsIC05OS41MTIwOTg2XSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzI3MjkzYTU2ZGMyYjQzNzdhODA5ZGZhYWI5MTQ0ZDI1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF9kM2I4ZjAzYjVhOGQ0YjhhOGVjMDQwMDJhYjM2MzEwMyA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfMDM1Mzc3MmY1NTJjNGJkZmI4ZTVlM2RlYmY5MzRmMzggPSAkKGA8ZGl2IGlkPSJodG1sXzAzNTM3NzJmNTUyYzRiZGZiOGU1ZTNkZWJmOTM0ZjM4IiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5UZXhhczwvZGl2PmApWzBdOwogICAgICAgICAgICBwb3B1cF9kM2I4ZjAzYjVhOGQ0YjhhOGVjMDQwMDJhYjM2MzEwMy5zZXRDb250ZW50KGh0bWxfMDM1Mzc3MmY1NTJjNGJkZmI4ZTVlM2RlYmY5MzRmMzgpOwogICAgICAgIAoKICAgICAgICBtYXJrZXJfMTA5NjE5OWFkNjI0NDY5YmE2MjRhNzVmZDdkMThiMmIuYmluZFBvcHVwKHBvcHVwX2QzYjhmMDNiNWE4ZDRiOGE4ZWMwNDAwMmFiMzYzMTAzKQogICAgICAgIDsKCiAgICAgICAgCiAgICAKICAgIAogICAgICAgICAgICB2YXIgbWFya2VyXzNjZmFkNjhjNmE0NDQyY2E4NDI2MWFlZTdhYTVmMjE0ID0gTC5tYXJrZXIoCiAgICAgICAgICAgICAgICBbMzguODIxMjg4OSwgLTEyMS4xOTMwMDQxXSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzI3MjkzYTU2ZGMyYjQzNzdhODA5ZGZhYWI5MTQ0ZDI1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF9mMDY4ZWMyODBhYmU0MDU5YjlhYmQzOTc3OWE5MTQ3YSA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfMmY2MWY2YTgzMWNlNDM2MmIwNzVkMWVlNDJkZTc4NjIgPSAkKGA8ZGl2IGlkPSJodG1sXzJmNjFmNmE4MzFjZTQzNjJiMDc1ZDFlZTQyZGU3ODYyIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5Mb29taXM8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfZjA2OGVjMjgwYWJlNDA1OWI5YWJkMzk3NzlhOTE0N2Euc2V0Q29udGVudChodG1sXzJmNjFmNmE4MzFjZTQzNjJiMDc1ZDFlZTQyZGU3ODYyKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyXzNjZmFkNjhjNmE0NDQyY2E4NDI2MWFlZTdhYTVmMjE0LmJpbmRQb3B1cChwb3B1cF9mMDY4ZWMyODBhYmU0MDU5YjlhYmQzOTc3OWE5MTQ3YSkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl84MmY5NzNkMzA5OTg0MTgxYjA5ZGZjNTU5NWYyZmFjMCA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzUzLjA5MjkxOTcsIDE3LjQ5MjI2MjZdLAogICAgICAgICAgICAgICAge30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfMjcyOTNhNTZkYzJiNDM3N2E4MDlkZmFhYjkxNDRkMjUpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzMyNDY3YjkxMmYzMDQxZTJhNjUyZjg0NDYxZmUxYmY2ID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF9hYTczYjA3MTZhYjQ0MGUyYmYyZDRhMDQ5MzY2NGJmZCA9ICQoYDxkaXYgaWQ9Imh0bWxfYWE3M2IwNzE2YWI0NDBlMmJmMmQ0YTA0OTM2NjRiZmQiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPlBhdWxpbmE8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfMzI0NjdiOTEyZjMwNDFlMmE2NTJmODQ0NjFmZTFiZjYuc2V0Q29udGVudChodG1sX2FhNzNiMDcxNmFiNDQwZTJiZjJkNGEwNDkzNjY0YmZkKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyXzgyZjk3M2QzMDk5ODQxODFiMDlkZmM1NTk1ZjJmYWMwLmJpbmRQb3B1cChwb3B1cF8zMjQ2N2I5MTJmMzA0MWUyYTY1MmY4NDQ2MWZlMWJmNikKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl8xYTRiMWU0Y2MzMDc0MTEwOTliN2I0YmVjMzg1MjJkZiA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQ2LjYwMzM1NCwgMS44ODgzMzM1XSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzI3MjkzYTU2ZGMyYjQzNzdhODA5ZGZhYWI5MTQ0ZDI1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF80YjgxM2Q0NGRkZDU0MTkwYTk1NDU3ZWVhMzZiNGQzOSA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfNTAzMDEyZTBhNjc2NGY0MTg4MGUzNWMzNDkzZjdhOGMgPSAkKGA8ZGl2IGlkPSJodG1sXzUwMzAxMmUwYTY3NjRmNDE4ODBlMzVjMzQ5M2Y3YThjIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5GcmFuY2U8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfNGI4MTNkNDRkZGQ1NDE5MGE5NTQ1N2VlYTM2YjRkMzkuc2V0Q29udGVudChodG1sXzUwMzAxMmUwYTY3NjRmNDE4ODBlMzVjMzQ5M2Y3YThjKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyXzFhNGIxZTRjYzMwNzQxMTA5OWI3YjRiZWMzODUyMmRmLmJpbmRQb3B1cChwb3B1cF80YjgxM2Q0NGRkZDU0MTkwYTk1NDU3ZWVhMzZiNGQzOSkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl85Yjg3MjU0ZTE5MWE0MmM5YTM5N2YwMjM2ZTA1NGUwNSA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzE4LjIyMTQxNDksIC02Ni40MTMyODE3OTUxMzg0N10sCiAgICAgICAgICAgICAgICB7fQogICAgICAgICAgICApLmFkZFRvKG1hcF8yNzI5M2E1NmRjMmI0Mzc3YTgwOWRmYWFiOTE0NGQyNSk7CiAgICAgICAgCiAgICAKICAgICAgICB2YXIgcG9wdXBfZDI1ODhjZWZkZjUxNDUzN2I0MmRhNjc3YWQ5YzRjNTIgPSBMLnBvcHVwKHsibWF4V2lkdGgiOiAiMTAwJSJ9KTsKCiAgICAgICAgCiAgICAgICAgICAgIHZhciBodG1sXzc2YzhmNTRhMTBkNjRiOTZhMzFiYjA2OGYxNmU2NjgzID0gJChgPGRpdiBpZD0iaHRtbF83NmM4ZjU0YTEwZDY0Yjk2YTMxYmIwNjhmMTZlNjY4MyIgc3R5bGU9IndpZHRoOiAxMDAuMCU7IGhlaWdodDogMTAwLjAlOyI+UHVlcnRvIFJpY288L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfZDI1ODhjZWZkZjUxNDUzN2I0MmRhNjc3YWQ5YzRjNTIuc2V0Q29udGVudChodG1sXzc2YzhmNTRhMTBkNjRiOTZhMzFiYjA2OGYxNmU2NjgzKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyXzliODcyNTRlMTkxYTQyYzlhMzk3ZjAyMzZlMDU0ZTA1LmJpbmRQb3B1cChwb3B1cF9kMjU4OGNlZmRmNTE0NTM3YjQyZGE2NzdhZDljNGM1MikKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl9iNWE5YmUyNjUwMGE0ZTMzYTdkOTg1ZDg1NDY1YzBhZCA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQxLjA0MTk0MTYsIC03My43NjgxNjk3XSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzI3MjkzYTU2ZGMyYjQzNzdhODA5ZGZhYWI5MTQ0ZDI1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF84NTRjYzVjY2Y0ZTk0MjNiYWRmZDJjZWEwMTJiM2Q1YyA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfNjQ3ODE2ZWJmYjY4NGI1YTlkMWFkYzhlNTRlOTcyOTYgPSAkKGA8ZGl2IGlkPSJodG1sXzY0NzgxNmViZmI2ODRiNWE5ZDFhZGM4ZTU0ZTk3Mjk2IiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5Ob3J0aCBCcm9hZHdheTwvZGl2PmApWzBdOwogICAgICAgICAgICBwb3B1cF84NTRjYzVjY2Y0ZTk0MjNiYWRmZDJjZWEwMTJiM2Q1Yy5zZXRDb250ZW50KGh0bWxfNjQ3ODE2ZWJmYjY4NGI1YTlkMWFkYzhlNTRlOTcyOTYpOwogICAgICAgIAoKICAgICAgICBtYXJrZXJfYjVhOWJlMjY1MDBhNGUzM2E3ZDk4NWQ4NTQ2NWMwYWQuYmluZFBvcHVwKHBvcHVwXzg1NGNjNWNjZjRlOTQyM2JhZGZkMmNlYTAxMmIzZDVjKQogICAgICAgIDsKCiAgICAgICAgCiAgICAKICAgIAogICAgICAgICAgICB2YXIgbWFya2VyX2Q0ZDFiZjJkZDJkYjQ4NmFiMDRlYzZhZmIzOTIxY2Y5ID0gTC5tYXJrZXIoCiAgICAgICAgICAgICAgICBbNDEuODc1NTYxNiwgLTg3LjYyNDQyMTJdLAogICAgICAgICAgICAgICAge30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfMjcyOTNhNTZkYzJiNDM3N2E4MDlkZmFhYjkxNDRkMjUpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwX2IwOTJkZGZhM2JjNzRiNjE5OGZiYTU0ODgwYjMxYzlhID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF8yOTg2YmIyZmMzYjE0ODk4YWZjNDM1YTljOGEzYzQ1OCA9ICQoYDxkaXYgaWQ9Imh0bWxfMjk4NmJiMmZjM2IxNDg5OGFmYzQzNWE5YzhhM2M0NTgiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPkNoaWNhZ288L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfYjA5MmRkZmEzYmM3NGI2MTk4ZmJhNTQ4ODBiMzFjOWEuc2V0Q29udGVudChodG1sXzI5ODZiYjJmYzNiMTQ4OThhZmM0MzVhOWM4YTNjNDU4KTsKICAgICAgICAKCiAgICAgICAgbWFya2VyX2Q0ZDFiZjJkZDJkYjQ4NmFiMDRlYzZhZmIzOTIxY2Y5LmJpbmRQb3B1cChwb3B1cF9iMDkyZGRmYTNiYzc0YjYxOThmYmE1NDg4MGIzMWM5YSkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl82MTM5M2Q3NWIyMzg0YTZlYmZiNGE2MGUyOWJjMzhhMiA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQzLjAzNDk5MzEsIC04Ny45MjI0OTddLAogICAgICAgICAgICAgICAge30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfMjcyOTNhNTZkYzJiNDM3N2E4MDlkZmFhYjkxNDRkMjUpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzhmNjZiMmVlYjgwMzRmMWU5NzkyMDJkMThjMDJiN2FhID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF83ZTJkOTViZTYyZGM0OTA2ODVmMGViNzBhN2NmZTQ3NyA9ICQoYDxkaXYgaWQ9Imh0bWxfN2UyZDk1YmU2MmRjNDkwNjg1ZjBlYjcwYTdjZmU0NzciIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPk1pbHdhdWtlZTwvZGl2PmApWzBdOwogICAgICAgICAgICBwb3B1cF84ZjY2YjJlZWI4MDM0ZjFlOTc5MjAyZDE4YzAyYjdhYS5zZXRDb250ZW50KGh0bWxfN2UyZDk1YmU2MmRjNDkwNjg1ZjBlYjcwYTdjZmU0NzcpOwogICAgICAgIAoKICAgICAgICBtYXJrZXJfNjEzOTNkNzViMjM4NGE2ZWJmYjRhNjBlMjliYzM4YTIuYmluZFBvcHVwKHBvcHVwXzhmNjZiMmVlYjgwMzRmMWU5NzkyMDJkMThjMDJiN2FhKQogICAgICAgIDsKCiAgICAgICAgCiAgICAKICAgIAogICAgICAgICAgICB2YXIgbWFya2VyXzVmNjRhODZjMWIzYTRkMWJhMTQ4OWI5ZTI1MDFmNGY5ID0gTC5tYXJrZXIoCiAgICAgICAgICAgICAgICBbMjkuNzQ1ODAyNSwgLTk1LjQ2NDI0NDM3ODQ1NTI1XSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzI3MjkzYTU2ZGMyYjQzNzdhODA5ZGZhYWI5MTQ0ZDI1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF80MTkwZDk4ZmRmZGQ0ZTIwOGVlODI4MDg5ZGIwYWY3YSA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfYzg5MjY4YTBhMDIxNDAxMGI0OWRhYmUzZTY3YzcxMzEgPSAkKGA8ZGl2IGlkPSJodG1sX2M4OTI2OGEwYTAyMTQwMTBiNDlkYWJlM2U2N2M3MTMxIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5VcHRvd248L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfNDE5MGQ5OGZkZmRkNGUyMDhlZTgyODA4OWRiMGFmN2Euc2V0Q29udGVudChodG1sX2M4OTI2OGEwYTAyMTQwMTBiNDlkYWJlM2U2N2M3MTMxKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyXzVmNjRhODZjMWIzYTRkMWJhMTQ4OWI5ZTI1MDFmNGY5LmJpbmRQb3B1cChwb3B1cF80MTkwZDk4ZmRmZGQ0ZTIwOGVlODI4MDg5ZGIwYWY3YSkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl80MDUyYzU5ZWRjZTQ0YzQwODZiNWIxNzdlZmFiYjFmNCA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzM1Ljc3MzAwNzYsIC04Ni4yODIwMDgxXSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzI3MjkzYTU2ZGMyYjQzNzdhODA5ZGZhYWI5MTQ0ZDI1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF85Y2RlNDIwYmZhMTY0YmNkYmE0ZjUwNGQ0ZmQ0Zjc3MiA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfNWI3OTYxZGU5ZWU1NDM5YjgyZmE3NmY4ZmNmNTk0OGUgPSAkKGA8ZGl2IGlkPSJodG1sXzViNzk2MWRlOWVlNTQzOWI4MmZhNzZmOGZjZjU5NDhlIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5UZW5uZXNzZWU8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfOWNkZTQyMGJmYTE2NGJjZGJhNGY1MDRkNGZkNGY3NzIuc2V0Q29udGVudChodG1sXzViNzk2MWRlOWVlNTQzOWI4MmZhNzZmOGZjZjU5NDhlKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyXzQwNTJjNTllZGNlNDRjNDA4NmI1YjE3N2VmYWJiMWY0LmJpbmRQb3B1cChwb3B1cF85Y2RlNDIwYmZhMTY0YmNkYmE0ZjUwNGQ0ZmQ0Zjc3MikKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl8xZWMyODIxZTE1MTQ0NWE4YjMzZGQ2ZDhjMzI3NDQ1ZSA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzI2LjI1NDA0OTMsIDI5LjI2NzU0NjldLAogICAgICAgICAgICAgICAge30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfMjcyOTNhNTZkYzJiNDM3N2E4MDlkZmFhYjkxNDRkMjUpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwX2IyNzIwNjc2OTcwODQzMzk5MjcxNTUyNjA4NmU2ODE2ID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF8zZWUxN2VlMGJjZGQ0ZTdkOGZkYzg1NTUwMDczMzQ4ZiA9ICQoYDxkaXYgaWQ9Imh0bWxfM2VlMTdlZTBiY2RkNGU3ZDhmZGM4NTU1MDA3MzM0OGYiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPkVneXB0PC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwX2IyNzIwNjc2OTcwODQzMzk5MjcxNTUyNjA4NmU2ODE2LnNldENvbnRlbnQoaHRtbF8zZWUxN2VlMGJjZGQ0ZTdkOGZkYzg1NTUwMDczMzQ4Zik7CiAgICAgICAgCgogICAgICAgIG1hcmtlcl8xZWMyODIxZTE1MTQ0NWE4YjMzZGQ2ZDhjMzI3NDQ1ZS5iaW5kUG9wdXAocG9wdXBfYjI3MjA2NzY5NzA4NDMzOTkyNzE1NTI2MDg2ZTY4MTYpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBtYXJrZXJfYmFlZWJjZjQzZTZhNDcwM2JhNTQwOTA1OGNjNTFmODUgPSBMLm1hcmtlcigKICAgICAgICAgICAgICAgIFszNy41NzI2MDI4LCAtODUuMTU1MTQxMV0sCiAgICAgICAgICAgICAgICB7fQogICAgICAgICAgICApLmFkZFRvKG1hcF8yNzI5M2E1NmRjMmI0Mzc3YTgwOWRmYWFiOTE0NGQyNSk7CiAgICAgICAgCiAgICAKICAgICAgICB2YXIgcG9wdXBfMTI2ZmU1N2EyMTY3NDE2MjgxNTllOGMyOWQ0OGQ5NGIgPSBMLnBvcHVwKHsibWF4V2lkdGgiOiAiMTAwJSJ9KTsKCiAgICAgICAgCiAgICAgICAgICAgIHZhciBodG1sX2VlMTczM2MxMDY1YTQ1NWE4YmZkNzQ1NDJmYTU5ZmQ0ID0gJChgPGRpdiBpZD0iaHRtbF9lZTE3MzNjMTA2NWE0NTVhOGJmZDc0NTQyZmE1OWZkNCIgc3R5bGU9IndpZHRoOiAxMDAuMCU7IGhlaWdodDogMTAwLjAlOyI+S2VudHVja3k8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfMTI2ZmU1N2EyMTY3NDE2MjgxNTllOGMyOWQ0OGQ5NGIuc2V0Q29udGVudChodG1sX2VlMTczM2MxMDY1YTQ1NWE4YmZkNzQ1NDJmYTU5ZmQ0KTsKICAgICAgICAKCiAgICAgICAgbWFya2VyX2JhZWViY2Y0M2U2YTQ3MDNiYTU0MDkwNThjYzUxZjg1LmJpbmRQb3B1cChwb3B1cF8xMjZmZTU3YTIxNjc0MTYyODE1OWU4YzI5ZDQ4ZDk0YikKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl8xYjY0NTRlMTVmYzU0ODJiYjY1MjQzMzIxYjNjYWYxNCA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQ1LjAyMjE3MiwgNC4zMjIxNTQ4XSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzI3MjkzYTU2ZGMyYjQzNzdhODA5ZGZhYWI5MTQ0ZDI1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF8yZjE1ZWE4MjZiNjI0OGZjYmE0M2M3N2IxNmJkNDFjZCA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfNDFmYjQzMDZjZjFmNGFhNGI3NTU0MzlmMzQ2OTYzNWYgPSAkKGA8ZGl2IGlkPSJodG1sXzQxZmI0MzA2Y2YxZjRhYTRiNzU1NDM5ZjM0Njk2MzVmIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5NYXJzPC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwXzJmMTVlYTgyNmI2MjQ4ZmNiYTQzYzc3YjE2YmQ0MWNkLnNldENvbnRlbnQoaHRtbF80MWZiNDMwNmNmMWY0YWE0Yjc1NTQzOWYzNDY5NjM1Zik7CiAgICAgICAgCgogICAgICAgIG1hcmtlcl8xYjY0NTRlMTVmYzU0ODJiYjY1MjQzMzIxYjNjYWYxNC5iaW5kUG9wdXAocG9wdXBfMmYxNWVhODI2YjYyNDhmY2JhNDNjNzdiMTZiZDQxY2QpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBtYXJrZXJfODU1YjNkMDY2MWQxNGQyMDkxMDJiMzhjNzZiODVkNjUgPSBMLm1hcmtlcigKICAgICAgICAgICAgICAgIFsyMi4zNTExMTQ4LCA3OC42Njc3NDI4XSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzI3MjkzYTU2ZGMyYjQzNzdhODA5ZGZhYWI5MTQ0ZDI1KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF9jZDdhZjMzMDE5MmY0Zjc4YTczMTQzYmI0NWQ0YTMwZCA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfZTRjNDIzMmY0MzZmNDNlZDgyYzBmYTdkODI1YzE2YWIgPSAkKGA8ZGl2IGlkPSJodG1sX2U0YzQyMzJmNDM2ZjQzZWQ4MmMwZmE3ZDgyNWMxNmFiIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5JbmRpYTwvZGl2PmApWzBdOwogICAgICAgICAgICBwb3B1cF9jZDdhZjMzMDE5MmY0Zjc4YTczMTQzYmI0NWQ0YTMwZC5zZXRDb250ZW50KGh0bWxfZTRjNDIzMmY0MzZmNDNlZDgyYzBmYTdkODI1YzE2YWIpOwogICAgICAgIAoKICAgICAgICBtYXJrZXJfODU1YjNkMDY2MWQxNGQyMDkxMDJiMzhjNzZiODVkNjUuYmluZFBvcHVwKHBvcHVwX2NkN2FmMzMwMTkyZjRmNzhhNzMxNDNiYjQ1ZDRhMzBkKQogICAgICAgIDsKCiAgICAgICAgCiAgICAKICAgIAogICAgICAgICAgICB2YXIgbWFya2VyXzRmMzUwYTU0Y2M2ODRjODNiYzk1MDM3YWUxOWEyYjgyID0gTC5tYXJrZXIoCiAgICAgICAgICAgICAgICBbMjcuOTc4NTAyMywgLTgyLjMwNzMzNTZdLAogICAgICAgICAgICAgICAge30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfMjcyOTNhNTZkYzJiNDM3N2E4MDlkZmFhYjkxNDRkMjUpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzc4OTY1MTcyNWNkYzQwZjFhY2RlMjEyMGY2ZjY5MzVlID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF8xNWI1YjVhMGFkNGI0ZDBhYWM5OGYwMjcyNDA3ZWMxNCA9ICQoYDxkaXYgaWQ9Imh0bWxfMTViNWI1YTBhZDRiNGQwYWFjOThmMDI3MjQwN2VjMTQiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPk1hbmdvIFN0cmVldDwvZGl2PmApWzBdOwogICAgICAgICAgICBwb3B1cF83ODk2NTE3MjVjZGM0MGYxYWNkZTIxMjBmNmY2OTM1ZS5zZXRDb250ZW50KGh0bWxfMTViNWI1YTBhZDRiNGQwYWFjOThmMDI3MjQwN2VjMTQpOwogICAgICAgIAoKICAgICAgICBtYXJrZXJfNGYzNTBhNTRjYzY4NGM4M2JjOTUwMzdhZTE5YTJiODIuYmluZFBvcHVwKHBvcHVwXzc4OTY1MTcyNWNkYzQwZjFhY2RlMjEyMGY2ZjY5MzVlKQogICAgICAgIDsKCiAgICAgICAgCiAgICAKPC9zY3JpcHQ+ onload="this.contentDocument.open();this.contentDocument.write(atob(this.getAttribute('data-html')));this.contentDocument.close();" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Option 2<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Create a function and apply it to the DataFrame</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_map_markers</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">map_name</span><span class="p">):</span>
+    <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]],</span> <span class="n">popup</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;place&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">map_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ithaca_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">create_map_markers</span><span class="p">,</span> <span class="n">map_name</span><span class="o">=</span><span class="n">base_map</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+
+<span class="n">base_map</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="about:blank" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" data-html=PCFET0NUWVBFIGh0bWw+CjxoZWFkPiAgICAKICAgIDxtZXRhIGh0dHAtZXF1aXY9ImNvbnRlbnQtdHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVURi04IiAvPgogICAgCiAgICAgICAgPHNjcmlwdD4KICAgICAgICAgICAgTF9OT19UT1VDSCA9IGZhbHNlOwogICAgICAgICAgICBMX0RJU0FCTEVfM0QgPSBmYWxzZTsKICAgICAgICA8L3NjcmlwdD4KICAgIAogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vbGVhZmxldEAxLjUuMS9kaXN0L2xlYWZsZXQuanMiPjwvc2NyaXB0PgogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZS5qcXVlcnkuY29tL2pxdWVyeS0xLjEyLjQubWluLmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9qcy9ib290c3RyYXAubWluLmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9MZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy8yLjAuMi9sZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy5qcyI+PC9zY3JpcHQ+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vbGVhZmxldEAxLjUuMS9kaXN0L2xlYWZsZXQuY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vbWF4Y2RuLmJvb3RzdHJhcGNkbi5jb20vYm9vdHN0cmFwLzMuMi4wL2Nzcy9ib290c3RyYXAubWluLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9jc3MvYm9vdHN0cmFwLXRoZW1lLm1pbi5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9mb250LWF3ZXNvbWUvNC42LjMvY3NzL2ZvbnQtYXdlc29tZS5taW4uY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2RuanMuY2xvdWRmbGFyZS5jb20vYWpheC9saWJzL0xlYWZsZXQuYXdlc29tZS1tYXJrZXJzLzIuMC4yL2xlYWZsZXQuYXdlc29tZS1tYXJrZXJzLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL3Jhd2Nkbi5naXRoYWNrLmNvbS9weXRob24tdmlzdWFsaXphdGlvbi9mb2xpdW0vbWFzdGVyL2ZvbGl1bS90ZW1wbGF0ZXMvbGVhZmxldC5hd2Vzb21lLnJvdGF0ZS5jc3MiLz4KICAgIDxzdHlsZT5odG1sLCBib2R5IHt3aWR0aDogMTAwJTtoZWlnaHQ6IDEwMCU7bWFyZ2luOiAwO3BhZGRpbmc6IDA7fTwvc3R5bGU+CiAgICA8c3R5bGU+I21hcCB7cG9zaXRpb246YWJzb2x1dGU7dG9wOjA7Ym90dG9tOjA7cmlnaHQ6MDtsZWZ0OjA7fTwvc3R5bGU+CiAgICAKICAgICAgICAgICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwKICAgICAgICAgICAgICAgIGluaXRpYWwtc2NhbGU9MS4wLCBtYXhpbXVtLXNjYWxlPTEuMCwgdXNlci1zY2FsYWJsZT1ubyIgLz4KICAgICAgICAgICAgPHN0eWxlPgogICAgICAgICAgICAgICAgI21hcF9jMmFlM2YxZGNiYTU0OTkyODRlMTI1OTA1M2UxOGI2OCB7CiAgICAgICAgICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlOwogICAgICAgICAgICAgICAgICAgIHdpZHRoOiAxMDAuMCU7CiAgICAgICAgICAgICAgICAgICAgaGVpZ2h0OiAxMDAuMCU7CiAgICAgICAgICAgICAgICAgICAgbGVmdDogMC4wJTsKICAgICAgICAgICAgICAgICAgICB0b3A6IDAuMCU7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIDwvc3R5bGU+CiAgICAgICAgCjwvaGVhZD4KPGJvZHk+ICAgIAogICAgCiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImZvbGl1bS1tYXAiIGlkPSJtYXBfYzJhZTNmMWRjYmE1NDk5Mjg0ZTEyNTkwNTNlMThiNjgiID48L2Rpdj4KICAgICAgICAKPC9ib2R5Pgo8c2NyaXB0PiAgICAKICAgIAogICAgICAgICAgICB2YXIgbWFwX2MyYWUzZjFkY2JhNTQ5OTI4NGUxMjU5MDUzZTE4YjY4ID0gTC5tYXAoCiAgICAgICAgICAgICAgICAibWFwX2MyYWUzZjFkY2JhNTQ5OTI4NGUxMjU5MDUzZTE4YjY4IiwKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBjZW50ZXI6IFs0Mi40NCwgLTc2LjVdLAogICAgICAgICAgICAgICAgICAgIGNyczogTC5DUlMuRVBTRzM4NTcsCiAgICAgICAgICAgICAgICAgICAgem9vbTogMTQsCiAgICAgICAgICAgICAgICAgICAgem9vbUNvbnRyb2w6IHRydWUsCiAgICAgICAgICAgICAgICAgICAgcHJlZmVyQ2FudmFzOiBmYWxzZSwKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgKTsKCiAgICAgICAgICAgIAoKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgdGlsZV9sYXllcl8xYjEzNDUwZjQxNDk0N2VhOGJiNzY5Yjc1OGVkYTU2MCA9IEwudGlsZUxheWVyKAogICAgICAgICAgICAgICAgImh0dHBzOi8ve3N9LnRpbGUub3BlbnN0cmVldG1hcC5vcmcve3p9L3t4fS97eX0ucG5nIiwKICAgICAgICAgICAgICAgIHsiYXR0cmlidXRpb24iOiAiRGF0YSBieSBcdTAwMjZjb3B5OyBcdTAwM2NhIGhyZWY9XCJodHRwOi8vb3BlbnN0cmVldG1hcC5vcmdcIlx1MDAzZU9wZW5TdHJlZXRNYXBcdTAwM2MvYVx1MDAzZSwgdW5kZXIgXHUwMDNjYSBocmVmPVwiaHR0cDovL3d3dy5vcGVuc3RyZWV0bWFwLm9yZy9jb3B5cmlnaHRcIlx1MDAzZU9EYkxcdTAwM2MvYVx1MDAzZS4iLCAiZGV0ZWN0UmV0aW5hIjogZmFsc2UsICJtYXhOYXRpdmVab29tIjogMTgsICJtYXhab29tIjogMTgsICJtaW5ab29tIjogMCwgIm5vV3JhcCI6IGZhbHNlLCAib3BhY2l0eSI6IDEsICJzdWJkb21haW5zIjogImFiYyIsICJ0bXMiOiBmYWxzZX0KICAgICAgICAgICAgKS5hZGRUbyhtYXBfYzJhZTNmMWRjYmE1NDk5Mjg0ZTEyNTkwNTNlMThiNjgpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBtYXJrZXJfNmJjMDM2MDBkZjI2NDIxMDkyMzY0NWMwNTJkNWQxOTEgPSBMLm1hcmtlcigKICAgICAgICAgICAgICAgIFs0Mi40NDkyMzk1MjY4NjY2NywgLTc2LjQ4MzU5ODc3NDcwMTYzXSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwX2MyYWUzZjFkY2JhNTQ5OTI4NGUxMjU5MDUzZTE4YjY4KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF81NjY2ZjU2NzUxZmQ0YzFjYjYyZGMzYTQzMzkyNmU0MyA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfMDBmZjQ5OWUzZGJkNDBhNDllMjBiMzhlYzBmNTMwMDUgPSAkKGA8ZGl2IGlkPSJodG1sXzAwZmY0OTllM2RiZDQwYTQ5ZTIwYjM4ZWMwZjUzMDA1IiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5JbnRybyB0byBDdWx0dXJhbCBBbmFseXRpY3MgQ2xhc3M8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfNTY2NmY1Njc1MWZkNGMxY2I2MmRjM2E0MzM5MjZlNDMuc2V0Q29udGVudChodG1sXzAwZmY0OTllM2RiZDQwYTQ5ZTIwYjM4ZWMwZjUzMDA1KTsKICAgICAgICAKCiAgICAgICAgbWFya2VyXzZiYzAzNjAwZGYyNjQyMTA5MjM2NDVjMDUyZDVkMTkxLmJpbmRQb3B1cChwb3B1cF81NjY2ZjU2NzUxZmQ0YzFjYjYyZGMzYTQzMzkyNmU0MykKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl83NTIxY2JmNGMyYTg0ZTU1YmVkMjhlNzliNDNiNWY2YSA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQ0MjI1MzcsIC03Ni40ODU0NzI1XSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwX2MyYWUzZjFkY2JhNTQ5OTI4NGUxMjU5MDUzZTE4YjY4KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF81YmFkMWExMTlkYTk0NDQyOTBhOWRlYzVmZDViZmQ3YiA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfMDVjMmFjYmUxYWVkNGQ4ZjljZjczZGQ5M2EyZGJjZjMgPSAkKGA8ZGl2IGlkPSJodG1sXzA1YzJhY2JlMWFlZDRkOGY5Y2Y3M2RkOTNhMmRiY2YzIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5Db2xsZWdlIFRvd24gQmFnZWxzPC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwXzViYWQxYTExOWRhOTQ0NDI5MGE5ZGVjNWZkNWJmZDdiLnNldENvbnRlbnQoaHRtbF8wNWMyYWNiZTFhZWQ0ZDhmOWNmNzNkZDkzYTJkYmNmMyk7CiAgICAgICAgCgogICAgICAgIG1hcmtlcl83NTIxY2JmNGMyYTg0ZTU1YmVkMjhlNzliNDNiNWY2YS5iaW5kUG9wdXAocG9wdXBfNWJhZDFhMTE5ZGE5NDQ0MjkwYTlkZWM1ZmQ1YmZkN2IpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBtYXJrZXJfZjdkZTNmZjE1MWViNDZhN2IyNGQ1ODkzODRjNDM2MjcgPSBMLm1hcmtlcigKICAgICAgICAgICAgICAgIFs0Mi40NTI4MjA2LCAtNzYuNDkxNjM3NV0sCiAgICAgICAgICAgICAgICB7fQogICAgICAgICAgICApLmFkZFRvKG1hcF9jMmFlM2YxZGNiYTU0OTkyODRlMTI1OTA1M2UxOGI2OCk7CiAgICAgICAgCiAgICAKICAgICAgICB2YXIgcG9wdXBfYzRlM2MwMjU2MjIxNDg1Mzk4NDk1NjhlMWNmZDY1ZTQgPSBMLnBvcHVwKHsibWF4V2lkdGgiOiAiMTAwJSJ9KTsKCiAgICAgICAgCiAgICAgICAgICAgIHZhciBodG1sXzcyMWI3MjIwOTFmYzRhNTViNzY1NGYwMjhjMmU2NTg5ID0gJChgPGRpdiBpZD0iaHRtbF83MjFiNzIyMDkxZmM0YTU1Yjc2NTRmMDI4YzJlNjU4OSIgc3R5bGU9IndpZHRoOiAxMDAuMCU7IGhlaWdodDogMTAwLjAlOyI+SXRoYWNhIEZhbGxzPC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwX2M0ZTNjMDI1NjIyMTQ4NTM5ODQ5NTY4ZTFjZmQ2NWU0LnNldENvbnRlbnQoaHRtbF83MjFiNzIyMDkxZmM0YTU1Yjc2NTRmMDI4YzJlNjU4OSk7CiAgICAgICAgCgogICAgICAgIG1hcmtlcl9mN2RlM2ZmMTUxZWI0NmE3YjI0ZDU4OTM4NGM0MzYyNy5iaW5kUG9wdXAocG9wdXBfYzRlM2MwMjU2MjIxNDg1Mzk4NDk1NjhlMWNmZDY1ZTQpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBtYXJrZXJfMzMxNDhmZTczYTE2NDM3ZmE2ZDVjZmJhOTcwZTEwMTYgPSBMLm1hcmtlcigKICAgICAgICAgICAgICAgIFs0Mi40NDA2MDI4LCAtNzYuNDk4NjMyMV0sCiAgICAgICAgICAgICAgICB7fQogICAgICAgICAgICApLmFkZFRvKG1hcF9jMmFlM2YxZGNiYTU0OTkyODRlMTI1OTA1M2UxOGI2OCk7CiAgICAgICAgCiAgICAKICAgICAgICB2YXIgcG9wdXBfZWM3NDFmYTFlMGNlNDg5NzgwYjdkZDA2MmFiOTkyZmQgPSBMLnBvcHVwKHsibWF4V2lkdGgiOiAiMTAwJSJ9KTsKCiAgICAgICAgCiAgICAgICAgICAgIHZhciBodG1sX2FmODExMTNhNWYwNzQyMGJhYmVhMDc2Y2FjNTlhZTFkID0gJChgPGRpdiBpZD0iaHRtbF9hZjgxMTEzYTVmMDc0MjBiYWJlYTA3NmNhYzU5YWUxZCIgc3R5bGU9IndpZHRoOiAxMDAuMCU7IGhlaWdodDogMTAwLjAlOyI+TW9vc2V3b29kIFJlc3RhdXJhbnQ8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfZWM3NDFmYTFlMGNlNDg5NzgwYjdkZDA2MmFiOTkyZmQuc2V0Q29udGVudChodG1sX2FmODExMTNhNWYwNzQyMGJhYmVhMDc2Y2FjNTlhZTFkKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyXzMzMTQ4ZmU3M2ExNjQzN2ZhNmQ1Y2ZiYTk3MGUxMDE2LmJpbmRQb3B1cChwb3B1cF9lYzc0MWZhMWUwY2U0ODk3ODBiN2RkMDYyYWI5OTJmZCkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl9jMTY5ODJmODg4ZmY0OGZlODMzNzliMjZiNmQwNjY1ZSA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQ0Mjk2ODUsIC03Ni40OTM1MTNdLAogICAgICAgICAgICAgICAge30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfYzJhZTNmMWRjYmE1NDk5Mjg0ZTEyNTkwNTNlMThiNjgpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzY2YTU4ZTY5OWMwZjQzN2M4YmQyNzhhYmFkN2JiMzk2ID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF9iYzM1MmVlOWFjOTM0NWYwYmFiYmZjMjkzMzk5NTMxYiA9ICQoYDxkaXYgaWQ9Imh0bWxfYmMzNTJlZTlhYzkzNDVmMGJhYmJmYzI5MzM5OTUzMWIiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPkNhc2NhZGlsbGEgR29yZ2UgVHJhaWw8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfNjZhNThlNjk5YzBmNDM3YzhiZDI3OGFiYWQ3YmIzOTYuc2V0Q29udGVudChodG1sX2JjMzUyZWU5YWM5MzQ1ZjBiYWJiZmMyOTMzOTk1MzFiKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyX2MxNjk4MmY4ODhmZjQ4ZmU4MzM3OWIyNmI2ZDA2NjVlLmJpbmRQb3B1cChwb3B1cF82NmE1OGU2OTljMGY0MzdjOGJkMjc4YWJhZDdiYjM5NikKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl85Mjc3OWM4MmU0MWE0OWQxYmRiYWQ2NjRhNzhjYjRkYSA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQ0OTA2OTMwMDAwMDAwNSwgLTc2LjQ4MzQ3ODc2Njk3Mzk5XSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwX2MyYWUzZjFkY2JhNTQ5OTI4NGUxMjU5MDUzZTE4YjY4KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF9kYWE0MzUzNjNhMzg0OTc4OTQwNGEwNDBlZDU1YWI3YiA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfMzg0MThmNTIwZDhlNDg1OTk0ZTYwNDMxZTdmNzA4OTggPSAkKGA8ZGl2IGlkPSJodG1sXzM4NDE4ZjUyMGQ4ZTQ4NTk5NGU2MDQzMWU3ZjcwODk4IiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5Hb2xkd2luLVNtaXRoIEhhbGw8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfZGFhNDM1MzYzYTM4NDk3ODk0MDRhMDQwZWQ1NWFiN2Iuc2V0Q29udGVudChodG1sXzM4NDE4ZjUyMGQ4ZTQ4NTk5NGU2MDQzMWU3ZjcwODk4KTsKICAgICAgICAKCiAgICAgICAgbWFya2VyXzkyNzc5YzgyZTQxYTQ5ZDFiZGJhZDY2NGE3OGNiNGRhLmJpbmRQb3B1cChwb3B1cF9kYWE0MzUzNjNhMzg0OTc4OTQwNGEwNDBlZDU1YWI3YikKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl8zNTVmZGE0MzkyNGY0MTBlYTJhZjk1MWM4ZjgwMWU4MyA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQ0MjAwOTUsIC03Ni40ODk3MDQzXSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwX2MyYWUzZjFkY2JhNTQ5OTI4NGUxMjU5MDUzZTE4YjY4KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF9hNzQzNTBiMGEzYTY0NGU4YWM5MDJlZjUxNGQxNzg0NCA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfOGE3OTFiYjljMjBlNDg0Mzk3YWQ5OWIxYjg3MDUwMTMgPSAkKGA8ZGl2IGlkPSJodG1sXzhhNzkxYmI5YzIwZTQ4NDM5N2FkOTliMWI4NzA1MDEzIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5DYXJyaWFnZSBIb3VzZSBDYWZlPC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwX2E3NDM1MGIwYTNhNjQ0ZThhYzkwMmVmNTE0ZDE3ODQ0LnNldENvbnRlbnQoaHRtbF84YTc5MWJiOWMyMGU0ODQzOTdhZDk5YjFiODcwNTAxMyk7CiAgICAgICAgCgogICAgICAgIG1hcmtlcl8zNTVmZGE0MzkyNGY0MTBlYTJhZjk1MWM4ZjgwMWU4My5iaW5kUG9wdXAocG9wdXBfYTc0MzUwYjBhM2E2NDRlOGFjOTAyZWY1MTRkMTc4NDQpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBtYXJrZXJfNzM5MGU0ZDA3M2Y4NGVkZDhkMjNmZGExMDNlNDk1NjUgPSBMLm1hcmtlcigKICAgICAgICAgICAgICAgIFs0Mi40NDc4MjMwNSwgLTc2LjQ4NDI4MDczMDc3ODg2XSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwX2MyYWUzZjFkY2JhNTQ5OTI4NGUxMjU5MDUzZTE4YjY4KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF9kNzM0MWY4ZjVjYWE0M2E5OTJjZjkzOTM0OWEyOGMyMSA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfZjdiYTViYWY3NDM2NDRiOGFjYmViNjk0NTZkNTkxYTIgPSAkKGA8ZGl2IGlkPSJodG1sX2Y3YmE1YmFmNzQzNjQ0YjhhY2JlYjY5NDU2ZDU5MWEyIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5PbGluIExpYnJhcnk8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfZDczNDFmOGY1Y2FhNDNhOTkyY2Y5MzkzNDlhMjhjMjEuc2V0Q29udGVudChodG1sX2Y3YmE1YmFmNzQzNjQ0YjhhY2JlYjY5NDU2ZDU5MWEyKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyXzczOTBlNGQwNzNmODRlZGQ4ZDIzZmRhMTAzZTQ5NTY1LmJpbmRQb3B1cChwb3B1cF9kNzM0MWY4ZjVjYWE0M2E5OTJjZjkzOTM0OWEyOGMyMSkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl81ZDI2NGMyOTNmYzU0OTQ2OWRiZGY2ZDYzMjE2YmRkMiA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQ0NDQ2NDgsIC03Ni41MDg4NTUxXSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwX2MyYWUzZjFkY2JhNTQ5OTI4NGUxMjU5MDUzZTE4YjY4KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF8xMWE4YWYzZjZkMzY0MjU1ODlmMWNkNjQzODEzNWRhOCA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfM2I5ZmU4OGViYmZjNDMwNzg2NTMyODdiYzhmYTYxYjYgPSAkKGA8ZGl2IGlkPSJodG1sXzNiOWZlODhlYmJmYzQzMDc4NjUzMjg3YmM4ZmE2MWI2IiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5QdXJpdHkgSWNlIENyZWFtPC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwXzExYThhZjNmNmQzNjQyNTU4OWYxY2Q2NDM4MTM1ZGE4LnNldENvbnRlbnQoaHRtbF8zYjlmZTg4ZWJiZmM0MzA3ODY1MzI4N2JjOGZhNjFiNik7CiAgICAgICAgCgogICAgICAgIG1hcmtlcl81ZDI2NGMyOTNmYzU0OTQ2OWRiZGY2ZDYzMjE2YmRkMi5iaW5kUG9wdXAocG9wdXBfMTFhOGFmM2Y2ZDM2NDI1NTg5ZjFjZDY0MzgxMzVkYTgpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBtYXJrZXJfNDljNjk5N2UyYzFhNGFmY2I3MjE3ZWU0OTRkMTI2NWUgPSBMLm1hcmtlcigKICAgICAgICAgICAgICAgIFs0Mi40MTYxNjYzNSwgLTc2LjUxNjQzOTYwNDE2MDk2XSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwX2MyYWUzZjFkY2JhNTQ5OTI4NGUxMjU5MDUzZTE4YjY4KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF8yYzQyYWM5YmRiMjE0YzM3YWYxNTFiNzM5ZjI3Y2NkYyA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfNTA3NzE3ZDkwZmIyNGZhNzhmMzc1Njk4OWE3NDU3OGIgPSAkKGA8ZGl2IGlkPSJodG1sXzUwNzcxN2Q5MGZiMjRmYTc4ZjM3NTY5ODlhNzQ1NzhiIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5CdXR0ZXJtaWxrIEZhbGxzIFN0YXRlIFBhcms8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfMmM0MmFjOWJkYjIxNGMzN2FmMTUxYjczOWYyN2NjZGMuc2V0Q29udGVudChodG1sXzUwNzcxN2Q5MGZiMjRmYTc4ZjM3NTY5ODlhNzQ1NzhiKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyXzQ5YzY5OTdlMmMxYTRhZmNiNzIxN2VlNDk0ZDEyNjVlLmJpbmRQb3B1cChwb3B1cF8yYzQyYWM5YmRiMjE0YzM3YWYxNTFiNzM5ZjI3Y2NkYykKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl80OTU5ZTViMTk4MGI0ZjdjODJmMDYzOGIyY2RiZmJlMSA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQ0ODM3MTI1LCAtNzYuNDg2NjM4MTU1ODIxNTJdLAogICAgICAgICAgICAgICAge30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfYzJhZTNmMWRjYmE1NDk5Mjg0ZTEyNTkwNTNlMThiNjgpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwX2I3YjM0ZjM4NWQxMTQxNDFhN2ZhZWIzYmJiNTU5NmY4ID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF8zNGUwOTNkMTI3NDI0Y2U5ODBjMDZjZTg2MDczODI1NSA9ICQoYDxkaXYgaWQ9Imh0bWxfMzRlMDkzZDEyNzQyNGNlOTgwYzA2Y2U4NjA3MzgyNTUiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPkxpYmUgU2xvcGU8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfYjdiMzRmMzg1ZDExNDE0MWE3ZmFlYjNiYmI1NTk2Zjguc2V0Q29udGVudChodG1sXzM0ZTA5M2QxMjc0MjRjZTk4MGMwNmNlODYwNzM4MjU1KTsKICAgICAgICAKCiAgICAgICAgbWFya2VyXzQ5NTllNWIxOTgwYjRmN2M4MmYwNjM4YjJjZGJmYmUxLmJpbmRQb3B1cChwb3B1cF9iN2IzNGYzODVkMTE0MTQxYTdmYWViM2JiYjU1OTZmOCkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl9mNjBhNTBiOTU3NjI0MmJiYTFlNzY4NDRhODgwM2Q3ZiA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQ1MDQ1OTksIC03Ni40NjkyMjgyNjU4OTU1MV0sCiAgICAgICAgICAgICAgICB7fQogICAgICAgICAgICApLmFkZFRvKG1hcF9jMmFlM2YxZGNiYTU0OTkyODRlMTI1OTA1M2UxOGI2OCk7CiAgICAgICAgCiAgICAKICAgICAgICB2YXIgcG9wdXBfZDkzNjg2ZjJjNDhlNDFhZGE5OTZjMzJhNmZkY2E3NmQgPSBMLnBvcHVwKHsibWF4V2lkdGgiOiAiMTAwJSJ9KTsKCiAgICAgICAgCiAgICAgICAgICAgIHZhciBodG1sXzcwYTBkYzAxYzY5NzQ3ZTk5M2Y0MDcwZWJkMWQ5MzdjID0gJChgPGRpdiBpZD0iaHRtbF83MGEwZGMwMWM2OTc0N2U5OTNmNDA3MGViZDFkOTM3YyIgc3R5bGU9IndpZHRoOiAxMDAuMCU7IGhlaWdodDogMTAwLjAlOyI+TXVuZHkgV2lsZGZsb3dlciBHYXJkZW48L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfZDkzNjg2ZjJjNDhlNDFhZGE5OTZjMzJhNmZkY2E3NmQuc2V0Q29udGVudChodG1sXzcwYTBkYzAxYzY5NzQ3ZTk5M2Y0MDcwZWJkMWQ5MzdjKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyX2Y2MGE1MGI5NTc2MjQyYmJhMWU3Njg0NGE4ODAzZDdmLmJpbmRQb3B1cChwb3B1cF9kOTM2ODZmMmM0OGU0MWFkYTk5NmMzMmE2ZmRjYTc2ZCkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl9jM2U3MDllOGIwNzY0ZjczODFjNGNjYzEzYWEzYjQ3NyA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQzOTUyMzA1LCAtNzYuNTA2NDQ4NTkwNDU5MjZdLAogICAgICAgICAgICAgICAge30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfYzJhZTNmMWRjYmE1NDk5Mjg0ZTEyNTkwNTNlMThiNjgpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwX2RjY2U4N2ZjYzkwZDRlMmZhYzZlZDJlNzdkMTRiYmU4ID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF81YWFiZmNhMTc5OTc0OWM0Yjg1YWYwYmM3N2Y0NzNmYiA9ICQoYDxkaXYgaWQ9Imh0bWxfNWFhYmZjYTE3OTk3NDljNGI4NWFmMGJjNzdmNDczZmIiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPkdpbW1lISBDb2ZmZWU8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfZGNjZTg3ZmNjOTBkNGUyZmFjNmVkMmU3N2QxNGJiZTguc2V0Q29udGVudChodG1sXzVhYWJmY2ExNzk5NzQ5YzRiODVhZjBiYzc3ZjQ3M2ZiKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyX2MzZTcwOWU4YjA3NjRmNzM4MWM0Y2NjMTNhYTNiNDc3LmJpbmRQb3B1cChwb3B1cF9kY2NlODdmY2M5MGQ0ZTJmYWM2ZWQyZTc3ZDE0YmJlOCkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl9mNGJkZWQ4MzZjMWI0NGVhYTAzMjZhMDBkN2FkZWMxNyA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQzLjk0NTIzNzU1LCAtODQuNzU5MjQyNTMyMDUzMzVdLAogICAgICAgICAgICAgICAge30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfYzJhZTNmMWRjYmE1NDk5Mjg0ZTEyNTkwNTNlMThiNjgpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwX2VlMDdhNTI5NDM3ZTQ0YWRiOTE2NzE4NjRkMTY3YzY4ID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF8zNDQyNmZmMmM3NDk0NWJlYjMwZDZiZmQ0ZmVkNzk0NCA9ICQoYDxkaXYgaWQ9Imh0bWxfMzQ0MjZmZjJjNzQ5NDViZWIzMGQ2YmZkNGZlZDc5NDQiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPkJlZWJlIExha2U8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfZWUwN2E1Mjk0MzdlNDRhZGI5MTY3MTg2NGQxNjdjNjguc2V0Q29udGVudChodG1sXzM0NDI2ZmYyYzc0OTQ1YmViMzBkNmJmZDRmZWQ3OTQ0KTsKICAgICAgICAKCiAgICAgICAgbWFya2VyX2Y0YmRlZDgzNmMxYjQ0ZWFhMDMyNmEwMGQ3YWRlYzE3LmJpbmRQb3B1cChwb3B1cF9lZTA3YTUyOTQzN2U0NGFkYjkxNjcxODY0ZDE2N2M2OCkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl9lNGEyYTRmZTgxODY0ZjBjODAyODcwZDcxZGNjODhhMiA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQ5MSwgLTc2LjQ1ODddLAogICAgICAgICAgICAgICAge30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfYzJhZTNmMWRjYmE1NDk5Mjg0ZTEyNTkwNTNlMThiNjgpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzVmYjJjZTM5YzZjZDQxZjliODYyMGRhOTA0MmU4Y2U3ID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF8wNDljZTFhMWIyNzM0ZTYxOTQ0NTFkY2FiNDM0MzQ4NyA9ICQoYDxkaXYgaWQ9Imh0bWxfMDQ5Y2UxYTFiMjczNGU2MTk0NDUxZGNhYjQzNDM0ODciIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPkl0aGFjYSBUb21wa2lucyBBaXJwb3J0PC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwXzVmYjJjZTM5YzZjZDQxZjliODYyMGRhOTA0MmU4Y2U3LnNldENvbnRlbnQoaHRtbF8wNDljZTFhMWIyNzM0ZTYxOTQ0NTFkY2FiNDM0MzQ4Nyk7CiAgICAgICAgCgogICAgICAgIG1hcmtlcl9lNGEyYTRmZTgxODY0ZjBjODAyODcwZDcxZGNjODhhMi5iaW5kUG9wdXAocG9wdXBfNWZiMmNlMzljNmNkNDFmOWI4NjIwZGE5MDQyZThjZTcpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBtYXJrZXJfZDMwMjRjZjg4NGQyNDhjMGJkOWVjN2ZmYjdiM2IyNjEgPSBMLm1hcmtlcigKICAgICAgICAgICAgICAgIFszOS45MjcwNDEsIC03NS4xNzEzNDRdLAogICAgICAgICAgICAgICAge30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfYzJhZTNmMWRjYmE1NDk5Mjg0ZTEyNTkwNTNlMThiNjgpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzYyZmNlOTRhMTkzNzQ1MDA4MDJlNTgzN2ZiYWYwNGIxID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF85MWY3ZWM2ODc5ZTU0MGY5YWNkMzRiZjk3YWQ4YjIwMyA9ICQoYDxkaXYgaWQ9Imh0bWxfOTFmN2VjNjg3OWU1NDBmOWFjZDM0YmY5N2FkOGIyMDMiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPldoYXJ0b24gU3R1ZGlvIEluYy48L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfNjJmY2U5NGExOTM3NDUwMDgwMmU1ODM3ZmJhZjA0YjEuc2V0Q29udGVudChodG1sXzkxZjdlYzY4NzllNTQwZjlhY2QzNGJmOTdhZDhiMjAzKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyX2QzMDI0Y2Y4ODRkMjQ4YzBiZDllYzdmZmI3YjNiMjYxLmJpbmRQb3B1cChwb3B1cF82MmZjZTk0YTE5Mzc0NTAwODAyZTU4MzdmYmFmMDRiMSkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl8yOGQ3OTY3MDJiZDI0MDVjOGJiMTM1N2JjM2Q4NjkyOSA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQ0MjI1MzcsIC03Ni40ODU0NzI1XSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwX2MyYWUzZjFkY2JhNTQ5OTI4NGUxMjU5MDUzZTE4YjY4KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF9kMWRhYThlMjM4YTE0MTkzYjE3ZjU0YTA4ZmJiMjBlYiA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfZDY1NDFjZTUwNWQzNDIzYmE0NTNiZjliODM2YTBmNTEgPSAkKGA8ZGl2IGlkPSJodG1sX2Q2NTQxY2U1MDVkMzQyM2JhNDUzYmY5YjgzNmEwZjUxIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5Db2xsZWdlIFRvd24gQmFnZWxzPC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwX2QxZGFhOGUyMzhhMTQxOTNiMTdmNTRhMDhmYmIyMGViLnNldENvbnRlbnQoaHRtbF9kNjU0MWNlNTA1ZDM0MjNiYTQ1M2JmOWI4MzZhMGY1MSk7CiAgICAgICAgCgogICAgICAgIG1hcmtlcl8yOGQ3OTY3MDJiZDI0MDVjOGJiMTM1N2JjM2Q4NjkyOS5iaW5kUG9wdXAocG9wdXBfZDFkYWE4ZTIzOGExNDE5M2IxN2Y1NGEwOGZiYjIwZWIpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBtYXJrZXJfNTllOTI4OWI3YmQzNDZhNTljZjliMDYwMjRhMjJmNTAgPSBMLm1hcmtlcigKICAgICAgICAgICAgICAgIFs0Mi40NTI4MjA2LCAtNzYuNDkxNjM3NV0sCiAgICAgICAgICAgICAgICB7fQogICAgICAgICAgICApLmFkZFRvKG1hcF9jMmFlM2YxZGNiYTU0OTkyODRlMTI1OTA1M2UxOGI2OCk7CiAgICAgICAgCiAgICAKICAgICAgICB2YXIgcG9wdXBfNDNhNDcwZGFkYmIzNGMyY2FhMjRmMTljMzM0YTNiYTUgPSBMLnBvcHVwKHsibWF4V2lkdGgiOiAiMTAwJSJ9KTsKCiAgICAgICAgCiAgICAgICAgICAgIHZhciBodG1sX2JjYzBkYzgwNzg5YTRjYWRhMzVlZjYyYTgxM2U4Nzg0ID0gJChgPGRpdiBpZD0iaHRtbF9iY2MwZGM4MDc4OWE0Y2FkYTM1ZWY2MmE4MTNlODc4NCIgc3R5bGU9IndpZHRoOiAxMDAuMCU7IGhlaWdodDogMTAwLjAlOyI+SXRoYWNhIEZhbGxzPC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwXzQzYTQ3MGRhZGJiMzRjMmNhYTI0ZjE5YzMzNGEzYmE1LnNldENvbnRlbnQoaHRtbF9iY2MwZGM4MDc4OWE0Y2FkYTM1ZWY2MmE4MTNlODc4NCk7CiAgICAgICAgCgogICAgICAgIG1hcmtlcl81OWU5Mjg5YjdiZDM0NmE1OWNmOWIwNjAyNGEyMmY1MC5iaW5kUG9wdXAocG9wdXBfNDNhNDcwZGFkYmIzNGMyY2FhMjRmMTljMzM0YTNiYTUpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBtYXJrZXJfNzQwZGE4ZGIwNjBlNDAxZmFiMmU0ZTM1ZDVkZjhjNjEgPSBMLm1hcmtlcigKICAgICAgICAgICAgICAgIFs0Mi40NDA2MDI4LCAtNzYuNDk4NjMyMV0sCiAgICAgICAgICAgICAgICB7fQogICAgICAgICAgICApLmFkZFRvKG1hcF9jMmFlM2YxZGNiYTU0OTkyODRlMTI1OTA1M2UxOGI2OCk7CiAgICAgICAgCiAgICAKICAgICAgICB2YXIgcG9wdXBfYWVjY2E1ZTVlMTYxNGM3N2FkNGVlYzQ3NWE1ZDU0M2EgPSBMLnBvcHVwKHsibWF4V2lkdGgiOiAiMTAwJSJ9KTsKCiAgICAgICAgCiAgICAgICAgICAgIHZhciBodG1sXzc1Y2IyOWFlMDVhYjQyNTE5ODA5YjM3MzZmYzMyNzUxID0gJChgPGRpdiBpZD0iaHRtbF83NWNiMjlhZTA1YWI0MjUxOTgwOWIzNzM2ZmMzMjc1MSIgc3R5bGU9IndpZHRoOiAxMDAuMCU7IGhlaWdodDogMTAwLjAlOyI+TW9vc2V3b29kIFJlc3RhdXJhbnQ8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfYWVjY2E1ZTVlMTYxNGM3N2FkNGVlYzQ3NWE1ZDU0M2Euc2V0Q29udGVudChodG1sXzc1Y2IyOWFlMDVhYjQyNTE5ODA5YjM3MzZmYzMyNzUxKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyXzc0MGRhOGRiMDYwZTQwMWZhYjJlNGUzNWQ1ZGY4YzYxLmJpbmRQb3B1cChwb3B1cF9hZWNjYTVlNWUxNjE0Yzc3YWQ0ZWVjNDc1YTVkNTQzYSkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl8yOWU2OTZiYTc1MDU0MzViOWZjZTE1NDI5ZWM1YjJmNyA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQ0Mjk2ODUsIC03Ni40OTM1MTNdLAogICAgICAgICAgICAgICAge30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfYzJhZTNmMWRjYmE1NDk5Mjg0ZTEyNTkwNTNlMThiNjgpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwX2ZmMzQ1Y2JjZjg3NjRmN2Y4N2EyODY0ODQzMzc2NmNjID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF9lZGFlY2VlOGJiZTE0NDNhYjM1MmVlODhiM2Y1ZmE4NiA9ICQoYDxkaXYgaWQ9Imh0bWxfZWRhZWNlZThiYmUxNDQzYWIzNTJlZTg4YjNmNWZhODYiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPkNhc2NhZGlsbGEgR29yZ2UgVHJhaWw8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfZmYzNDVjYmNmODc2NGY3Zjg3YTI4NjQ4NDMzNzY2Y2Muc2V0Q29udGVudChodG1sX2VkYWVjZWU4YmJlMTQ0M2FiMzUyZWU4OGIzZjVmYTg2KTsKICAgICAgICAKCiAgICAgICAgbWFya2VyXzI5ZTY5NmJhNzUwNTQzNWI5ZmNlMTU0MjllYzViMmY3LmJpbmRQb3B1cChwb3B1cF9mZjM0NWNiY2Y4NzY0ZjdmODdhMjg2NDg0MzM3NjZjYykKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl9lMWNjNDcyYmRmNzg0ZDQzYmZhNDQwZjIyMTkzYmVhYiA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQ0OTA2OTMwMDAwMDAwNSwgLTc2LjQ4MzQ3ODc2Njk3Mzk5XSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwX2MyYWUzZjFkY2JhNTQ5OTI4NGUxMjU5MDUzZTE4YjY4KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF9kZTcwNDllODFmNTA0YmIxOWI1OGUyYmM0YmI5YTk0MiA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfNDFlYTQ5ZTU1MmIyNGY1Y2IzMmJkYjQxNTUxY2Y2NTcgPSAkKGA8ZGl2IGlkPSJodG1sXzQxZWE0OWU1NTJiMjRmNWNiMzJiZGI0MTU1MWNmNjU3IiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5Hb2xkd2luLVNtaXRoIEhhbGw8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfZGU3MDQ5ZTgxZjUwNGJiMTliNThlMmJjNGJiOWE5NDIuc2V0Q29udGVudChodG1sXzQxZWE0OWU1NTJiMjRmNWNiMzJiZGI0MTU1MWNmNjU3KTsKICAgICAgICAKCiAgICAgICAgbWFya2VyX2UxY2M0NzJiZGY3ODRkNDNiZmE0NDBmMjIxOTNiZWFiLmJpbmRQb3B1cChwb3B1cF9kZTcwNDllODFmNTA0YmIxOWI1OGUyYmM0YmI5YTk0MikKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl82YjJkMmJkMDMxZDI0MmM5YjA5NWM1YzkzNTE1MDJmYSA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQ0MjAwOTUsIC03Ni40ODk3MDQzXSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwX2MyYWUzZjFkY2JhNTQ5OTI4NGUxMjU5MDUzZTE4YjY4KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF85YjAwNzZmZjQwMzE0NjA5OTg5NTY2M2E4OTk1MjRmNCA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfZWMwYmFmNDQ2NzA5NGE2YTg3ZWU1NDVkNGExNDY1ZTkgPSAkKGA8ZGl2IGlkPSJodG1sX2VjMGJhZjQ0NjcwOTRhNmE4N2VlNTQ1ZDRhMTQ2NWU5IiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5DYXJyaWFnZSBIb3VzZSBDYWZlPC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwXzliMDA3NmZmNDAzMTQ2MDk5ODk1NjYzYTg5OTUyNGY0LnNldENvbnRlbnQoaHRtbF9lYzBiYWY0NDY3MDk0YTZhODdlZTU0NWQ0YTE0NjVlOSk7CiAgICAgICAgCgogICAgICAgIG1hcmtlcl82YjJkMmJkMDMxZDI0MmM5YjA5NWM1YzkzNTE1MDJmYS5iaW5kUG9wdXAocG9wdXBfOWIwMDc2ZmY0MDMxNDYwOTk4OTU2NjNhODk5NTI0ZjQpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBtYXJrZXJfYWNiOGQwZGZkMjBlNDg2Mjg2YTdkNmZhZTc3ODQxMTQgPSBMLm1hcmtlcigKICAgICAgICAgICAgICAgIFs0Mi40NDc4MjMwNSwgLTc2LjQ4NDI4MDczMDc3ODg2XSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwX2MyYWUzZjFkY2JhNTQ5OTI4NGUxMjU5MDUzZTE4YjY4KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF85YWRiMzY5MjE4YjY0ODEyOTU5M2RkZDJmMTgyMDYyZSA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfZmUzMTgxNjdhODg0NGZlZGEzY2RjN2M5ZmYwN2ZhY2QgPSAkKGA8ZGl2IGlkPSJodG1sX2ZlMzE4MTY3YTg4NDRmZWRhM2NkYzdjOWZmMDdmYWNkIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5PbGluIExpYnJhcnk8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfOWFkYjM2OTIxOGI2NDgxMjk1OTNkZGQyZjE4MjA2MmUuc2V0Q29udGVudChodG1sX2ZlMzE4MTY3YTg4NDRmZWRhM2NkYzdjOWZmMDdmYWNkKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyX2FjYjhkMGRmZDIwZTQ4NjI4NmE3ZDZmYWU3Nzg0MTE0LmJpbmRQb3B1cChwb3B1cF85YWRiMzY5MjE4YjY0ODEyOTU5M2RkZDJmMTgyMDYyZSkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl8xNTM1MDg1OTk1Nzg0ZGYwOGNmZDA2NTIwZDA5NTA0MiA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQ0NDQ2NDgsIC03Ni41MDg4NTUxXSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwX2MyYWUzZjFkY2JhNTQ5OTI4NGUxMjU5MDUzZTE4YjY4KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF9hMDU1NzhlODA2N2M0YjZmYWNiOTkzOGI5YjFkYjY4MSA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfZjUyZmMzNTEwZjAzNGJkZjkxNTc2YjNlZTJkNjI0NzQgPSAkKGA8ZGl2IGlkPSJodG1sX2Y1MmZjMzUxMGYwMzRiZGY5MTU3NmIzZWUyZDYyNDc0IiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5QdXJpdHkgSWNlIENyZWFtPC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwX2EwNTU3OGU4MDY3YzRiNmZhY2I5OTM4YjliMWRiNjgxLnNldENvbnRlbnQoaHRtbF9mNTJmYzM1MTBmMDM0YmRmOTE1NzZiM2VlMmQ2MjQ3NCk7CiAgICAgICAgCgogICAgICAgIG1hcmtlcl8xNTM1MDg1OTk1Nzg0ZGYwOGNmZDA2NTIwZDA5NTA0Mi5iaW5kUG9wdXAocG9wdXBfYTA1NTc4ZTgwNjdjNGI2ZmFjYjk5MzhiOWIxZGI2ODEpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBtYXJrZXJfYjEyYmEwNWI4OGM3NGQ2Y2FiMTUzODliMTM1YTBkOTYgPSBMLm1hcmtlcigKICAgICAgICAgICAgICAgIFs0Mi40MTYxNjYzNSwgLTc2LjUxNjQzOTYwNDE2MDk2XSwKICAgICAgICAgICAgICAgIHt9CiAgICAgICAgICAgICkuYWRkVG8obWFwX2MyYWUzZjFkY2JhNTQ5OTI4NGUxMjU5MDUzZTE4YjY4KTsKICAgICAgICAKICAgIAogICAgICAgIHZhciBwb3B1cF9lNTMwNWFhMjlkYjI0Mjk3YjgxNGRmNmEyYjUyZjIzYiA9IEwucG9wdXAoeyJtYXhXaWR0aCI6ICIxMDAlIn0pOwoKICAgICAgICAKICAgICAgICAgICAgdmFyIGh0bWxfMjQ4ZjY5NDJjZWZkNDQ4ZTlhY2QwM2RiNzdiZTgyOTAgPSAkKGA8ZGl2IGlkPSJodG1sXzI0OGY2OTQyY2VmZDQ0OGU5YWNkMDNkYjc3YmU4MjkwIiBzdHlsZT0id2lkdGg6IDEwMC4wJTsgaGVpZ2h0OiAxMDAuMCU7Ij5CdXR0ZXJtaWxrIEZhbGxzIFN0YXRlIFBhcms8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfZTUzMDVhYTI5ZGIyNDI5N2I4MTRkZjZhMmI1MmYyM2Iuc2V0Q29udGVudChodG1sXzI0OGY2OTQyY2VmZDQ0OGU5YWNkMDNkYjc3YmU4MjkwKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyX2IxMmJhMDViODhjNzRkNmNhYjE1Mzg5YjEzNWEwZDk2LmJpbmRQb3B1cChwb3B1cF9lNTMwNWFhMjlkYjI0Mjk3YjgxNGRmNmEyYjUyZjIzYikKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl9iZTY0MTI0NmQwY2E0MzY2YmExNGQ0NTFhMWRkNGMxNCA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQ0ODM3MTI1LCAtNzYuNDg2NjM4MTU1ODIxNTJdLAogICAgICAgICAgICAgICAge30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfYzJhZTNmMWRjYmE1NDk5Mjg0ZTEyNTkwNTNlMThiNjgpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzY1ZTlmY2JiNjVmYzQ3ZjBhZTFmYTVlOTg1MmQwOWY1ID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF81OWY2M2I1YTQ2NjU0ODI3Yjg3ZmIwNTQwNGQwYTQ0MSA9ICQoYDxkaXYgaWQ9Imh0bWxfNTlmNjNiNWE0NjY1NDgyN2I4N2ZiMDU0MDRkMGE0NDEiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPkxpYmUgU2xvcGU8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfNjVlOWZjYmI2NWZjNDdmMGFlMWZhNWU5ODUyZDA5ZjUuc2V0Q29udGVudChodG1sXzU5ZjYzYjVhNDY2NTQ4MjdiODdmYjA1NDA0ZDBhNDQxKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyX2JlNjQxMjQ2ZDBjYTQzNjZiYTE0ZDQ1MWExZGQ0YzE0LmJpbmRQb3B1cChwb3B1cF82NWU5ZmNiYjY1ZmM0N2YwYWUxZmE1ZTk4NTJkMDlmNSkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl83OTA4OTMwNGUzYWE0MGRlYTdkN2RkNzgzNGE5MDI2ZCA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQ1MDQ1OTksIC03Ni40NjkyMjgyNjU4OTU1MV0sCiAgICAgICAgICAgICAgICB7fQogICAgICAgICAgICApLmFkZFRvKG1hcF9jMmFlM2YxZGNiYTU0OTkyODRlMTI1OTA1M2UxOGI2OCk7CiAgICAgICAgCiAgICAKICAgICAgICB2YXIgcG9wdXBfMjdjNzIwMTIwMDZiNDBlZjkyN2Q1ZTNkMmU5ZmI3NTEgPSBMLnBvcHVwKHsibWF4V2lkdGgiOiAiMTAwJSJ9KTsKCiAgICAgICAgCiAgICAgICAgICAgIHZhciBodG1sXzc5NWEzMzg2MGI5YzRiYWU5MjYzNDM3ZDA0OTEyZDEyID0gJChgPGRpdiBpZD0iaHRtbF83OTVhMzM4NjBiOWM0YmFlOTI2MzQzN2QwNDkxMmQxMiIgc3R5bGU9IndpZHRoOiAxMDAuMCU7IGhlaWdodDogMTAwLjAlOyI+TXVuZHkgV2lsZGZsb3dlciBHYXJkZW48L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfMjdjNzIwMTIwMDZiNDBlZjkyN2Q1ZTNkMmU5ZmI3NTEuc2V0Q29udGVudChodG1sXzc5NWEzMzg2MGI5YzRiYWU5MjYzNDM3ZDA0OTEyZDEyKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyXzc5MDg5MzA0ZTNhYTQwZGVhN2Q3ZGQ3ODM0YTkwMjZkLmJpbmRQb3B1cChwb3B1cF8yN2M3MjAxMjAwNmI0MGVmOTI3ZDVlM2QyZTlmYjc1MSkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl80ZTM0N2Q5OTMwMTU0OWFmYTRhZWJhMWExNTY5ZTNkYSA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQzOTUyMzA1LCAtNzYuNTA2NDQ4NTkwNDU5MjZdLAogICAgICAgICAgICAgICAge30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfYzJhZTNmMWRjYmE1NDk5Mjg0ZTEyNTkwNTNlMThiNjgpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzg2ZmY1YzFiMTlhOTQ1MmZhY2M0MTM3MmI0ZmFjZGNlID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF8yZGNlMWJmODZlYTQ0ZjdiODM0NGU1ODJkNTM3N2EzMCA9ICQoYDxkaXYgaWQ9Imh0bWxfMmRjZTFiZjg2ZWE0NGY3YjgzNDRlNTgyZDUzNzdhMzAiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPkdpbW1lISBDb2ZmZWU8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfODZmZjVjMWIxOWE5NDUyZmFjYzQxMzcyYjRmYWNkY2Uuc2V0Q29udGVudChodG1sXzJkY2UxYmY4NmVhNDRmN2I4MzQ0ZTU4MmQ1Mzc3YTMwKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyXzRlMzQ3ZDk5MzAxNTQ5YWZhNGFlYmExYTE1NjllM2RhLmJpbmRQb3B1cChwb3B1cF84NmZmNWMxYjE5YTk0NTJmYWNjNDEzNzJiNGZhY2RjZSkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl9hYzY5MTk4MWIzZWY0NTA1OGI4ZDUwNjIzMWE0MTA3OSA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQzLjk0NTIzNzU1LCAtODQuNzU5MjQyNTMyMDUzMzVdLAogICAgICAgICAgICAgICAge30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfYzJhZTNmMWRjYmE1NDk5Mjg0ZTEyNTkwNTNlMThiNjgpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzQ5NzNhZmQ0ODIyNDQ5NjRhODM0YTE0OGE0MGFhMWNhID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF8yYjQ3OTgyYzRjMTM0NDQ5OTVhZDAzMzJhMzQzNTJlNCA9ICQoYDxkaXYgaWQ9Imh0bWxfMmI0Nzk4MmM0YzEzNDQ0OTk1YWQwMzMyYTM0MzUyZTQiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPkJlZWJlIExha2U8L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfNDk3M2FmZDQ4MjI0NDk2NGE4MzRhMTQ4YTQwYWExY2Euc2V0Q29udGVudChodG1sXzJiNDc5ODJjNGMxMzQ0NDk5NWFkMDMzMmEzNDM1MmU0KTsKICAgICAgICAKCiAgICAgICAgbWFya2VyX2FjNjkxOTgxYjNlZjQ1MDU4YjhkNTA2MjMxYTQxMDc5LmJpbmRQb3B1cChwb3B1cF80OTczYWZkNDgyMjQ0OTY0YTgzNGExNDhhNDBhYTFjYSkKICAgICAgICA7CgogICAgICAgIAogICAgCiAgICAKICAgICAgICAgICAgdmFyIG1hcmtlcl8xYWRhZDhhODQyNDM0NTNmYjc4YjgxYzg4Y2EyNTFjZiA9IEwubWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQ5MSwgLTc2LjQ1ODddLAogICAgICAgICAgICAgICAge30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfYzJhZTNmMWRjYmE1NDk5Mjg0ZTEyNTkwNTNlMThiNjgpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzBlMzUwNmRmMGE1MTQzNzg5ODQ3NjJiYzViYjYxNjdmID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF8yMGQyZDMzMzQ3MDg0YTJhYTExNzBiZjZhNGMwOWQyZSA9ICQoYDxkaXYgaWQ9Imh0bWxfMjBkMmQzMzM0NzA4NGEyYWExMTcwYmY2YTRjMDlkMmUiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPkl0aGFjYSBUb21wa2lucyBBaXJwb3J0PC9kaXY+YClbMF07CiAgICAgICAgICAgIHBvcHVwXzBlMzUwNmRmMGE1MTQzNzg5ODQ3NjJiYzViYjYxNjdmLnNldENvbnRlbnQoaHRtbF8yMGQyZDMzMzQ3MDg0YTJhYTExNzBiZjZhNGMwOWQyZSk7CiAgICAgICAgCgogICAgICAgIG1hcmtlcl8xYWRhZDhhODQyNDM0NTNmYjc4YjgxYzg4Y2EyNTFjZi5iaW5kUG9wdXAocG9wdXBfMGUzNTA2ZGYwYTUxNDM3ODk4NDc2MmJjNWJiNjE2N2YpCiAgICAgICAgOwoKICAgICAgICAKICAgIAogICAgCiAgICAgICAgICAgIHZhciBtYXJrZXJfYzE0NDMyMGZlNzg3NGJkNGJlYTA3NWIyYjVjYzFmMmUgPSBMLm1hcmtlcigKICAgICAgICAgICAgICAgIFszOS45MjcwNDEsIC03NS4xNzEzNDRdLAogICAgICAgICAgICAgICAge30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfYzJhZTNmMWRjYmE1NDk5Mjg0ZTEyNTkwNTNlMThiNjgpOwogICAgICAgIAogICAgCiAgICAgICAgdmFyIHBvcHVwXzZkN2M2MTZkMWM0YjRjOTU5ODRjYzYwNTFmZWI4NTBjID0gTC5wb3B1cCh7Im1heFdpZHRoIjogIjEwMCUifSk7CgogICAgICAgIAogICAgICAgICAgICB2YXIgaHRtbF9jZWRhM2NmZTg5Njc0YTZlYTMyM2FiYTliODYzMmNkZSA9ICQoYDxkaXYgaWQ9Imh0bWxfY2VkYTNjZmU4OTY3NGE2ZWEzMjNhYmE5Yjg2MzJjZGUiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPldoYXJ0b24gU3R1ZGlvIEluYy48L2Rpdj5gKVswXTsKICAgICAgICAgICAgcG9wdXBfNmQ3YzYxNmQxYzRiNGM5NTk4NGNjNjA1MWZlYjg1MGMuc2V0Q29udGVudChodG1sX2NlZGEzY2ZlODk2NzRhNmVhMzIzYWJhOWI4NjMyY2RlKTsKICAgICAgICAKCiAgICAgICAgbWFya2VyX2MxNDQzMjBmZTc4NzRiZDRiZWEwNzViMmI1Y2MxZjJlLmJpbmRQb3B1cChwb3B1cF82ZDdjNjE2ZDFjNGI0Yzk1OTg0Y2M2MDUxZmViODUwYykKICAgICAgICA7CgogICAgICAgIAogICAgCjwvc2NyaXB0Pg== onload="this.contentDocument.open();this.contentDocument.write(atob(this.getAttribute('data-html')));this.contentDocument.close();" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
+</div>
+</div>
+<div class="section" id="save-map">
+<h2>Save Map<a class="headerlink" href="#save-map" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_map</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;Ithaca-map.html&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./07-Mapping"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By <a href="https://melaniewalsh.org/">Melanie Walsh</a><br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            <div>
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This book is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>. The code is licensed under a <a href="https://choosealicense.com/licenses/gpl-3.0/#">GNU General Public License v3.0</a>.
+</div>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-86905362-3', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

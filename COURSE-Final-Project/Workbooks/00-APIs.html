@@ -1,0 +1,1425 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to Figure Out a New API &#8212; Introduction to Cultural Analytics &amp; Python</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://melaniewalsh.github.io/Intro-Cultural-Analytics/COURSE-Final-Project/Workbooks/00-APIs.html" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://melaniewalsh.github.io/Intro-Cultural-Analytics/COURSE-Final-Project/Workbooks/00-APIs.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="How to Figure Out a New API" />
+<meta property="og:description" content="How to Figure Out a New API  In this notebook, we will walk through how you might figure out a new and unfamiliar API.  Let’s say you want to find data about th" />
+<meta property="og:image"       content="https://melaniewalsh.github.io/Intro-Cultural-Analytics/_static/favicon.ico" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/favicon.ico" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Introduction to Cultural Analytics & Python</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  How To
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../How-To-Interact-With-This-Book.html">
+   Interact With This Book
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  The Course
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../course-schedule-2021.html">
+   Course Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../syllabus.html">
+   Course Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Final-Project-Instructions.html">
+   Final Project
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  The Book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01-Command-Line/01-The-Command-Line.html">
+   1. The Command Line
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../02-Python/00-Python.html">
+   2. Python Basics
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/01-Installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/02-How-to-Use-Jupyter-Notebooks.html">
+     How to Use Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/03-Anatomy-Python-Script.html">
+     Anatomy of a Python Script
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/04-Variables.html">
+     Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/05-Data-Types.html">
+     Data Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/06-String-Methods.html">
+     String Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/07-Files-Character-Encoding.html">
+     Files and Character Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/08-Comparisons-Conditionals.html">
+     Comparisons &amp; Conditionals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/09-Lists-Loops-Part1.html">
+     Lists &amp; Loops — Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/10-Lists-Loops-Part2.html">
+     Lists &amp; Loops — Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/11-Dictionaries.html">
+     Dictionaries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/12-Functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/13-Common-Python-Errors.html">
+     Common Python Errors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/14-What-Were-Not-Covering.html">
+     What We’re Not Covering
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../03-Data-Analysis/00-Data-Analysis.html">
+   3. Data Analysis (Pandas)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Data-Analysis/01-Pandas-Basics-Part1.html">
+     Pandas Basics — Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Data-Analysis/02-Pandas-Basics-Part2.html">
+     Pandas Basics — Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Data-Analysis/03-Pandas-Basics-Part3.html">
+     Pandas Basics — Part 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Data-Analysis/04-Pandas-Merge-Datasets.html">
+     Pandas — Merge Datasets
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../04-Data-Collection/00-Data-Collection.html">
+   4. Data Collection (Web Scraping, APIs)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04-Data-Collection/01-User-Ethics-Legal-Concerns.html">
+     User Ethics &amp; Legal Concerns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04-Data-Collection/02-Web-Scraping-Part1.html">
+     Web Scraping — Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04-Data-Collection/03-Web-Scraping-Part2.html">
+     Web Scraping — Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04-Data-Collection/04-Git-GitHub.html">
+     Git and GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04-Data-Collection/05-APIs.html">
+     Application Programming Interfaces (APIs)
+    </a>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../04-Data-Collection/06-Song-Genius-Data-Collection.html">
+     Song Genius Data Collection
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../04-Data-Collection/07-Genius-API.html">
+       Song Genius API
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../04-Data-Collection/08-LyricsGenius.html">
+       Song Lyrics Collection
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../04-Data-Collection/09-Song-Lyrics-Analysis.html">
+       Song Lyrics Analysis
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../04-Data-Collection/10-Twitter-Data-Collection-Home.html">
+     Twitter Data Collection
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../04-Data-Collection/11-Twitter-API-Setup.html">
+       Twitter API Setup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../04-Data-Collection/12-Twitter-Data-Collection.html">
+       Twitter Data Collection
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../04-Data-Collection/13-Twitter-Data-Analysis.html">
+       Twitter Data Analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../04-Data-Collection/14-Twitter-Data-Sharing.html">
+       Twitter Data Sharing
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04-Data-Collection/15-Reddit-Data-Collection-With-PSAW.html">
+     Reddit Data Collection
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../05-Text-Analysis/00-Text-Analysis.html">
+   5. Text Analysis
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../05-Text-Analysis/01-TF-IDF.html">
+     TF-IDF
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../05-Text-Analysis/02-TF-IDF-HathiTrust.html">
+       TF-IDF with HathiTrust Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../05-Text-Analysis/03-TF-IDF-Scikit-Learn.html">
+       TF-IDF with Scikit-Learn
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../05-Text-Analysis/04-Topic-Modeling.html">
+     Topic Modeling
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../05-Text-Analysis/05-Topic-Modeling-Overview.html">
+       Topic Modeling — Overview
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../05-Text-Analysis/06-Topic-Modeling-Set-Up.html">
+       Topic Modeling — Set Up
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../05-Text-Analysis/07-Topic-Modeling-Text-Files.html">
+       Topic Modeling — Text Files
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../05-Text-Analysis/08-Topic-Modeling-CSV.html">
+       Topic Modeling — CSV Files
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../05-Text-Analysis/09-Topic-Modeling-Time-Series.html">
+       Topic Modeling — Time Series
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05-Text-Analysis/07-Topic-Modeling-Without-Mallet.html">
+     Topic Modeling — With Tomotopy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05-Text-Analysis/10-Named-Entity-Recognition.html">
+     Named Entity Recognition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05-Text-Analysis/11-POS-Keywords.html">
+     Part-of-Speech Tagging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05-Text-Analysis/11-POS-Keywords.html#keyword-extraction">
+     Keyword Extraction
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../06-Network-Analysis/00-Network-Analysis-Home.html">
+   6. Network Analysis
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06-Network-Analysis/01-Network-Analysis.html">
+     Network Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06-Network-Analysis/02-Making-Network-Viz-with-Bokeh.html">
+     Make an Interactive Network Visualization
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../07-Mapping/01-Mapping-Home.html">
+   7. Mapping
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07-Mapping/02-Mapping.html">
+     Mapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07-Mapping/02-Mapping.html#geocoding-with-geopy">
+     Geocoding with GeoPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07-Mapping/02-Mapping.html#making-interactive-maps">
+     Making Interactive Maps
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07-Mapping/03-Custom-Maps.html">
+     Custom Map Backgrounds
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07-Mapping/04-Publish-Your-Map.html">
+     Publish Your Map on the Web
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Datasets
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../00-Datasets/Datasets.html">
+   Datasets
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Extra Materials
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02-Python/EXTRA-Jupyter-Tips-Tricks.html">
+   Jupyter Tips and Tricks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02-Python/EXTRA-Randomize-Students.html">
+   Make Random Student Groups
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/COURSE-Final-Project/Workbooks/00-APIs.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/INFO1350/Intro-CA-SP21"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/INFO1350/Intro-CA-SP21/issues/new?title=Issue%20on%20page%20%2FCOURSE-Final-Project/Workbooks/00-APIs.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/INFO1350/Intro-CA-SP21/master?urlpath=lab/tree/book/COURSE-Final-Project/Workbooks/00-APIs.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first-you-google-around">
+   First, You Google Around
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#then-most-likely-you-create-an-api-key">
+   Then, Most Likely, You Create an API Key
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#then-you-read-the-documentation">
+   Then You Read the Documentation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#and-re-read-the-documentation-and-re-re-read-the-documentation">
+     and re-read the documentation and re-re-read the documentation…
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#then-you-test-it-out">
+   Then You Test It Out
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-reviews">
+     Get Reviews
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-the-api-without-a-wrapper">
+   Using the API Without a Wrapper
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="how-to-figure-out-a-new-api">
+<h1>How to Figure Out a New API<a class="headerlink" href="#how-to-figure-out-a-new-api" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook, we will walk through how you might figure out a new and unfamiliar API.</p>
+<p>Let’s say you want to find data about the reviews that people write about places on Google Maps.</p>
+<div class="section" id="first-you-google-around">
+<h2>First, You Google Around<a class="headerlink" href="#first-you-google-around" title="Permalink to this headline">¶</a></h2>
+<p>To find that data, you might google “Google Maps API” and “Google Maps API wrapper.”</p>
+<p>The first search result for “Google Maps API wrapper” is a <a class="reference external" href="https://developers.google.com/maps/web-services/client-library">web page</a> linking to “client libraries” for the API — essentially, API wrappers written by the Google Maps team. Sweet!</p>
+<p>You click the link for the <a class="reference external" href="https://github.com/googlemaps/google-maps-services-python">Python library</a>, since Python is the language that we’re working with in this class.</p>
+</div>
+<div class="section" id="then-most-likely-you-create-an-api-key">
+<h2>Then, Most Likely, You Create an API Key<a class="headerlink" href="#then-most-likely-you-create-an-api-key" title="Permalink to this headline">¶</a></h2>
+<p>Reading the documentation is <em>SUPER</em> important for figuring out an API or API wrapper. It’s like a mini-textbook for how to use the code.</p>
+<p>In the GitHub repository for the Python wrapper, the documentation explains that you need an API key to use the wrapper:</p>
+<blockquote>
+<div><p>Each Google Maps Web Service request requires an API key or client ID. API keys are generated in the ‘Credentials’ page of the ‘APIs &amp; Services’ tab of Google Cloud console.</p>
+</div></blockquote>
+<p>The process for creating an API key with any Google app — Google Maps, YouTube, Gmail, Google Sheets, etc. — is fairly complicated and requires a credit card. But the steps are explained in detail on Google’s <a class="reference external" href="https://developers.google.com/maps/gmp-get-started#create-project">website</a>.</p>
+<ul class="simple">
+<li><p>First, you need to create a “project” on the Google Cloud Console and set up billing</p></li>
+<li><p>Then you need to enable the specific APIs that you want to use</p></li>
+<li><p>Then you need to make an API key</p></li>
+</ul>
+<p>Once you have an API key, you want to save it in a safe place on your computer. Be sure not to share it openly on the internet.</p>
+<p>For these reasons, it is good practice to import your API key from another file. That way, if you share your notebook on the internet, nobody can see your API key directly.</p>
+<p>For example, you can save your API key in the file <code class="docutils literal notranslate"><span class="pre">my_api_key.py</span></code>, which is also in this directory, then import this file as a Python module. Then you can reference the saved variable <code class="docutils literal notranslate"><span class="pre">api_key</span></code> from that module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_api_key</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Test it out by running this cell</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">api_key</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also manually copy and paste your API key into a notebook, but again you should be sure to delete this cell and not share the key on the internet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#api_key = &quot;YOUR API KEY HERE&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="then-you-read-the-documentation">
+<h2>Then You Read the Documentation<a class="headerlink" href="#then-you-read-the-documentation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="and-re-read-the-documentation-and-re-re-read-the-documentation">
+<h3>and re-read the documentation and re-re-read the documentation…<a class="headerlink" href="#and-re-read-the-documentation-and-re-re-read-the-documentation" title="Permalink to this headline">¶</a></h3>
+<p>Google Maps Places documentation: https://developers.google.com/maps/documentation/places/web-service/search</p>
+<p>Google Maps API wrapper documentation: https://googlemaps.github.io/google-maps-services-python/docs/index.html#</p>
+<p><img alt="" src="../../_images/find_place.png" /></p>
+<p><img alt="" src="../../_images/place.png" /></p>
+</div>
+</div>
+<div class="section" id="then-you-test-it-out">
+<h2>Then You Test It Out<a class="headerlink" href="#then-you-test-it-out" title="Permalink to this headline">¶</a></h2>
+<p>Install Google Maps API wrapper</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> pip install -U googlemaps
+</pre></div>
+</div>
+</div>
+</div>
+<p>Import libraries</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">googlemaps</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_rows</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_columns</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_colwidth</span> <span class="o">=</span> <span class="mi">500</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set up Google Maps wrapper with API key</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gmaps</span> <span class="o">=</span> <span class="n">googlemaps</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">api_key</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://googlemaps.github.io/google-maps-services-python/docs/index.html#googlemaps.Client.find_place">Find the place ID for Beebe Lake</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gmaps</span><span class="o">.</span><span class="n">find_place</span><span class="p">(</span><span class="s1">&#39;Beebe Lake&#39;</span><span class="p">,</span> <span class="n">input_type</span><span class="o">=</span><span class="s1">&#39;textquery&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;candidates&#39;: [{&#39;place_id&#39;: &#39;ChIJqfTWVB6C0IkRSZm2PCd1JHE&#39;}], &#39;status&#39;: &#39;OK&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://googlemaps.github.io/google-maps-services-python/docs/index.html#googlemaps.Client.place">Find place details for Beebe Lake</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gmaps</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="s1">&#39;ChIJqfTWVB6C0IkRSZm2PCd1JHE&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;html_attributions&#39;: [],
+ &#39;result&#39;: {&#39;address_components&#39;: [{&#39;long_name&#39;: &#39;Beebe Lake&#39;,
+    &#39;short_name&#39;: &#39;Beebe Lake&#39;,
+    &#39;types&#39;: [&#39;natural_feature&#39;, &#39;establishment&#39;]},
+   {&#39;long_name&#39;: &#39;Tompkins County&#39;,
+    &#39;short_name&#39;: &#39;Tompkins County&#39;,
+    &#39;types&#39;: [&#39;administrative_area_level_2&#39;, &#39;political&#39;]},
+   {&#39;long_name&#39;: &#39;New York&#39;,
+    &#39;short_name&#39;: &#39;NY&#39;,
+    &#39;types&#39;: [&#39;administrative_area_level_1&#39;, &#39;political&#39;]},
+   {&#39;long_name&#39;: &#39;United States&#39;,
+    &#39;short_name&#39;: &#39;US&#39;,
+    &#39;types&#39;: [&#39;country&#39;, &#39;political&#39;]},
+   {&#39;long_name&#39;: &#39;14850&#39;, &#39;short_name&#39;: &#39;14850&#39;, &#39;types&#39;: [&#39;postal_code&#39;]}],
+  &#39;adr_address&#39;: &#39;Beebe Lake, &lt;span class=&quot;region&quot;&gt;New York&lt;/span&gt; &lt;span class=&quot;postal-code&quot;&gt;14850&lt;/span&gt;, &lt;span class=&quot;country-name&quot;&gt;USA&lt;/span&gt;&#39;,
+  &#39;formatted_address&#39;: &#39;Beebe Lake, New York 14850, USA&#39;,
+  &#39;geometry&#39;: {&#39;location&#39;: {&#39;lat&#39;: 42.4510099, &#39;lng&#39;: -76.4761904},
+   &#39;viewport&#39;: {&#39;northeast&#39;: {&#39;lat&#39;: 42.45258032994754,
+     &#39;lng&#39;: -76.4730453317786},
+    &#39;southwest&#39;: {&#39;lat&#39;: 42.44988236936455, &#39;lng&#39;: -76.47999756180495}}},
+  &#39;icon&#39;: &#39;https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/geocode-71.png&#39;,
+  &#39;name&#39;: &#39;Beebe Lake&#39;,
+  &#39;photos&#39;: [{&#39;height&#39;: 3024,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/109578824600894016964&quot;&gt;Charlie Chung&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwIB5W1OsqcJwpMqOm2bPRIpS6baR5Xm50t6jT_Z7z-sUWrtOr22E-IDUPCCeIErsQh3B-q8YfERjkXLrvh-6fnRgvypcRGXW98Nr-LC3ww9YG45PTW8sWk9NKt6mfJF8ABTZnlMlbENYy9rWNDZKW4C3vkUcrbus21Q1KoKKCWTqIgX&#39;,
+    &#39;width&#39;: 4032},
+   {&#39;height&#39;: 3024,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/113388717724158109337&quot;&gt;Daisy Y&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwKSHgulXYjhQuPGMnTjxzPb0yr0ekbqwO7ZrcQysCfqEiT-2Yti0wb6Iy2yEqgsAhIej01Rgkjf27zp2EYt2aS9SnAoEEi5QXjvUFiY0ivHMdos5HQWiUKcEDNumaD1rR0Z38UdtYJnqox_rXEbGnjsL7_IdoYBLi2GcpB273OtP7Mb&#39;,
+    &#39;width&#39;: 4032},
+   {&#39;height&#39;: 3120,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/105517093223006174537&quot;&gt;nazlı konya&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwJX-pXA74mUrp2d4u-91IVUfunM-JCv_boDYd_CB3CNuchohnQ5SRy4TXqD4txJrrgREKJn6OW2Q8QXG102fwepDhLOuUohpUxnVDLh1aWtYmI_qFYMGQYckupmNL2DJrETfng01oH1YZcxrett631atFb9tX2wIEB26t7vdCs3fgw&#39;,
+    &#39;width&#39;: 4160},
+   {&#39;height&#39;: 1456,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/101046882135806425785&quot;&gt;Ira Gon&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwLn0L04UvYIKJYDek14gPN2XY_9yMRlai2Zl6wZ-ODb6WNTcVkwUECQyCxZJCpURp0bpfJuw_HYp8srFhWSNmid_8TzFUEsvZVVErzOVyTlO4wn7gIRzCNE-2zCqGVgeK0e3o3IwIU9KseVJUoApdiwI6EPWWpQjTnlVw9PwOxxcsPO&#39;,
+    &#39;width&#39;: 2592},
+   {&#39;height&#39;: 3024,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/108640463498565010654&quot;&gt;Regina Martinez&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwLWdatfq02gYDgXV0KzUIVSF37nvpxE7i65LvxKCNeAI0diG43CvimeXWApWGVQIbfaJ6cYByvU6nCUHk6NH-NPBgf2u6NnZIaeuMcRwn-PJkxLINtpJhBjKS1m6NEKzZrELHh3jiISZXOhOZ4TwdlEX1Vqjr3IuaF6t7UnZXyw5c1U&#39;,
+    &#39;width&#39;: 4032},
+   {&#39;height&#39;: 1872,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/110668897095058225687&quot;&gt;Sandeep Kumar&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwIjyB6kwt_YwQn_HchqUkTBm9yoxTGLtXfVWHLOlcUPYpyLi-EVaT6CCgJWDAjVU7rSgwYPC_zdQCc9RxZw_sck5MbWUnyfSJAeMTC9FLS8MIacNx6rjm4yD4leiXbPh0-heEA2dt9wyNjpNQ7GJ_OhTx_xXuqpNPljMv61MM0CQfzT&#39;,
+    &#39;width&#39;: 3328},
+   {&#39;height&#39;: 4032,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/100533419529512773822&quot;&gt;Ed cernyar&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwJVIlwxP9QxykQ5_xQZtOezuKFw-qbr1tog9d9ObyZle4XFPLZjNektNY1td5Yog7Z8SzufA-xVpXREEIoEnHFv38BLEIvOy5U-qsIRl_G5WF9bHU1VCWe4E0hr1HDzmrxPfBAoQc9lG4Z6HQIv97N0VmHbzCLkhCAMMMnWBA-tb4bv&#39;,
+    &#39;width&#39;: 3024},
+   {&#39;height&#39;: 3024,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/113388717724158109337&quot;&gt;Daisy Y&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwKJ1dth2cS876W1QTKreya3hPg1QXDT3NKmoWE7NVWX8ixDjHd7XTjbSuhX11TwU67K-HWtFq8kdBg4HLE3GymRZF-Nsct7sy0eNpf_E6BEuagbppdhpROhDR5RGcagIAoLAocUE1cQ4cDPC4Is83WIMOg14jbJLhcav-wxRuMPcjNP&#39;,
+    &#39;width&#39;: 4032},
+   {&#39;height&#39;: 1872,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/110668897095058225687&quot;&gt;Sandeep Kumar&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwLlRicNeeYpyY5K0ar65CtfGv6swqn0NeMNwa-N3Pcdciyqr2_4XDJRY5Y7oY8e3pKWHkfKElcga5Gink7208Py4XFI4SkLDq1eDazuVE87PQrmxN4JZ8_B1NB168Ju_KbDJvRT8cvPKRfJCcdKWRT_tXjJo_fZoPsWWf3YIFPEX_2t&#39;,
+    &#39;width&#39;: 3328},
+   {&#39;height&#39;: 3024,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/109670435802249590581&quot;&gt;Teresa Tyrrell&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwLqtEFoNHRW5VVWNYt7prG-AGOCIaJYUSNMZAloy6TrwhsYwX--KzpIOihDJIeV70Ts50xdv9aDK-krA89Qii_-0pWZ6iumbwsRnIzn8K3u4ri2XTxIBd6s-WSi07RinwbFTfoHgtEe8NhGU_Ff24LNg8IC949O2uYQaPYIetjUzZTJ&#39;,
+    &#39;width&#39;: 4032}],
+  &#39;place_id&#39;: &#39;ChIJqfTWVB6C0IkRSZm2PCd1JHE&#39;,
+  &#39;rating&#39;: 4.8,
+  &#39;reference&#39;: &#39;ChIJqfTWVB6C0IkRSZm2PCd1JHE&#39;,
+  &#39;reviews&#39;: [{&#39;author_name&#39;: &#39;melissa stone&#39;,
+    &#39;author_url&#39;: &#39;https://www.google.com/maps/contrib/104857888078479343452/reviews&#39;,
+    &#39;language&#39;: &#39;en&#39;,
+    &#39;profile_photo_url&#39;: &#39;https://lh3.googleusercontent.com/a-/AOh14GjzHObpe9adoJmL0A06bBo_9GmfaY3fo0gpS9Ov3w=s128-c0x00000000-cc-rp-mo-ba4&#39;,
+    &#39;rating&#39;: 4,
+    &#39;relative_time_description&#39;: &#39;6 months ago&#39;,
+    &#39;text&#39;: &#39;Long drive but worth it&#39;,
+    &#39;time&#39;: 1602703216},
+   {&#39;author_name&#39;: &#39;Daisy Y&#39;,
+    &#39;author_url&#39;: &#39;https://www.google.com/maps/contrib/113388717724158109337/reviews&#39;,
+    &#39;language&#39;: &#39;en&#39;,
+    &#39;profile_photo_url&#39;: &#39;https://lh3.googleusercontent.com/a/AATXAJwDtJHu-A-tu-bxdFTEV1kVLap5EIH03Rzi42PQ=s128-c0x00000000-cc-rp-mo&#39;,
+    &#39;rating&#39;: 5,
+    &#39;relative_time_description&#39;: &#39;7 months ago&#39;,
+    &#39;text&#39;: &#39;its a quick trail and view is pretty on two ends of the trail&#39;,
+    &#39;time&#39;: 1599430674},
+   {&#39;author_name&#39;: &#39;FunkyMonk44&#39;,
+    &#39;author_url&#39;: &#39;https://www.google.com/maps/contrib/113466325228139947132/reviews&#39;,
+    &#39;language&#39;: &#39;en&#39;,
+    &#39;profile_photo_url&#39;: &#39;https://lh3.googleusercontent.com/a/AATXAJy7rlcGvL2x7bdmsQTWOUcL0H3DahTIhPhLZQLY=s128-c0x00000000-cc-rp-mo-ba5&#39;,
+    &#39;rating&#39;: 5,
+    &#39;relative_time_description&#39;: &#39;a year ago&#39;,
+    &#39;text&#39;: &#39;Great place to see the natural beauty of the surrounding area. Every nature area is unique in some way or another and this one does not disappoint. There is a bridge that you can take to capture even more views. Very relaxing and scenic setting for anyone looking for a peaceful adventure.&#39;,
+    &#39;time&#39;: 1578625230},
+   {&#39;author_name&#39;: &#39;Mariena Silvestry Ramos&#39;,
+    &#39;author_url&#39;: &#39;https://www.google.com/maps/contrib/107999355375407869191/reviews&#39;,
+    &#39;language&#39;: &#39;en&#39;,
+    &#39;profile_photo_url&#39;: &#39;https://lh3.googleusercontent.com/a-/AOh14Gh1RnK-HbUwpyOtmFIgU3tQt9zDIeZoVua9ydSfHQ=s128-c0x00000000-cc-rp-mo-ba5&#39;,
+    &#39;rating&#39;: 5,
+    &#39;relative_time_description&#39;: &#39;a year ago&#39;,
+    &#39;text&#39;: &quot;Beautiful lake and hike. Easy to access from the Cornell campus. It looks absolutely breathtaking in the fall. There&#39;s a stone bridge with gorgeous views of the lake. Leads to Triphammer Falls. There&#39;s a bridge on campus (closed during the winter, I believe) to cross the falls. There are kayaks to rent too. Worth exploring for sure.&quot;,
+    &#39;time&#39;: 1571456379},
+   {&#39;author_name&#39;: &#39;Don Brovero&#39;,
+    &#39;author_url&#39;: &#39;https://www.google.com/maps/contrib/111391850469954642590/reviews&#39;,
+    &#39;language&#39;: &#39;en&#39;,
+    &#39;profile_photo_url&#39;: &#39;https://lh3.googleusercontent.com/a-/AOh14GgnJrQz7VU7VGCp8XqpUQKnOBp2RNAh9NyeQtmddA=s128-c0x00000000-cc-rp-mo-ba5&#39;,
+    &#39;rating&#39;: 4,
+    &#39;relative_time_description&#39;: &#39;11 months ago&#39;,
+    &#39;text&#39;: &#39;A nice little hike around this lake.  A lot of history, some cool natural water falls and also a neat damn. The hike is roughly 60 minutes and there is a lot to see and it is located right on the Cornell campus.&#39;,
+    &#39;time&#39;: 1591043967}],
+  &#39;types&#39;: [&#39;natural_feature&#39;, &#39;establishment&#39;],
+  &#39;url&#39;: &#39;https://maps.google.com/?q=Beebe+Lake&amp;ftid=0x89d0821e54d6f4a9:0x712475273cb69949&#39;,
+  &#39;user_ratings_total&#39;: 8,
+  &#39;utc_offset&#39;: -240},
+ &#39;status&#39;: &#39;OK&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Read the JSON data into a Pandas DataFrame</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">place</span> <span class="o">=</span> <span class="n">gmaps</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="s1">&#39;ChIJqfTWVB6C0IkRSZm2PCd1JHE&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">place</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>html_attributions</th>
+      <th>status</th>
+      <th>result.address_components</th>
+      <th>result.adr_address</th>
+      <th>result.formatted_address</th>
+      <th>result.geometry.location.lat</th>
+      <th>result.geometry.location.lng</th>
+      <th>result.geometry.viewport.northeast.lat</th>
+      <th>result.geometry.viewport.northeast.lng</th>
+      <th>result.geometry.viewport.southwest.lat</th>
+      <th>result.geometry.viewport.southwest.lng</th>
+      <th>result.icon</th>
+      <th>result.name</th>
+      <th>result.photos</th>
+      <th>result.place_id</th>
+      <th>result.rating</th>
+      <th>result.reference</th>
+      <th>result.reviews</th>
+      <th>result.types</th>
+      <th>result.url</th>
+      <th>result.user_ratings_total</th>
+      <th>result.utc_offset</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>[]</td>
+      <td>OK</td>
+      <td>[{'long_name': 'Beebe Lake', 'short_name': 'Beebe Lake', 'types': ['natural_feature', 'establishment']}, {'long_name': 'Tompkins County', 'short_name': 'Tompkins County', 'types': ['administrative_area_level_2', 'political']}, {'long_name': 'New York', 'short_name': 'NY', 'types': ['administrative_area_level_1', 'political']}, {'long_name': 'United States', 'short_name': 'US', 'types': ['country', 'political']}, {'long_name': '14850', 'short_name': '14850', 'types': ['postal_code']}]</td>
+      <td>Beebe Lake, &lt;span class="region"&gt;New York&lt;/span&gt; &lt;span class="postal-code"&gt;14850&lt;/span&gt;, &lt;span class="country-name"&gt;USA&lt;/span&gt;</td>
+      <td>Beebe Lake, New York 14850, USA</td>
+      <td>42.45101</td>
+      <td>-76.47619</td>
+      <td>42.45258</td>
+      <td>-76.473045</td>
+      <td>42.449882</td>
+      <td>-76.479998</td>
+      <td>https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/geocode-71.png</td>
+      <td>Beebe Lake</td>
+      <td>[{'height': 3024, 'html_attributions': ['&lt;a href="https://maps.google.com/maps/contrib/109578824600894016964"&gt;Charlie Chung&lt;/a&gt;'], 'photo_reference': 'ATtYBwIE78loUldyoKNmqiaMGEBOKc4jWuUI5VevaTBCl64iBXqNzHS83HLGxyWQYOGDeSXmFO6Negq2ARwByZzKE2h8yk623nVRLmf0bLQFBtNbIUCaySIYKbxEk9vThudMc8WglUXKCD-jQKTFa1V2TtnHQDcub9UjNyDxHOIdB1lx8BvL', 'width': 4032}, {'height': 3024, 'html_attributions': ['&lt;a href="https://maps.google.com/maps/contrib/113388717724158109337"&gt;Daisy Y&lt;/a&gt;'], 'photo_reference': 'AT...</td>
+      <td>ChIJqfTWVB6C0IkRSZm2PCd1JHE</td>
+      <td>4.8</td>
+      <td>ChIJqfTWVB6C0IkRSZm2PCd1JHE</td>
+      <td>[{'author_name': 'melissa stone', 'author_url': 'https://www.google.com/maps/contrib/104857888078479343452/reviews', 'language': 'en', 'profile_photo_url': 'https://lh3.googleusercontent.com/a-/AOh14GjzHObpe9adoJmL0A06bBo_9GmfaY3fo0gpS9Ov3w=s128-c0x00000000-cc-rp-mo-ba4', 'rating': 4, 'relative_time_description': '6 months ago', 'text': 'Long drive but worth it', 'time': 1602703216}, {'author_name': 'Daisy Y', 'author_url': 'https://www.google.com/maps/contrib/113388717724158109337/reviews',...</td>
+      <td>[natural_feature, establishment]</td>
+      <td>https://maps.google.com/?q=Beebe+Lake&amp;ftid=0x89d0821e54d6f4a9:0x712475273cb69949</td>
+      <td>8</td>
+      <td>-240</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Check out the columns</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;html_attributions&#39;, &#39;status&#39;, &#39;result.address_components&#39;,
+       &#39;result.adr_address&#39;, &#39;result.formatted_address&#39;,
+       &#39;result.geometry.location.lat&#39;, &#39;result.geometry.location.lng&#39;,
+       &#39;result.geometry.viewport.northeast.lat&#39;,
+       &#39;result.geometry.viewport.northeast.lng&#39;,
+       &#39;result.geometry.viewport.southwest.lat&#39;,
+       &#39;result.geometry.viewport.southwest.lng&#39;, &#39;result.icon&#39;, &#39;result.name&#39;,
+       &#39;result.photos&#39;, &#39;result.place_id&#39;, &#39;result.rating&#39;, &#39;result.reference&#39;,
+       &#39;result.reviews&#39;, &#39;result.types&#39;, &#39;result.url&#39;,
+       &#39;result.user_ratings_total&#39;, &#39;result.utc_offset&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Just examine the reviews, average rating, and total user ratings</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;result.reviews&#39;</span><span class="p">,</span> <span class="s1">&#39;result.rating&#39;</span><span class="p">,</span> <span class="s1">&#39;result.user_ratings_total&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>result.reviews</th>
+      <th>result.rating</th>
+      <th>result.user_ratings_total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>[{'author_name': 'melissa stone', 'author_url': 'https://www.google.com/maps/contrib/104857888078479343452/reviews', 'language': 'en', 'profile_photo_url': 'https://lh3.googleusercontent.com/a-/AOh14GjzHObpe9adoJmL0A06bBo_9GmfaY3fo0gpS9Ov3w=s128-c0x00000000-cc-rp-mo-ba4', 'rating': 4, 'relative_time_description': '6 months ago', 'text': 'Long drive but worth it', 'time': 1602703216}, {'author_name': 'Daisy Y', 'author_url': 'https://www.google.com/maps/contrib/113388717724158109337/reviews',...</td>
+      <td>4.8</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="section" id="get-reviews">
+<h3>Get Reviews<a class="headerlink" href="#get-reviews" title="Permalink to this headline">¶</a></h3>
+<p>Based on the JSON, we can see that the review data is nested here:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">place</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">][</span><span class="s1">&#39;reviews&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;html_attributions&#39;: [],
+ &#39;result&#39;: {&#39;address_components&#39;: [{&#39;long_name&#39;: &#39;Beebe Lake&#39;,
+    &#39;short_name&#39;: &#39;Beebe Lake&#39;,
+    &#39;types&#39;: [&#39;natural_feature&#39;, &#39;establishment&#39;]},
+   {&#39;long_name&#39;: &#39;Tompkins County&#39;,
+    &#39;short_name&#39;: &#39;Tompkins County&#39;,
+    &#39;types&#39;: [&#39;administrative_area_level_2&#39;, &#39;political&#39;]},
+   {&#39;long_name&#39;: &#39;New York&#39;,
+    &#39;short_name&#39;: &#39;NY&#39;,
+    &#39;types&#39;: [&#39;administrative_area_level_1&#39;, &#39;political&#39;]},
+   {&#39;long_name&#39;: &#39;United States&#39;,
+    &#39;short_name&#39;: &#39;US&#39;,
+    &#39;types&#39;: [&#39;country&#39;, &#39;political&#39;]},
+   {&#39;long_name&#39;: &#39;14850&#39;, &#39;short_name&#39;: &#39;14850&#39;, &#39;types&#39;: [&#39;postal_code&#39;]}],
+  &#39;adr_address&#39;: &#39;Beebe Lake, &lt;span class=&quot;region&quot;&gt;New York&lt;/span&gt; &lt;span class=&quot;postal-code&quot;&gt;14850&lt;/span&gt;, &lt;span class=&quot;country-name&quot;&gt;USA&lt;/span&gt;&#39;,
+  &#39;formatted_address&#39;: &#39;Beebe Lake, New York 14850, USA&#39;,
+  &#39;geometry&#39;: {&#39;location&#39;: {&#39;lat&#39;: 42.4510099, &#39;lng&#39;: -76.4761904},
+   &#39;viewport&#39;: {&#39;northeast&#39;: {&#39;lat&#39;: 42.45258032994754,
+     &#39;lng&#39;: -76.4730453317786},
+    &#39;southwest&#39;: {&#39;lat&#39;: 42.44988236936455, &#39;lng&#39;: -76.47999756180495}}},
+  &#39;icon&#39;: &#39;https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/geocode-71.png&#39;,
+  &#39;name&#39;: &#39;Beebe Lake&#39;,
+  &#39;photos&#39;: [{&#39;height&#39;: 3024,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/109578824600894016964&quot;&gt;Charlie Chung&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwIE78loUldyoKNmqiaMGEBOKc4jWuUI5VevaTBCl64iBXqNzHS83HLGxyWQYOGDeSXmFO6Negq2ARwByZzKE2h8yk623nVRLmf0bLQFBtNbIUCaySIYKbxEk9vThudMc8WglUXKCD-jQKTFa1V2TtnHQDcub9UjNyDxHOIdB1lx8BvL&#39;,
+    &#39;width&#39;: 4032},
+   {&#39;height&#39;: 3024,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/113388717724158109337&quot;&gt;Daisy Y&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwLEAqGobRv_8oxmTCVArYiQgNpcSDMR9KzlJVjwUhRm8PcHHqMEZx_8SAyNJRS1sGrfVdOu6UbyaYLJiywfrrCve3I7YkyrwvDu0XGApTFMYLuiHRnaM90z16pFJ4CubsRMiOwgNR9tcP9ukxMrCy_xmutrjOMajiXAv1VgDfVrMT10&#39;,
+    &#39;width&#39;: 4032},
+   {&#39;height&#39;: 3120,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/105517093223006174537&quot;&gt;nazlı konya&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwJoBgKRlkUDLltJEVPYiz32NKJf5AtYNDeTZLKcYgL8j1CeXe0BGmfXu6cuWoIfV553WU0aH-JW6jRBRx1WqpbaOIDkMYvtzXCfEwKbfbFiMFiQP_5lSNLA9chIkXy4aWjCZ_bhgeySi-TTM1OvdBun36MN7KT45-oY_2lFfeku7x0&#39;,
+    &#39;width&#39;: 4160},
+   {&#39;height&#39;: 1456,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/101046882135806425785&quot;&gt;Ira Gon&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwJlfFJR3x-saK8hZCI4PZMsXM5lGck6I_ImJNyRPQrh9-33yeo958w2TV0SooKfwAGhirKOOj9KJXBhYyKNNgOAKSG3T3oFQLxT2iJQ_LWgBQD5Z4cxakNDS7Rr0L8Q5Si-a9FZ3RVRggO939OoY-yy1pXCrJe-QGoId_AXkmZyH6Gx&#39;,
+    &#39;width&#39;: 2592},
+   {&#39;height&#39;: 3024,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/108640463498565010654&quot;&gt;Regina Martinez&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwL4bPROdZtdkDPJ89CnvhEDHsPLt6Ico-2K9qiirDm7SeozSTmymAwljOZaqPW_y5669Hb7l9am8TnUUfIeIki3DT316-AUAEhyYpgeuJJn74pqdfGETzJLW6TuWaQ3AzY0zim8meGeTbVanSlwKiagf3r3rrkE-H4qk5OI56ZGad9y&#39;,
+    &#39;width&#39;: 4032},
+   {&#39;height&#39;: 1872,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/110668897095058225687&quot;&gt;Sandeep Kumar&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwIGCfUE2YeM3MFYopq6dSYMiLPZEUGDc1E0KTvr_OxSb20X0WGCZSg_0jlDBWJejXwx9PNcN2fDC0v73LwBOtURtxB9Wab2gD-cJ8PIWp4fYaHcWYtkLmnfAVWPEwX_rsJxX6f0m1yw6h3I9cjc1kq2CfhMhwEVWvOgcfFjTx4qXSh8&#39;,
+    &#39;width&#39;: 3328},
+   {&#39;height&#39;: 4032,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/100533419529512773822&quot;&gt;Ed cernyar&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwI8_Momm1Yi4XX79ao36O7isjDVgRFuvV-SPK_bY8Ntyxj8xMv4RmrTqNJ0M0Vh2iT9leGqD_GnYcnT_yeMinoszx5SHtheX1pokfuxsX-kCfaZbZmowVCzhqjII0dmc-QvSCtNWkkv4faNouJfDkRUQXVYdS91kcyVmB2sQGOrgzxz&#39;,
+    &#39;width&#39;: 3024},
+   {&#39;height&#39;: 3024,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/113388717724158109337&quot;&gt;Daisy Y&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwLRwc2Z0WzHLx738z-qZGFvkVMinpW6HhfZAqtn4qA9Kb341l7CxSxIApHnKo5vuUTJ3L1OxeC2J7MHCFE2Aex5zSZDJrqIS1cbUrIT1IGn99rZWGOA6lBUqiG5zUBztk2sOxGW4DYGwtoyZ6wXaFpKhYp2TdRBUOQWBUDnsREQpzpD&#39;,
+    &#39;width&#39;: 4032},
+   {&#39;height&#39;: 1872,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/110668897095058225687&quot;&gt;Sandeep Kumar&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwLFqLTPHbUkVLU1nqcHa2V_IgfXWEUvnxdFeu7_rHK-ztjjJ57T8w9jLQdxZ_oC_981bfD14N-nDSJ1jp3Lh8T8oBsAbPsJnG7HEUDgtccACKQxTanJLOIs0SKx9Jj1w_vzMBf5t-0XBz6IdHsQUSdrvgeEDSav3-_r5pzcchwYzY-j&#39;,
+    &#39;width&#39;: 3328},
+   {&#39;height&#39;: 3024,
+    &#39;html_attributions&#39;: [&#39;&lt;a href=&quot;https://maps.google.com/maps/contrib/109670435802249590581&quot;&gt;Teresa Tyrrell&lt;/a&gt;&#39;],
+    &#39;photo_reference&#39;: &#39;ATtYBwI1uKE-Ybf9hD17cyGEy5329bUnQvV_F43ElKy0zYHn7lWukqUO_fGgzThMfH3-2k7L0BBC9CfcsHayO4znLZ79C6m-Upyr3YCeQ18tMJbml1cEqwJPzJykqn3KbEf8hcib8VKm_A5CGejTzzCIGAKEqw6p6GngvM2-CFFaUtQWz5b-&#39;,
+    &#39;width&#39;: 4032}],
+  &#39;place_id&#39;: &#39;ChIJqfTWVB6C0IkRSZm2PCd1JHE&#39;,
+  &#39;rating&#39;: 4.8,
+  &#39;reference&#39;: &#39;ChIJqfTWVB6C0IkRSZm2PCd1JHE&#39;,
+  &#39;reviews&#39;: [{&#39;author_name&#39;: &#39;melissa stone&#39;,
+    &#39;author_url&#39;: &#39;https://www.google.com/maps/contrib/104857888078479343452/reviews&#39;,
+    &#39;language&#39;: &#39;en&#39;,
+    &#39;profile_photo_url&#39;: &#39;https://lh3.googleusercontent.com/a-/AOh14GjzHObpe9adoJmL0A06bBo_9GmfaY3fo0gpS9Ov3w=s128-c0x00000000-cc-rp-mo-ba4&#39;,
+    &#39;rating&#39;: 4,
+    &#39;relative_time_description&#39;: &#39;6 months ago&#39;,
+    &#39;text&#39;: &#39;Long drive but worth it&#39;,
+    &#39;time&#39;: 1602703216},
+   {&#39;author_name&#39;: &#39;Daisy Y&#39;,
+    &#39;author_url&#39;: &#39;https://www.google.com/maps/contrib/113388717724158109337/reviews&#39;,
+    &#39;language&#39;: &#39;en&#39;,
+    &#39;profile_photo_url&#39;: &#39;https://lh3.googleusercontent.com/a/AATXAJwDtJHu-A-tu-bxdFTEV1kVLap5EIH03Rzi42PQ=s128-c0x00000000-cc-rp-mo&#39;,
+    &#39;rating&#39;: 5,
+    &#39;relative_time_description&#39;: &#39;7 months ago&#39;,
+    &#39;text&#39;: &#39;its a quick trail and view is pretty on two ends of the trail&#39;,
+    &#39;time&#39;: 1599430674},
+   {&#39;author_name&#39;: &#39;FunkyMonk44&#39;,
+    &#39;author_url&#39;: &#39;https://www.google.com/maps/contrib/113466325228139947132/reviews&#39;,
+    &#39;language&#39;: &#39;en&#39;,
+    &#39;profile_photo_url&#39;: &#39;https://lh3.googleusercontent.com/a/AATXAJy7rlcGvL2x7bdmsQTWOUcL0H3DahTIhPhLZQLY=s128-c0x00000000-cc-rp-mo-ba5&#39;,
+    &#39;rating&#39;: 5,
+    &#39;relative_time_description&#39;: &#39;a year ago&#39;,
+    &#39;text&#39;: &#39;Great place to see the natural beauty of the surrounding area. Every nature area is unique in some way or another and this one does not disappoint. There is a bridge that you can take to capture even more views. Very relaxing and scenic setting for anyone looking for a peaceful adventure.&#39;,
+    &#39;time&#39;: 1578625230},
+   {&#39;author_name&#39;: &#39;Mariena Silvestry Ramos&#39;,
+    &#39;author_url&#39;: &#39;https://www.google.com/maps/contrib/107999355375407869191/reviews&#39;,
+    &#39;language&#39;: &#39;en&#39;,
+    &#39;profile_photo_url&#39;: &#39;https://lh3.googleusercontent.com/a-/AOh14Gh1RnK-HbUwpyOtmFIgU3tQt9zDIeZoVua9ydSfHQ=s128-c0x00000000-cc-rp-mo-ba5&#39;,
+    &#39;rating&#39;: 5,
+    &#39;relative_time_description&#39;: &#39;a year ago&#39;,
+    &#39;text&#39;: &quot;Beautiful lake and hike. Easy to access from the Cornell campus. It looks absolutely breathtaking in the fall. There&#39;s a stone bridge with gorgeous views of the lake. Leads to Triphammer Falls. There&#39;s a bridge on campus (closed during the winter, I believe) to cross the falls. There are kayaks to rent too. Worth exploring for sure.&quot;,
+    &#39;time&#39;: 1571456379},
+   {&#39;author_name&#39;: &#39;Don Brovero&#39;,
+    &#39;author_url&#39;: &#39;https://www.google.com/maps/contrib/111391850469954642590/reviews&#39;,
+    &#39;language&#39;: &#39;en&#39;,
+    &#39;profile_photo_url&#39;: &#39;https://lh3.googleusercontent.com/a-/AOh14GgnJrQz7VU7VGCp8XqpUQKnOBp2RNAh9NyeQtmddA=s128-c0x00000000-cc-rp-mo-ba5&#39;,
+    &#39;rating&#39;: 4,
+    &#39;relative_time_description&#39;: &#39;11 months ago&#39;,
+    &#39;text&#39;: &#39;A nice little hike around this lake.  A lot of history, some cool natural water falls and also a neat damn. The hike is roughly 60 minutes and there is a lot to see and it is located right on the Cornell campus.&#39;,
+    &#39;time&#39;: 1591043967}],
+  &#39;types&#39;: [&#39;natural_feature&#39;, &#39;establishment&#39;],
+  &#39;url&#39;: &#39;https://maps.google.com/?q=Beebe+Lake&amp;ftid=0x89d0821e54d6f4a9:0x712475273cb69949&#39;,
+  &#39;user_ratings_total&#39;: 8,
+  &#39;utc_offset&#39;: -240},
+ &#39;status&#39;: &#39;OK&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reviews_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">place</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">][</span><span class="s1">&#39;reviews&#39;</span><span class="p">])</span>
+<span class="n">reviews_df</span><span class="p">[[</span><span class="s1">&#39;author_name&#39;</span><span class="p">,</span> <span class="s1">&#39;rating&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>author_name</th>
+      <th>rating</th>
+      <th>text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>melissa stone</td>
+      <td>4</td>
+      <td>Long drive but worth it</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Daisy Y</td>
+      <td>5</td>
+      <td>its a quick trail and view is pretty on two ends of the trail</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>FunkyMonk44</td>
+      <td>5</td>
+      <td>Great place to see the natural beauty of the surrounding area. Every nature area is unique in some way or another and this one does not disappoint. There is a bridge that you can take to capture even more views. Very relaxing and scenic setting for anyone looking for a peaceful adventure.</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Mariena Silvestry Ramos</td>
+      <td>5</td>
+      <td>Beautiful lake and hike. Easy to access from the Cornell campus. It looks absolutely breathtaking in the fall. There's a stone bridge with gorgeous views of the lake. Leads to Triphammer Falls. There's a bridge on campus (closed during the winter, I believe) to cross the falls. There are kayaks to rent too. Worth exploring for sure.</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Don Brovero</td>
+      <td>4</td>
+      <td>A nice little hike around this lake.  A lot of history, some cool natural water falls and also a neat damn. The hike is roughly 60 minutes and there is a lot to see and it is located right on the Cornell campus.</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="using-the-api-without-a-wrapper">
+<h2>Using the API Without a Wrapper<a class="headerlink" href="#using-the-api-without-a-wrapper" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://developers.google.com/maps/documentation/places/web-service/search"><code class="docutils literal notranslate"><span class="pre">https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input={place}&amp;inputtype=textquery&amp;key={api_key}</span></code></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#api_key = YOUR API KEY </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">place</span> <span class="o">=</span> <span class="s2">&quot;Beebe Lake&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://developers.google.com/maps/documentation/places/web-service/search">Find place id</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=</span><span class="si">{</span><span class="n">place</span><span class="si">}</span><span class="s2">&amp;inputtype=textquery&amp;key=</span><span class="si">{</span><span class="n">api_key</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;candidates&#39;: [{&#39;place_id&#39;: &#39;ChIJqfTWVB6C0IkRSZm2PCd1JHE&#39;}], &#39;status&#39;: &#39;OK&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">https://maps.googleapis.com/maps/api/place/details/json?place_id={place_id}&amp;key={api_key}</span></code></p>
+<p><a class="reference external" href="https://developers.google.com/maps/documentation/places/web-service/details">Find place details</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">place_id</span> <span class="o">=</span> <span class="s1">&#39;ChIJqfTWVB6C0IkRSZm2PCd1JHE&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;https://maps.googleapis.com/maps/api/place/details/json?place_id=</span><span class="si">{</span><span class="n">place_id</span><span class="si">}</span><span class="s2">&amp;key=</span><span class="si">{</span><span class="n">api_key</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>html_attributions</th>
+      <th>status</th>
+      <th>result.address_components</th>
+      <th>result.adr_address</th>
+      <th>result.formatted_address</th>
+      <th>result.geometry.location.lat</th>
+      <th>result.geometry.location.lng</th>
+      <th>result.geometry.viewport.northeast.lat</th>
+      <th>result.geometry.viewport.northeast.lng</th>
+      <th>result.geometry.viewport.southwest.lat</th>
+      <th>result.geometry.viewport.southwest.lng</th>
+      <th>result.icon</th>
+      <th>result.name</th>
+      <th>result.photos</th>
+      <th>result.place_id</th>
+      <th>result.rating</th>
+      <th>result.reference</th>
+      <th>result.reviews</th>
+      <th>result.types</th>
+      <th>result.url</th>
+      <th>result.user_ratings_total</th>
+      <th>result.utc_offset</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>[]</td>
+      <td>OK</td>
+      <td>[{'long_name': 'Beebe Lake', 'short_name': 'Beebe Lake', 'types': ['natural_feature', 'establishment']}, {'long_name': 'Tompkins County', 'short_name': 'Tompkins County', 'types': ['administrative_area_level_2', 'political']}, {'long_name': 'New York', 'short_name': 'NY', 'types': ['administrative_area_level_1', 'political']}, {'long_name': 'United States', 'short_name': 'US', 'types': ['country', 'political']}, {'long_name': '14850', 'short_name': '14850', 'types': ['postal_code']}]</td>
+      <td>Beebe Lake, &lt;span class="region"&gt;New York&lt;/span&gt; &lt;span class="postal-code"&gt;14850&lt;/span&gt;, &lt;span class="country-name"&gt;USA&lt;/span&gt;</td>
+      <td>Beebe Lake, New York 14850, USA</td>
+      <td>42.45101</td>
+      <td>-76.47619</td>
+      <td>42.45258</td>
+      <td>-76.473045</td>
+      <td>42.449882</td>
+      <td>-76.479998</td>
+      <td>https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/geocode-71.png</td>
+      <td>Beebe Lake</td>
+      <td>[{'height': 3024, 'html_attributions': ['&lt;a href="https://maps.google.com/maps/contrib/109578824600894016964"&gt;Charlie Chung&lt;/a&gt;'], 'photo_reference': 'ATtYBwLUG4EMjBBuPgFWnbwam-8MigQZA4pTwzbxKC4taTp-Z48kY6TTk7HkFDuICu9C3f0OLaj8fSUlrCwxFGdU6eIhrElbxkrQuSZ-RsQ4pH-tBiLK9Ey2CWmjDPyhtBd7CWP_f31-gzz6G2jUsAJa2CkPR5GtwXsN4ZNPA9A0tJgVwTLF', 'width': 4032}, {'height': 3024, 'html_attributions': ['&lt;a href="https://maps.google.com/maps/contrib/113388717724158109337"&gt;Daisy Y&lt;/a&gt;'], 'photo_reference': 'AT...</td>
+      <td>ChIJqfTWVB6C0IkRSZm2PCd1JHE</td>
+      <td>4.8</td>
+      <td>ChIJqfTWVB6C0IkRSZm2PCd1JHE</td>
+      <td>[{'author_name': 'melissa stone', 'author_url': 'https://www.google.com/maps/contrib/104857888078479343452/reviews', 'language': 'en', 'profile_photo_url': 'https://lh3.googleusercontent.com/a-/AOh14GjzHObpe9adoJmL0A06bBo_9GmfaY3fo0gpS9Ov3w=s128-c0x00000000-cc-rp-mo-ba4', 'rating': 4, 'relative_time_description': '6 months ago', 'text': 'Long drive but worth it', 'time': 1602703216}, {'author_name': 'Daisy Y', 'author_url': 'https://www.google.com/maps/contrib/113388717724158109337/reviews',...</td>
+      <td>[natural_feature, establishment]</td>
+      <td>https://maps.google.com/?q=Beebe+Lake&amp;ftid=0x89d0821e54d6f4a9:0x712475273cb69949</td>
+      <td>8</td>
+      <td>-240</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./COURSE-Final-Project/Workbooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By <a href="https://melaniewalsh.org/">Melanie Walsh</a><br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            <div>
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This book is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>. The code is licensed under a <a href="https://choosealicense.com/licenses/gpl-3.0/#">GNU General Public License v3.0</a>.
+</div>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-86905362-3', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

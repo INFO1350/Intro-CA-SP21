@@ -1,0 +1,2343 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to Use LyricsGenius &#8212; Introduction to Cultural Analytics &amp; Python</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://melaniewalsh.github.io/Intro-Cultural-Analytics/COURSE-Final-Project/Workbooks/00-How-To-LyricsGenius.html" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://melaniewalsh.github.io/Intro-Cultural-Analytics/COURSE-Final-Project/Workbooks/00-How-To-LyricsGenius.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="How to Use LyricsGenius" />
+<meta property="og:description" content="How to Use LyricsGenius  Note: You can explore this workbook in the cloud via Binder.  Install latest version of lyricsgenius  !pip install git+https://github.c" />
+<meta property="og:image"       content="https://melaniewalsh.github.io/Intro-Cultural-Analytics/_static/favicon.ico" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/favicon.ico" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Introduction to Cultural Analytics & Python</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  How To
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../How-To-Interact-With-This-Book.html">
+   Interact With This Book
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  The Course
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../course-schedule-2021.html">
+   Course Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../syllabus.html">
+   Course Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Final-Project-Instructions.html">
+   Final Project
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  The Book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01-Command-Line/01-The-Command-Line.html">
+   1. The Command Line
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../02-Python/00-Python.html">
+   2. Python Basics
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/01-Installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/02-How-to-Use-Jupyter-Notebooks.html">
+     How to Use Jupyter Notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/03-Anatomy-Python-Script.html">
+     Anatomy of a Python Script
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/04-Variables.html">
+     Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/05-Data-Types.html">
+     Data Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/06-String-Methods.html">
+     String Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/07-Files-Character-Encoding.html">
+     Files and Character Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/08-Comparisons-Conditionals.html">
+     Comparisons &amp; Conditionals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/09-Lists-Loops-Part1.html">
+     Lists &amp; Loops — Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/10-Lists-Loops-Part2.html">
+     Lists &amp; Loops — Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/11-Dictionaries.html">
+     Dictionaries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/12-Functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/13-Common-Python-Errors.html">
+     Common Python Errors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Python/14-What-Were-Not-Covering.html">
+     What We’re Not Covering
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../03-Data-Analysis/00-Data-Analysis.html">
+   3. Data Analysis (Pandas)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Data-Analysis/01-Pandas-Basics-Part1.html">
+     Pandas Basics — Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Data-Analysis/02-Pandas-Basics-Part2.html">
+     Pandas Basics — Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Data-Analysis/03-Pandas-Basics-Part3.html">
+     Pandas Basics — Part 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Data-Analysis/04-Pandas-Merge-Datasets.html">
+     Pandas — Merge Datasets
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../04-Data-Collection/00-Data-Collection.html">
+   4. Data Collection (Web Scraping, APIs)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04-Data-Collection/01-User-Ethics-Legal-Concerns.html">
+     User Ethics &amp; Legal Concerns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04-Data-Collection/02-Web-Scraping-Part1.html">
+     Web Scraping — Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04-Data-Collection/03-Web-Scraping-Part2.html">
+     Web Scraping — Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04-Data-Collection/04-Git-GitHub.html">
+     Git and GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04-Data-Collection/05-APIs.html">
+     Application Programming Interfaces (APIs)
+    </a>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../04-Data-Collection/06-Song-Genius-Data-Collection.html">
+     Song Genius Data Collection
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../04-Data-Collection/07-Genius-API.html">
+       Song Genius API
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../04-Data-Collection/08-LyricsGenius.html">
+       Song Lyrics Collection
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../04-Data-Collection/09-Song-Lyrics-Analysis.html">
+       Song Lyrics Analysis
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../04-Data-Collection/10-Twitter-Data-Collection-Home.html">
+     Twitter Data Collection
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../04-Data-Collection/11-Twitter-API-Setup.html">
+       Twitter API Setup
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../04-Data-Collection/12-Twitter-Data-Collection.html">
+       Twitter Data Collection
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../04-Data-Collection/13-Twitter-Data-Analysis.html">
+       Twitter Data Analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../04-Data-Collection/14-Twitter-Data-Sharing.html">
+       Twitter Data Sharing
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04-Data-Collection/15-Reddit-Data-Collection-With-PSAW.html">
+     Reddit Data Collection
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../05-Text-Analysis/00-Text-Analysis.html">
+   5. Text Analysis
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../05-Text-Analysis/01-TF-IDF.html">
+     TF-IDF
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../05-Text-Analysis/02-TF-IDF-HathiTrust.html">
+       TF-IDF with HathiTrust Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../05-Text-Analysis/03-TF-IDF-Scikit-Learn.html">
+       TF-IDF with Scikit-Learn
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../05-Text-Analysis/04-Topic-Modeling.html">
+     Topic Modeling
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../05-Text-Analysis/05-Topic-Modeling-Overview.html">
+       Topic Modeling — Overview
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../05-Text-Analysis/06-Topic-Modeling-Set-Up.html">
+       Topic Modeling — Set Up
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../05-Text-Analysis/07-Topic-Modeling-Text-Files.html">
+       Topic Modeling — Text Files
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../05-Text-Analysis/08-Topic-Modeling-CSV.html">
+       Topic Modeling — CSV Files
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../05-Text-Analysis/09-Topic-Modeling-Time-Series.html">
+       Topic Modeling — Time Series
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05-Text-Analysis/07-Topic-Modeling-Without-Mallet.html">
+     Topic Modeling — With Tomotopy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05-Text-Analysis/10-Named-Entity-Recognition.html">
+     Named Entity Recognition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05-Text-Analysis/11-POS-Keywords.html">
+     Part-of-Speech Tagging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05-Text-Analysis/11-POS-Keywords.html#keyword-extraction">
+     Keyword Extraction
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../06-Network-Analysis/00-Network-Analysis-Home.html">
+   6. Network Analysis
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06-Network-Analysis/01-Network-Analysis.html">
+     Network Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06-Network-Analysis/02-Making-Network-Viz-with-Bokeh.html">
+     Make an Interactive Network Visualization
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../07-Mapping/01-Mapping-Home.html">
+   7. Mapping
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07-Mapping/02-Mapping.html">
+     Mapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07-Mapping/02-Mapping.html#geocoding-with-geopy">
+     Geocoding with GeoPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07-Mapping/02-Mapping.html#making-interactive-maps">
+     Making Interactive Maps
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07-Mapping/03-Custom-Maps.html">
+     Custom Map Backgrounds
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07-Mapping/04-Publish-Your-Map.html">
+     Publish Your Map on the Web
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Datasets
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../00-Datasets/Datasets.html">
+   Datasets
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Extra Materials
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02-Python/EXTRA-Jupyter-Tips-Tricks.html">
+   Jupyter Tips and Tricks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02-Python/EXTRA-Randomize-Students.html">
+   Make Random Student Groups
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/COURSE-Final-Project/Workbooks/00-How-To-LyricsGenius.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/INFO1350/Intro-CA-SP21"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/INFO1350/Intro-CA-SP21/issues/new?title=Issue%20on%20page%20%2FCOURSE-Final-Project/Workbooks/00-How-To-LyricsGenius.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/INFO1350/Intro-CA-SP21/master?urlpath=lab/tree/book/COURSE-Final-Project/Workbooks/00-How-To-LyricsGenius.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   How to Use LyricsGenius
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#counting-word-frequency">
+   Counting Word Frequency
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="how-to-use-lyricsgenius">
+<h1>How to Use LyricsGenius<a class="headerlink" href="#how-to-use-lyricsgenius" title="Permalink to this headline">¶</a></h1>
+<p><em>Note: You can explore this <a class="reference external" href="https://mybinder.org/v2/gh/INFO1350/Intro-CA-SP21/master?urlpath=lab/tree/book/COURSE-Final-Project/Workbooks/00-How-To-LyricsGenius.ipynb">workbook</a> in the cloud via Binder.</em></p>
+<p>Install latest version of lyricsgenius</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install git+https://github.com/johnwmillr/LyricsGenius.git
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can make a Genius API key and get a Client Access Token by following the instructions here: https://info1350.github.io/Intro-CA-SP21/04-Data-Collection/07-Genius-API.html#api-keys</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_genius_api_key</span> <span class="kn">import</span> <span class="n">client_access_token</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#client_access_token = &quot;YOUR TOKEN HERE&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Import and set up lyricsgenius</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lyricsgenius</span>
+<span class="n">genius</span> <span class="o">=</span> <span class="n">lyricsgenius</span><span class="o">.</span><span class="n">Genius</span><span class="p">(</span><span class="n">client_access_token</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can decide to remove section headers in lyrics, exclude songs that are remixes, etc. by setting the following variables:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#genius.verbose = False # Turn off status messages</span>
+<span class="c1">#genius.remove_section_headers = True # Remove section headers (e.g. [Chorus]) from lyrics when searching</span>
+<span class="c1">#genius.skip_non_songs = False # Include hits thought to be non-songs (e.g. track lists)</span>
+<span class="c1">#genius.excluded_terms = [&quot;(Remix)&quot;, &quot;(Live)&quot;] # Exclude songs with these words in their title</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can search for an album and save the lyrics to a single text file. You can examine the code for the <code class="docutils literal notranslate"><span class="pre">save_lyrics()</span></code> function <a class="reference external" href="https://github.com/johnwmillr/LyricsGenius/blob/master/lyricsgenius/types/album.py#L55">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">album</span> <span class="o">=</span> <span class="n">genius</span><span class="o">.</span><span class="n">search_album</span><span class="p">(</span><span class="s2">&quot;Under Construction&quot;</span><span class="p">,</span> <span class="s2">&quot;Missy Elliott&quot;</span><span class="p">)</span>
+<span class="n">album</span><span class="o">.</span><span class="n">save_lyrics</span><span class="p">(</span><span class="n">extension</span><span class="o">=</span><span class="s1">&#39;txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Searching for &quot;Under Construction&quot; by Missy Elliott...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Lyrics_UnderConstruction.txt already exists. Overwrite?
+(y/n):  y
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wrote Lyrics_UnderConstruction.txt.
+</pre></div>
+</div>
+</div>
+</div>
+<p>This <code class="docutils literal notranslate"><span class="pre">album</span></code> now has a number of properties that we can access, such as the artist’s name, the album name, and the album cover art</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">album</span><span class="o">.</span><span class="n">artist</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Missy Elliott&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">album</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Under Construction&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">album</span><span class="o">.</span><span class="n">cover_art_url</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;https://images.genius.com/5dfa9016abf58bcec676c0b77a31f2bc.1000x1000x1.jpg&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">album</span><span class="o">.</span><span class="n">release_date_components</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>datetime.datetime(2002, 11, 12, 0, 0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">album</span><span class="o">.</span><span class="n">release_date_components</span><span class="o">.</span><span class="n">year</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2002
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">album</span></code> also has information about each track or song, which we can access like so:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">track</span> <span class="ow">in</span> <span class="n">album</span><span class="o">.</span><span class="n">tracks</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">track</span><span class="o">.</span><span class="n">song</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intro/Go To The Floor
+Bring the Pain
+Gossip Folks
+Work It
+Back in the Day
+Funky Fresh Dressed
+Pussycat
+Nothing Out There for Me
+Slide
+Play That Beat
+Ain’t That Funny
+Hot
+Can You Hear Me
+Work It (Remix)
+Drop the Bomb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">track</span> <span class="ow">in</span> <span class="n">album</span><span class="o">.</span><span class="n">tracks</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">track</span><span class="o">.</span><span class="n">song</span><span class="o">.</span><span class="n">lyrics</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Intro]
+Yeah, what&#39;s the deal ya&#39;ll this Missy Elliott
+Givin&#39; ya&#39;ll magazine writers, radio cats, listers or plain ol&#39; haters
+A small piece a my album which is titled Under Construction
+Under Construction simply states that I&#39;m a work in progress
+I&#39;m working on myself
+You know uh, every since Aaliyah passed
+I view life in a uh, more valuable way
+Looking at hate and anger and gossip or
+Just plain ol&#39; bullshit became ignorant to me
+When you realize in a blink of a eye
+You walking down a church aisle
+And that was meant for weddings and happiness
+And realize the same church aisles are used
+To view a loved one for the last time
+From the world trade families the Left Eye family, Big Pun family
+You know Biggie family, Pac family to the hip hop family
+We all under construction tryin to rebuild you know ourselves
+Hip hop done gained respect from you know...
+Not even respect from but just like rock and roll
+And it took us a lot of hard work to get here
+So all that hate and animosity between folks ya need ta kill it
+Wit a skillet
+You don&#39;t see Bill Gates and Donald trump
+Arguing wit each other &#39;cuz both of them got paper
+And the they got better shit to do: get mo&#39; paper
+So all I&#39;m sayin&#39; is, let&#39;s take hip hop back to the rope follow me
+(Hard working, the star of the show)
+Misdemeanor here!
+(Hard working, the star of the show)
+Mr. Mos&#39; on the beats!
+(Hard working, the star of the show)
+2000 Eternity!!!
+(Hard working, the star of the show)
+I&#39;m the star of the show, let the show begin
+[Go to the Floor]
+This is a Missy Elliott Exclusive (Set it off)
+Momma say, momma sah, momma can you do this?
+Talkin&#39; like you baddest when you just know dat is
+Every time I come out ya&#39;ll be like who dat is
+Be like more like Ashanti and be unfoolish
+You don&#39;t really want to break it wit me
+You wear Gata I sport the Fendi
+My Lamborghini against you Benzi
+Dirty diamonds and your ring see mine like cling cling cling
+Ding ding ding ding ding ding da ding ding
+I used to get so high they call me Ming Lee
+Spiked up my hair done like Don King
+Haters keep on hatin&#39; &#39;cause dem don&#39;t worry we
+Dem don&#39;t worry we or me and Timothy
+M I S E slimed out my bodee-ee-ee
+Bang bang to the boogie ooh, wee
+Playa keep on playin&#39; watch me do my duty
+
+[Chorus]
+Go to the floor (now tell me what you want)
+Grab me a drink (now what you gon&#39;do)
+I came to shake, shake my booty down down to the beat
+Stand on the chairs (and dance like who?)
+Dance like the freaks (now what you came to do?)
+I came to shake shake my booty down, hype the party (Set it off)
+[Verse 2]
+I&#39;m underrated, glad I made it, independent operated
+I never hesitated, haters keep me motivated
+The beat is penetrated I&#39;ll let Timmy regulate it
+And we laid it in the shade and drink a glass of lemonade n
+Damn I&#39;m faded!
+Ain&#39;t no other way to say it ain&#39;t that complicated
+Ain&#39;t no other chicks gon&#39; ever make me feel like invaded
+I keep droppin&#39; hits like water breakin&#39;
+Two centimeters and I&#39;m dialatin&#39;
+Radio impatient, pause, come on, check my translation
+From my observation my fans is real patient
+They don&#39;t wanna hear the lies so stop fakin&#39;
+You&#39;re greasy like bacon, keep my stomach achin&#39;
+If you wanna battle let there be no more delayin&#39;
+I hope you did some prayin&#39; &#39;cause when I come swayin&#39;
+Pop shu pop, pop, pop, yeah
+Sometimes I flow sometimes quick
+You was on the verge of kissin&#39; ass so slick
+I&#39;d be on the verge or makin&#39; hits after hits
+This the kind of shit that tell yo mammy don&#39;t forget
+
+[Chorus]
+Go to the floor (now tell me what you want)
+Grab me a drink (now what you gon&#39;do)
+I came to shake, shake my booty down down to the beat
+Stand on the chairs (and dance like who?)
+Dance like the freaks (now what you came to do?)
+I came to shake shake my booty down, hype the party (Ohh)
+[Bridge/Verse 3]
+Everybody, move your body now do it
+Here&#39;s somethin&#39; that&#39;s gonna make you move and goove
+(New Missy Elliott y&#39;all!)
+Hey DJ keep playin&#39; that song all night, on and on and on
+Is the niggas over there, bitches rightchea
+Yea yea yea yea yea yea yea jeyah
+All night long I hope you all came prepared
+It&#39;s five o&#39;clock and we ain&#39;t goin&#39; nowhere
+Oh yeah, oh, ooh wee
+And will the guy the cash choose me? (Oh yeah!)
+Baby, I got a man I ain&#39;t seen lately (Go down to the floor)
+
+[Chorus]
+Go to the floor (now tell me what you want)
+Grab me a drink (now what you gon&#39;do)
+I came to shake, shake my booty down down to the beat
+Stand on the chairs (and dance like who?)
+Dance like the freaks (now what you came to do?)
+I came to shake shake my booty down, hype the party
+&quot;One two three four five six seven eight nine!&quot; - Chuck D
+&quot;Are we on the air?&quot;
+
+[Intro: Missy Elliott]
+Uhh, uhh .. (HA?)
+Uhh (HA?) uhh (HA?)
+Uhh, this is - uhh, a Missy Elliott - uhh, exclusive
+Uh-huh.. woo!!
+
+[Verse 1: Missy]
+I came to bring the pain, hardcore to the brain
+Ooh baby, what&#39;s your name? (HA?)
+I love the way you&#39;re spittin&#39; the game
+You made me change from thinkin&#39; all guys the same
+You the type of guy I wanna marry in months
+Got exactly what I want (HA?)
+And ain&#39;t no fakin&#39; the funk
+Your attitude is funk and you&#39;re makin&#39; me crunk (C&#39;mon)
+
+[Hook: Missy - singing]
+Yes it&#39;s real baby
+Got me so crazy
+Light my fire dirty
+Like the way you serve me
+Stimulate my body
+Crunk just like a party
+Ohh, you won&#39;t be sorry
+My papi, I&#39;m yo&#39; mami
+[Verse 2: Missy]
+I&#39;m in your life to come and let you explore (HA?)
+And take you on a tour
+The kind of guys that be talkin&#39; that noise
+Is the reason I ignore (UH-HA!)
+And you the one I wanna take to MEET MOMS
+&quot;He&#39;s a rap superstar&quot; (UH-HA!)
+I wanna be the one
+You like, I&#39;m sure to do you right
+
+[Hook]
+Yes it&#39;s real baby
+Got me so crazy
+Light my fire dirty
+Like the way you serve me (Oooh Oooh)
+Stimulate my body
+Crunk just like a party
+Ohh, you won&#39;t be sorry
+My papi, I&#39;m yo&#39; mami
+
+[Verse 3: Method Man (Missy)]
+Is it real hon, if it&#39;s really real? (Let&#39;s chill)
+Maybe pop an X pill (How the sex feel?)
+Come and get your next thrill (You the raw deal)
+Yo I&#39;m sayin if your man won&#39;t (Mr. Meth will)
+That&#39;s amoré, all day, mind over matter
+And my forte is foreplay, sex on a platter have it your way
+Then who, serve you everything on the menu
+And all that freak shit that you into?
+Sweet lady, you drive me half crazy
+Maybe, we can go half on a baby (On a baby?)
+Poppa got a brand new bag
+Hidden in the stash of his brand new Jag
+Lovely, kick your shoes off and get comfy
+We can bump uglies if you ain&#39;t got your monthly
+Yes I, like &quot;American Pie&quot;
+Tell &#39;em M-I-crooked letter-crooked letter-Y
+[Hook]
+Yes it&#39;s real baby
+Got me so crazy
+Light my fire dirty
+Like the way you serve me
+Stimulate my body
+Crunk just like a party
+Ohh, you won&#39;t be sorry
+My papi, I&#39;m yo&#39; mami
+
+[Verse 4: Missy]
+M-E-T-H-O-D, Man
+M-I-S-S-Y, I am
+I came came to bang bang the boogie
+I see you lookin to bang out my nookie
+You want my cookies I baked for you rookies
+Work hard they want me to bang bang and stick me
+If you want my nookie you got to come quickly
+M-E-T-H-O-D is ya wit me?
+(Mr. Meth) is ya wit me?
+[Intro: People in background chatting]
+Yo, yo yo move out of the way
+We got Missy Elliott coming through
+Girl that is Missy Elliott she lost a lot of weight
+Girl I heard she eats one cracker a day
+Oh well I heard the bitch was married to Tim and started fucking with Trina
+I heard the bitch got hit with three zebras and a monkey
+I can&#39;t stand the bitch no way
+
+[Verse 1: Missy Elliott]
+When I walk up in the piece
+I ain&#39;t gotta even speak
+I&#39;m a bad mamajama
+Goddammit motherfucker you ain&#39;t gotta like me
+How you stuntin&#39; these hoes
+Need to talk what you know
+And stop talking bout who I&#39;m sticking and licking
+Just mad it ain&#39;t yours
+I know ya&#39;ll po&#39; ya&#39;ll broke
+Ya&#39;ll job just hanging up clothes
+Step to me get burnt like toast
+Muthafuckas, adios amigos
+Halves halves wholes wholes
+I don&#39;t brag I mostly boast
+From the VA to the LA coast
+Izzy kizzy lizzy goh
+[Chorus]
+Millze cillzan sillzome plilzay dilzzouble dilzutch!
+Hilzzoo?
+My gizzirl!
+Brillzing her izzin!
+Izzo kizzay!
+Izzall rizzight...
+Izzo kizzay!
+Izzall rizzight! Nizzow wizzee wilzzo-izzo-zee!
+
+[Verse 2: Missy Elliott]
+When I pull up in my whip
+Bitches wanna talk shit
+I&#39;m driving I&#39;m glad and I&#39;m styling
+In these muthafuckas ask, did you see it?
+I&#39;m gripping these curbs
+Skrrt Did ya heard?
+I love em, my feathers, my furs
+I fly like a bird
+Chicken heads on the prowl
+Who you trying fuck now?
+Now you ain&#39;t getting loud
+Better calm down &#39;for I smack your ass down
+I need my drums bass high
+Has to be my snare, strings, horns, yes
+I need my Tim sound
+Right, left
+Izzy kizzy looky here
+[Chorus]
+Millze cillzan sillzome plilzay dilzzouble dilzutch!
+Hilzzoo?
+My gizzirl!
+Brillzing her izzin!
+Izzo kizzay!
+Izzall rizzight...
+Izzo kizzay!
+Izzall rizzight! Nizzow wizzee wilzzo-izzo-zee!
+
+[Bridge: Missy]
+I don&#39;t go out my house shorty
+You just waiting to see
+Who gon&#39; roll up in the club and then report that next week
+Just wanna see who I am fucking boy
+Sniffing some coke
+I know by the time I finish this line Imma hear this on the radio
+
+[Verse 3: Ludacris]
+Yeah, uh huh, okay
+Once upon a time in College Park
+Where they live life fast and they scared of dark
+There was a little nigga by the name of Chris
+Nobody paid him any mind
+No one gave a shit
+Knowing he could rap
+No one lifted hands
+So he went about his business and devised a plan
+Made a CD and then he hit the block
+50 thousand sold
+Seven dollars a pop
+Hold the phone
+Three years later
+Stepped out the swamp
+With ten and a half gators
+Now all around the world on the microphone
+He leave the booth smelling like Burberry cologne
+Still riding chrome
+Got bitches in the kitchen
+Never home alone
+And he&#39;s on the grind
+Please let me know if he&#39;s on your mind
+And respect you&#39;ll give me
+Ludacris I live loud like Timmy
+Fuck, have to clear these rumors
+I got a headache and it&#39;s not a tumor
+Get up on my lap and get my head sucked tight
+Sprayed so I never let the bed bugs bite
+Hard to the core
+Core to the rotten
+Jump down, turn around, pick a bale of cotton
+Yahh
+[Chorus]
+Millze cillzan sillzome plilzay dilzzouble dilzutch!
+Hilzzoo?
+My gizzirl!
+Brillzing her izzin!
+Izzo kizzay!
+Izzall rizzight...
+Izzo kizzay!
+Izzall rizzight! Nizzow wizzee wilzzo-izzo-zee!
+[People in the background chatting]
+Yo, straight up Missy killed that shit tonight for real
+I know I know, I don&#39;t even care about her being preganant by Michael Jackson
+You know what we should do
+We should go get her album when it comes out
+There she go, there she go, there she
+Heeeey Misssy
+
+[Missy]
+Hi Missy?
+What&#39;s up fools?
+You think I ain&#39;t knowin y&#39;all broke, Milli Vanilli
+J.J. Fad wannabes ain&#39;t over here gossiping bout me?
+Yo how bout you buff these Pumas for 20 cents
+So your lights won&#39;t get cut off
+You soggy breasts, cow stomachs
+Yo take those baby GAP shirts off, too
+You just mad cuz Payless ran outa plastic pumps for the after party
+Yo by the way, go get my album
+Damn!
+
+[Chorus/Outro]
+Millze cillzan sillzome plilzay dilzzouble dilzutch!
+Hilzzoo?
+My gizzirl!
+Brillzing her izzin!--(Echos)
+[Intro]
+DJ, please pick up your phone, I&#39;m on the request line
+This is a Missy Elliott one-time exclusive, come on
+
+[Chorus]
+Is it worth it? Let me work it
+I put my thing down, flip it and reverse it
+Ti esrever dna ti pilf, nwod gniht ym tup
+Ti esrever dna ti pilf, nwod gniht ym tup
+If you got a big *elephant trumpet*, let me search ya
+And find out how hard I gotta work ya
+Ti esrever dna ti pilf, nwod gniht ym tup
+Ti esrever dna ti pilf, nwod gniht ym tup
+C&#39;mon
+
+[Verse 1]
+I&#39;d like to get to know ya so I could show ya
+Put the pussy on ya like I told ya
+Give me all your numbers so I can phone ya
+Your girl acting stank, then call me over
+Not on the bed, lay me on your sofa
+Call before you come, I need to shave my chocha
+You do or you don&#39;t or you will or won&#39;t ya?
+Go downtown and eat it like a vulture
+See my hips and my tips, don&#39;t ya?
+See my ass and my lips, don&#39;t ya?
+Lost a few pounds and my waist for ya
+This the kinda beat that go ra-ta-ta
+Ra-ta-ta-ta-ta-ta-ta-ta-ta-ta
+Sex me so good I say blah-blah-blah
+Work it, I need a glass of water
+Boy, oh boy, it&#39;s good to know ya
+C&#39;mon
+[Chorus]
+Is it worth it? Let me work it
+I put my thing down, flip it and reverse it
+Ti esrever dna ti pilf, nwod gniht ym tup
+Ti esrever dna ti pilf, nwod gniht ym tup
+If you got a big *elephant trumpet*, let me search ya
+And find out how hard I gotta work ya
+Ti esrever dna ti pilf, nwod gniht ym tup
+Ti esrever dna ti pilf, nwod gniht ym tup
+C&#39;mon
+
+[Bridge]
+If you a fly gal, get your nails done
+Get a pedicure, get your hair did
+Boy, lift it up, let&#39;s make a toast-a
+Let&#39;s get drunk, that&#39;s gonna bring us closer (Okay)
+Don&#39;t I look like a Halle Berry poster?
+See the Belvedere playing tricks on ya (Ah)
+Girlfriend wanna be like me, never
+You won&#39;t find a bitch that&#39;s even better (Ah)
+I make you hot as Las Vegas weather
+Listen up close while I take it backwards
+​sdrawkcab ti ekat ot ekil yssiM yaw eht hctaW
+I&#39;m not a prostitute, but I could give you what you want
+I love your braids and your mouth full of fronts
+Love the way my ass go bum-bum-bum-bum (Huh)
+Keep your eyes on my bum-bum-bum-bum-bum (Okay)
+You think you can handle this badonka-donk-donk (Woo)
+Take my thong off and my ass go boom (Ugh)
+Cut the lights on so you see what I could do (C&#39;mon)
+[Chorus]
+Is it worth it? Let me work it
+I put my thing down, flip it and reverse it
+Ti esrever dna ti pilf, nwod gniht ym tup
+Ti esrever dna ti pilf, nwod gniht ym tup (Ooh)
+If you got a big *elephant trumpet*, let me search ya
+And find out how hard I gotta work ya
+Ti esrever dna ti pilf, nwod gniht ym tup (Huh)
+Ti esrever dna ti pilf, nwod gniht ym tup (C&#39;mon)
+C&#39;mon
+
+[Bridge]
+Boys, boys, all type of boys
+Black, White, Puerto Rican, Chinese boys (C&#39;mon)
+Why-thai, thai-o-toy-o-thai-thai
+Rock-thai, thai-o-toy-o-thai-thai (C&#39;mon)
+Girls, girls, get that cash
+If it&#39;s 9 to 5 or shaking your ass (Aha)
+Ain&#39;t no shame, ladies do your thing (C&#39;mon)
+Just make sure you ahead of the game
+
+[Verse 3]
+Just &#39;cause I got a lot of fame super
+Prince couldn&#39;t get me change my name, papa
+Kunta Kinte a slave again, no sir
+Picture Blacks saying, “Oh yes&#39;a, massa”
+Picture Lil&#39; Kim dating a pastor
+Minute Man, Big Red could outlast ya
+Who is the best? I don&#39;t have to ask ya
+When I come out, you won&#39;t even matter (Ugh)
+Why you act dumb like, uhhhh, duh?
+So you act dumb like, uhhhhh, duh
+As the drummer boy go ba-rom-pop-pom-pom (Ooh)
+Give you some-some-some of this Cinnabun (C&#39;mon)
+[Chorus]
+Is it worth it? Let me work it
+I put my thing down, flip it and reverse it
+Ti esrever dna ti pilf, nwod gniht ym tup
+Ti esrever dna ti pilf, nwod gniht ym tup (Ooh)
+If you got a big *elephant trumpet*, let me search ya
+And find out how hard I gotta work ya
+Ti esrever dna ti pilf, nwod gniht ym tup
+Ti esrever dna ti pilf, nwod gniht ym tup
+C&#39;mon
+
+[Break]
+To my fellas (Ooh, good god!)
+I like the way you work that (Uh-huh, la-la-la-la)
+To my ladies (Whoo! Good god!)
+You sure know how to work that
+
+[Outro]
+Yeah, it&#39;s Missy Elliott!
+I hope y&#39;all enjoying what y&#39;all heard so far
+I was sittin&#39; here thinkin&#39; like
+Big Daddy Kane and Public Enemy
+Salt n Pepa, Lyte, EPMD, LL, Run-DMC
+KRS-One, Rakim
+Most of them artists used to dance
+And still get respected in the street
+Don&#39;t be scared to Bankhead or Bogo
+Or move as far as sold Michael Jackson 43 million
+Shoot, errbody have the zipper jacket
+And half of these thugs have the glove to match, ya feel me?
+Yo, it&#39;s ok though, if you wanna be hard and ice grill
+And Harlem Shake at the same time, whatever
+Let&#39;s just have fun, it&#39;s hip-hop man, this is hip-hop!
+[Intro]
+&quot;Brothers and sisters!
+Brothers and sisters, I don&#39;t know what this world is coming to!&quot;
+
+[JAY-Z, Missy]
+Whassup, Missy? Timbo!
+This is.. another.. Missy Elliott (Hip-Hop! Yes!)
+Exclusive (Yes, uh)
+
+[Verse 1: Jay-Z]
+One for the butters, I came from the gutter
+No I came from my mother but y&#39;all know what I mean
+Hov&#39; is here to stay like permanent crease in your jeans
+Me and Missy be the new Tag Team
+&quot;Whoomp! There It Is&quot;
+We like, Rae &amp; Ghost, A.G. and Showbiz
+We &quot;Public Enemy #1,&quot; our &quot;Uzi Weighs a Ton&quot;
+This is our house, Run! hahaha
+
+[Missy]
+What happened to those good old days? (Huh?)
+When hip-hop, was so much fun
+Ohh, house parties in the summer y&#39;all (C&#39;mon)
+And no one, came through with a gun (A guh-un)
+It was all about good music y&#39;all
+It helped to relieve some stress (Huh?)
+Ohh, we was under one groove y&#39;all (Y&#39;all)
+So much love between North and West
+[Hook: Missy Elliott]
+Go back in the day
+British Knights and gold chains
+Do the prep and cabbage patch
+And wear your laces all fat
+Back in the dayyyyyyyy, hey hey
+Hip-Hop has chaaaanged
+
+[Verse 2: Missy]
+Remember when we used to battle? (Uh huh)
+On the block before the lights came on (Yeah)
+Ohh! Mama said we would be straight A kids (Come on)
+If we did our homework, like we knew those songs
+Salt-N-Pepa, Rakim, and P.E
+D.M.C, and Heavy D
+Yes! Daddy Kane, Slick Rick, too (Oooh ooh!)
+MC Lyte opened, doors for you and me, c&#39;mon
+
+[Hook (JAY-Z)]
+Go back in the day
+British Knights and gold chains
+Do the prep and cabbage patch
+And wear your laces all fat
+Back in the dayyyyyyyy, hey hey (Young!)
+Hip-Hop has chaaaanged (J. Breezy, let&#39;s do it again, nigga)
+[Verse 3: JAY-Z]
+Rough, the way it oughta be
+From day KRS-One all the way up to Nineteen Naughty Three
+To M.O.P., we Cold as Ice
+Nigga, we rock it from the &quot;Dre Day&quot; to the Suge Knight
+So fuck Chuck Phillips and Bill O&#39;Reilly
+If they try to stop hip-hop, we all gon&#39; rally, nigga
+Post Biggie and &#39;Pac I gotta hold down the city
+Make a nigga wanna holla like Missy, but fuck it
+Just let a nigga MC
+The best rapper alive, unquestionably
+If you riff on your EP, you gonna need an MD
+So you gots to chill cause I kill at will
+Like solid water dude; y&#39;all niggas don&#39;t get it
+&quot;Kill at Will,&quot; solid water? Ice Cube
+Ha ha, that&#39;s how hip-hop has evolved
+Jay-Z&#39;s for President, I&#39;m namin Ra as the National God
+
+[Missy]
+Me and Jigga, Jigga J-J-Jay-Hova
+I rocks the mic right whether I&#39;m pissin&#39; drunk or sober
+Misdemeanor fo&#39;-finger ringer I&#39;m stupid FRESH
+I&#39;ve been hot since LL rocked the Kangol HAT
+Yes yes, the yes yes, the yes y&#39;alln
+C&#39;mon... AW YEA, AW YEA
+Okay, me, that nigga Jigga, fresh dressed in the mornin&#39;
+C&#39;mon... AW YEA, AW YEA
+[Hook: Missy Elliott]
+Go back in the day
+British Knights and gold chains
+Do the prep and cabbage patch
+And wear your laces all fat
+Back in the dayyyyyyyy, hey hey
+Hip-Hop has chaaaanged
+
+{*ad libs and whistling*}
+
+[Break: Missy]
+I wanna, go back in, time (let&#39;s go)
+Feels like I, I wanna, go back in, time
+Feels like I (Y&#39;all remember &quot;Self Destruction&quot;?)
+I wanna, go back in, time
+(Where all the rap artists got on a record together?)
+Feels like I, I wanna, go back in, time
+(I used to love them days, no tension, let&#39;s go!!)
+
+[Hook: Missy Elliott]
+Go back in the day
+British Knights and gold chains
+Do the prep and cabbage patch
+And wear your laces all fat
+Back in the dayyyyyyyy, hey hey
+Hip-Hop has chaaaanged
+[Intro: Missy]
+This is a Misdemeanor exclusive
+If your radio is experiencing any kind of difficulties
+Turn the volume up
+Yes, turn the volume up
+Yes, turn the volume up
+This is an exclusive (Turn the volume up)
+
+[Verse 1: Missy]
+It&#39;s very necessary, on the contrary
+No you do not scare me, is you drinkin&#39; Bloody Mary?
+But shit, you betta hurry, before I have to bury
+My attitude is bitchy, cuz my period is heavy
+I used to drive a Chevy, put twenties on that Bevy
+My nigga was the shit, but then that stupid nigga left me
+And now I&#39;m lovin&#39; Larry, but Larry go with Terri
+And Terri is a freak, but it&#39;s his baby she will carry
+The life he live&#39;s a fairy, cartoon like &quot;Tom and Jerry&quot;
+My flow is legendary and your style is temporary
+Yeah, you need to worry, like Jason, it gets scary
+The words that I spit don&#39;t fit in that category
+Is my vision blurry? My speech is very slurry
+Me without Tim is like Jamaicans with no curry
+And yes, it&#39;s necessary, so hurry, nigga, hurry
+Cuz when this album drops, you whack MC&#39;s will all get burried
+[Hook]
+Funky fresh dressed to impress ready to party
+Funky fresh dressed to impress (Turn the volume up)
+Funky fresh dressed to impress ready to party
+Funky fresh dressed to impress (Turn the volume up)
+Funky fresh dressed to impress ready to party
+Funky fresh dressed to impress (Turn the volume up)
+Funky fresh dressed to impress ready to party
+Funky fresh dressed to impress (Turn the volume up)
+
+[Verse 2: Missy]
+Your style&#39;s very crummy, that&#39;s why you have no money
+You always looking bummy, I don&#39;t care if you don&#39;t love me
+Don&#39;t try to come before me, unless you are a dummy
+Repeat, you&#39;ll lose your teeth and I would hate to call you gummy
+Rainy or sunny, battle no way, honey
+This not a game of Hide-and-Seek, go call ya mummy
+It&#39;s about get so ugly, and I&#39;mma keep y&#39;all runnin&#39;
+Hiding from me, cuz you know you are weak
+You ain&#39;t sayin&#39; nothin&#39;, I keep it jumpin&#39; jumpin&#39;
+In your Kenwoods, I&#39;m bumpin&#39; sumthin&#39; in ya trunk&#39;n
+You can say I&#39;m buggin&#39;, cuz when I come out bustin&#39;
+That&#39;s why y&#39;all be discussin&#39; who I like and who I&#39;m fuckin&#39;
+
+[Hook]
+Funky fresh dressed to impress ready to party
+Funky fresh dressed to impress (Turn the volume up)
+Funky fresh dressed to impress ready to party
+Funky fresh dressed to impress (Turn the volume up)
+Funky fresh dressed to impress ready to party
+Funky fresh dressed to impress (Turn the volume up)
+Funky fresh dressed to impress ready to party
+Funky fresh dressed to impress (Turn the volume up)
+[Break: Timbaland]
+C&#39;mon, c&#39;mon
+C&#39;mon, c&#39;mon
+C&#39;mon, c&#39;mon
+Fickidy, uh, uh, uh
+C&#39;mon, c&#39;mon
+C&#39;mon, c&#39;mon
+
+[Verse 3: Ms. Jade]
+I had a little homie named Paul Revere
+Smokes blunt after blunt, guzzled 40&#39;s of beer
+Used to swear up and down every first of the year
+He was gon&#39; quit smokin&#39;, but he never did
+Watch y&#39;all huskey, it&#39;s about that time
+Gettin&#39; ready for the club &#39;round quarter to nine
+Couple bottles of hypnotic in the back of the ride
+Might spit like a girl, but I hit like a guy
+Me and Missy ballin&#39; up the avenue
+Funky fresh dressed to impress, we mackin&#39; dudes
+Music biz only reason I ain&#39;t jackin fools
+You know bullshit walk and stackin&#39; rules
+Niggas keep drawin&#39;, the streets keep callin&#39;
+Drink til&#39; I&#39;m nice and uh, uh-uh, on&#39;n
+I&#39;m bad luck, y&#39;all mad cuz y&#39;all suck
+Please do not try to fuck with young duck
+Please do not try to fuck with young duck
+[Hook]
+Funky fresh dressed to impress ready to party
+Funky fresh dressed to impress (Turn the volume up)
+Funky fresh dressed to impress ready to party
+Funky fresh dressed to impress (Turn the volume up)
+Funky fresh dressed to impress ready to party
+Funky fresh dressed to impress (Turn the volume up)
+Funky fresh dressed to impress ready to party
+Funky fresh dressed to impress (Turn the volume up)
+[Intro]
+Uh, this is another Missy Elliott exclusive, uh, come on
+
+[Verse 1]
+It&#39;s all for the love
+But there is more things that keep a man satisfied
+And I know the remedy just to cure him
+From cheating even if he tried, hey
+
+[Chorus]
+Pussy don&#39;t fail me now
+I gotta turn this nigga out
+So he don&#39;t want nobody else
+But me and only me
+Pussy don&#39;t fail me now
+I gotta turn this nigga out
+So he don&#39;t want nobody else
+But me and only me
+
+[Verse 2]
+I know he&#39;s a man and men have intentions
+To sleep with someone else
+But that&#39;s why when I make love to him
+I&#39;m ruling
+Try to give him my best, hey
+[Chorus]
+Pussy don&#39;t fail me now (fail me now)
+I gotta turn this nigga out
+So he don&#39;t want nobody else (nobody)
+But me and only me (ohh)
+Pussy don&#39;t fail me now (fail me now)
+I gotta turn this nigga out
+So he don&#39;t want nobody else (ohh)
+But me and only me
+
+[Bridge]
+As long as the pussy good it&#39;s alright
+Ain&#39;t gotta worry bout my man
+Cos he know mine&#39;s is one of a kind
+And that&#39;s why he keeps staying
+The pussy good, it&#39;s alright
+Ain&#39;t gotta worry bout my man
+Cos he know mine&#39;s is one of a kind
+And that&#39;s why he keeps staying
+
+[Verse 3: Missy distorted (Missy)]
+Look ma
+Yeah, you got that bomb and work
+That prissy stuff, glad it ain&#39;t that gushy stuff (that gushy stuff?)
+I don&#39;t like the mushy butts
+I wish we was like Puffy over Jennifer
+Him and her too much like I and we (And what that mean?)
+We just love the booty
+All we see, in 3D, is um
+Booty, booty, booty, booty
+[Missy]
+Oh really? Do me, do me, do me, do me
+Run through me like flood go through an I-V
+That&#39;s good I&#39;m a make sure you never will leave
+Can I put my booty, booty up in your spaghetti daddy
+Are you ready for some cavi from me
+Pussy, gushy, mushy, what more you want from me
+Cuz my feelings hit the ceiling what you want me to be?
+Oh please pussy don&#39;t mess it up for me, come on
+
+[Chorus]
+Pussy don&#39;t fail me now (fail me, now)
+I gotta turn this nigga out
+So he don&#39;t want nobody else (nobody else)
+But me and only me
+Pussy don&#39;t fail me now (fail me now)
+I gotta turn this nigga out
+So he don&#39;t want nobody else
+But me and only me
+
+[Outro: Missy- Spoken]
+Pussy don&#39;t fail me now
+I wanna turn this nigga out
+So he don&#39;t want nobody else
+But me and only me
+Pussy don&#39;t fail me now
+I wanna turn this nigga out
+So he don&#39;t want nobody else
+But me and only me
+What&#39;s the deal y&#39;all?
+I don&#39;t mean to come thru and break y&#39;all vibe
+But, I just gotta slow it down for just a second, so bear with me
+You know, first before I do that I just wanna talk about how people Always say: &#39;Yo that&#39;s too nasty&#39; and &#39;Why yo mouth so vulgar?&#39;
+&#39;Why you gotta-why you gotta sing all these nasty records?&#39;
+And all that, but I be representin&#39; for the ladies and
+We got somethin&#39; to say, we&#39;ve been quiet too long
+Lady-like, very patient
+We ain&#39;t get mad when Prince had his ass out
+We thought he was gonna turn around to the front
+And have the front out too! But you know, that didn&#39;t happen
+We always had to deal with-with the guys
+You know, talkin&#39; about how they gon&#39; wear us out on records
+And-and you know so I had to do records that was strictly--
+Representin&#39; for my ladies and how to keep yo man
+Keep his eyes from wandering, looking around
+And, sex is not a topic that we should always sweep under the rug
+I&#39;m not sayin&#39; go out and do it, but if you do
+Strap it up, before you smack it up
+Flip it, slow it down, oh no!
+Jimmy, drop it
+[Intro: Beyoncé, Missy]
+There ain&#39;t nothin&#39; out there!
+A Missy Elliot exclusive
+
+*phone ringing*
+I know one thing Beyoncé better not answer this phone
+Hundred ladies ain&#39;t free, I ain&#39;t got no money either shoot
+We &#39;posed to been at the club
+Hello?
+Beyoncé I know you ain&#39;t lettin&#39; dat broke down, insecure
+LL Cool J wanna be nigga keep you in da house for another Friday
+Yo just, just go ahead I&#39;mma stay here wit&#39; my man
+Ain&#39;t nothin&#39; out there for me
+
+[Verse 1: Beyoncé (Missy)]
+My man don&#39;t like my friends
+(Girl yo man ain&#39;t no good why he tryin&#39; to keep you in?)
+He say they influence me
+(If I was an influence I woulda been said leave)
+But boy I love him so
+(Girl we late for the club, why you still don&#39;t wanna roll?)
+Cuz I got my prize right here
+(See, the guys at da party)
+Ain&#39;t nothin&#39; out there for me (Come on)
+
+[Chorus: Missy &amp; Beyoncé]
+Ain&#39;t nothin&#39; out there for me, this is where I wanna be
+I done already been in the streets
+And ain&#39;t came across nothin&#39; so sweet
+He&#39;s the only man that I love, and I don&#39;t need more than one
+So don&#39;t worry when I&#39;m hangin&#39; out
+He&#39;s the only one that I&#39;m thinkin&#39; about
+[Verse 2: Beyoncé (Missy)]
+I know he&#39;s insecure, everytime I leave out the door
+(You lettin&#39; him spoil yo&#39; night? Live ya life, you ain&#39;t even his wife)
+He ain&#39;t gotta worry bout&#39; me cuz&#39; I got somethin&#39; more sweet
+(Oh, you must got a diamond ring)
+And I know I&#39;m so lucky ain&#39;t nothin&#39;
+
+[Chorus: Missy &amp; Beyoncé]
+Ain&#39;t nothin&#39; out there for me, this is where I wanna be
+I done already been in the streets
+And ain&#39;t came across nothin&#39; so sweet
+He&#39;s the only man that I love, and I don&#39;t need more than one
+So don&#39;t worry when I&#39;m hangin&#39; out
+He&#39;s the only one that I&#39;m thinkin&#39; about
+
+[Bridge: Beyonce]
+I really love him, he&#39;s my baby fo sho (my baby)
+I can show him, I love him more then ever before (And I love him)
+And he don&#39;t know I&#39;m in love
+Like the time that we met (I adore him)
+I adore him and no man has come closer then that (I love him)
+
+I really love him, he&#39;s my baby fo sho (my baby)
+I can show him, I love him more then ever before (And I love him)
+And he don&#39;t know I&#39;m in love
+Like the time that we met (I adore him)
+I adore him and no man has come closer then that (I adore him)
+[Chorus: Missy &amp; Beyoncé]
+Ain&#39;t nothin&#39; out there for me, this is where I wanna be
+I done already been in the streets
+And ain&#39;t came across nothin&#39; so sweet
+He&#39;s the only man that I love, and I don&#39;t need more than one
+So don&#39;t worry when I&#39;m hangin&#39; out
+He&#39;s the only one that I&#39;m thinkin&#39; about
+
+[Outro: Beyoncé, Missy (Beyoncé)]
+Look, you goin&#39; or what?
+Go ahead I&#39;mma stay here wit&#39; my man
+Ain&#39;t nothin&#39; out there for me
+There&#39;s a lotta guys wit&#39; cash and they like to spend money fast
+Now is you sure about dat?
+I&#39;m chillin&#39; wit&#39; my man wha part don&#39;t you understand?
+Yeah I&#39;m sure about dat
+I think you should really go, I heard the party is outta control
+Make sure you sure about that
+I don&#39;t care about no club
+Cuz my man is all I love, yeah I&#39;m sure about that
+Don&#39;t let em&#39; blow ya high, go out and have a nice time
+Is you sure about that?
+Girl I do not get high and wit&#39; him I&#39;m spendin&#39; all my time
+Yeah, I&#39;m sure about that
+Ok stay wit cha man, I&#39;ll be at the club doin&#39; my dance, woo! (You’re the only one that I&#39;m thinkin&#39; about)
+[Intro]
+This is another Missy Elliott exclusive
+
+[Verse 1: Missy]
+My twinkies look stinky on the Benz
+And don&#39;t I gotta look sweet for my mens
+And make &#39;em think I got a whole bunch of paper
+And even date a ball player from the Lakers
+Now fake a take and make &#39;em holler at cha later
+Shake em Wake em and tell &#39;em what to get my ass from Jacob&#39;s
+That&#39;s the way a real diva like to floss it
+Buy a car no matter what is costs
+Of course my Rolls Royces make &#39;em nauseous
+Tell you who the motherfucking boss is
+I&#39;m driving, you walking that&#39;s why you talking
+See the chrome spinning on the wheels stop jocking
+I`mma let you know real nice and slow
+I&#39;d be broke as a joke if I had to be a ho
+So poor, Missy on the rise like the sun
+If you think that I`m done, I ain`t even begun
+
+[Hook]
+Slide, Slide, Dip, Dip, Shake
+Move it all around
+Move it all around
+Slide, Slide, Dip, Dip, Shake
+Move it all around
+Move it all around
+[Verse 2]
+Feel the boombastic in ya back head
+15&quot;s putting holes in ya back head
+Bbboomp bbboomp bbboomb bbboomb
+Don&#39;t it sound so fantastic
+My Lamborghini disappear like Houdini
+Two-Twenty can&#39;t see me in the bottle like a Genie
+Teeny, Weeny, now hate me like you hate to eat your Wheaties
+Now here&#39;s a freebie, I`mma let you see me on T.V
+Accepting my Emmy or a Grammy in Miami
+I hit you with the one, two, whammy
+You no tooth granny, with a hole in her panties
+And I don&#39;t give a shit if you can&#39;t stand me
+Cause I is what I is, and what I am is like my Mammy
+And I don&#39;t mean to sound too petty
+But they use to call me Fatty until I got with Puff Daddy
+
+[Hook]
+Slide, Slide, Dip, Dip, Shake
+Move it all around
+Move it all around
+Slide, Slide, Dip, Dip, Shake
+Move it all around
+Move it all around
+
+[Verse 3]
+My rims keep turnin&#39; and turnin&#39;
+Tires burnin&#39; through Queens and Mount Vernon
+And yes it&#39;s my concern that:
+Your chain Platinum or is it really Sterling?
+I&#39;m old school I rock a Sherlin
+From New Jers heard all the way to Berlin
+And that&#39;s for certain
+Behind every curtain is a snake bitch lurking and she about to catch a hurtin
+Mr. Moes on the beats
+And Missy be the beats behind the beats
+My record sales don&#39;t jump or do leaps
+And while you sleep I&#39;m on the ground as I creep (you should creep)
+I got Pumas on my feet
+Fresh gear everyday, all week
+You know I keep it hot for my peeps
+Never cheap underground like the streets
+[Hook]
+Slide, Slide, Dip, Dip, Shake
+Move it all around
+Move it all around
+Slide, Slide, Dip, Dip, Shake
+Move it all around
+Move it all around
+[Intro]
+Imma beat y&#39;all, play that beat (5x)
+(This is a Missy Elliott exclusive)
+
+[1st Verse]
+When you wanna go around the world (I&#39;m ready)
+And if you want me to fight your ex-girl for you (I&#39;m ready 2x)
+If you need me to cook you meals (I&#39;m ready)
+And if you want me to come and chill with you boy (Suga&#39; I&#39;m ready)
+
+[Chorus]
+You don&#39;t know how you got me
+I&#39;ve never been in so, but not me
+I was always told not to be
+Givin&#39; up the [cat] easy
+
+Something you do reminds me
+Friends be tryin&#39; to stop me
+They can&#39;t believe you got me
+Givin&#39; up the [cat] easy
+
+[2nd Verse]
+When you need a backrub from working all day (I&#39;m ready)
+Uh when you need a chick to come over right away (I&#39;m ready) (Like this)
+When you need me to wash your clothes boy (I&#39;m ready)
+When you need me on the phone to curse out the hoes (Suga&#39; I&#39;m ready)
+[Chorus]
+
+Boy there ain&#39;t none quite like you
+Ask me and I&#39;ll always do
+Cuz&#39; I got this thing for you
+You know what a little [cat] can do
+[Repeat]
+
+[Chorus]
+
+I&#39;m ready when your baby momma trips
+So just call me come in doin&#39; backwards flips
+My darling
+Would you like me bust her lips
+Cuz&#39; I&#39;m ready, show you I&#39;m the realest chick
+And I love you
+I&#39;ll do what you want me to do
+I said I love you
+For you I&#39;m more than a crew
+I&#39;m Mrs. Do-right
+Can&#39;t go wrong with me
+I said R-E-D-Y
+Always on time
+Uh, come on
+(Intro: Missy)
+This is another Missy Elliot exclusive
+
+[Verse 1: Missy]
+I remember when yo ass was broke, so in love wit me
+You were always at home, always talkin bout
+&quot;loan me this, loan me that, now gimme gimme&quot;
+And then ya got doe, and decide ya wanna leave
+Gotta few chicks checkin for ya now, huh, you forgot about me
+(Ain&#39;t it funny)
+
+[Chorus]
+When ya man gets money
+I bet you can&#39;t find him
+But when he come home beggin
+You can&#39;t deny him
+Where he at when you need him?
+(he&#39;s out lookin cute)
+But when he need a few dollers
+He know who to run to
+
+[Verse 2]
+We would go out, I had to pay for everything
+I never had to worry about you fuckin &#39;round
+You used to tell me &quot;Yea I love ya, No one above ya&quot;
+Then I bought you clothes, I made ya look like a king
+Then the girls started flirtin wit ya ass, huh, and you forgot about me
+(Ain&#39;t it funny)
+[Chorus]
+
+[Hook]
+I&#39;ll be the one you runnin to
+When yo pockets is low
+And you outta cash flow
+And the chicks don&#39;t want you no mo&#39;
+
+(Beat comes back in)
+
+Be the one you runnin to
+When you got no mo&#39; gas
+In those buses, catchin cabs
+And the chicks don&#39;t see you no mo&#39;
+
+[Chorus]
+(Missy)
+This is an old school Missy exclusive
+
+[Verse 1]
+Look!
+I ain&#39;t on no ra-ra shit
+You dont wanna test how far Miss get
+Me and Timothy cars got kits
+But we don&#39;t drive around trying to prove you shit
+Everyone tryna be that bitch
+But there can only be one bitch make hits
+I know I must make y&#39;all sick
+Cuz after I spit, you beg to quit
+I used to drive a six
+And then I bought a Murciélago to sit
+On the plush leather seats, forget
+Am I on my own clit?
+Yes I must admit
+And my ass is it
+Misdemeanor have you seen her?  I&#39;m the best it get
+And those who try to test this chick
+Where they at right now?  In peace resting in
+
+[Chorus]
+If you broke
+Just say you broke
+Cuz&#39; all you blowin&#39; up ya ass is some smoke
+Cuz rich folks, we buy boats
+And you&#39;s a bum broke nigga that&#39;s for sure
+I know you broke, just say you broke
+Cuz&#39; all you blowin&#39; up ya ass is some smoke
+Cuz rich folks, we buy boats
+And you&#39;s a bum broke liar that&#39;s for sure
+[Verse 2]
+Yeah boo you know you a joke
+Wear a fake Rolex, call it a Ro
+Act like you down with so and so
+Ya whack on wax, bows I came to throw
+I might just let you mop my flow
+For my autograph take this flick to go
+(CHEESE)
+Miss don&#39;t say no mo&#39;
+Cuz you know what I do
+And you know what I know
+And I don&#39;t think so
+You don&#39;t wanna lose a arm or elbow
+If ya broke then just say so
+Cuz the Bentley that you renting
+Yo it&#39;s got to go
+Back to the black man store
+Along with ya weave cop a new afro
+Why you wanna make Miss stoop so low
+But if you try to test me I just check ya slow
+
+(Chorus)
+If you broke
+Just say you broke
+Cuz&#39; all you blowin&#39; up ya ass is some smoke
+Cuz rich folks, we buy boats
+And you&#39;s a bum broke nigga that&#39;s for sure
+I know you broke, just say you broke
+Cuz&#39; all you blowin&#39; up ya ass is some smoke
+Cuz rich folks, we buy boats
+And you&#39;s a bum broke liar that&#39;s for sure
+[Verse 3]
+In old school we used to call out names
+But I ain&#39;t tryin&#39; to give ya no fame
+My credit card gonna bring ya pain
+To know ya account just hold change
+No need to wreck ya brains
+Trying to see who Missy gon&#39; slain
+I roll solo not with a gang
+I don&#39;t carry guns kick ass wit a chain
+Don&#39;t let me say it again
+I don&#39;t carry guns kick ass with a chain
+(WHASSSSA)
+Like a Chinese man
+Reverse it
+(ti esrever)
+Know what I&#39;m saying
+
+(Chorus)
+If you broke
+Just say you broke
+Cuz&#39; all you blowin&#39; up ya ass is some smoke
+Cuz rich folks, we buy boats
+And you&#39;s a bum broke nigga that&#39;s for sure
+I know you broke, just say you broke
+Cuz&#39; all you blowin&#39; up ya ass is some smoke
+Cuz rich folks, we buy boats
+And you&#39;s a bum broke liar that&#39;s for sure
+[Intro: Diane Haughton phone call]
+Missy it&#39;s Diane
+Here&#39;s the information for the
+Where you can send the flowers to
+The florist for Aaliyah
+I&#39;ll give you the phone number
+In case you need it
+Okay Missy, take of yourself
+I love you
+I love you, bye bye
+
+[Verse 1: Missy Elliott]
+I been checkin&#39; on your moms and dad (uh)
+And your brother since the day you left (left)
+Passed on and went away with God (uh)
+But for your momma its been so damn hard
+I hate to even hear her cry (cry)
+Aaliyah she asked me why (why)
+Would her baby girl go this way (oh)
+Can you give me better words to say
+
+[Chorus 1: Missy]
+Come one day she&#39;ll see you again
+With the same ol&#39; beatiful smile
+Long hair and the voice of a hummin&#39; bird
+You&#39;ll be singing them same ol&#39; songs
+Aaliyah can you hear me
+I hope that you&#39;re proud of me
+Me and Tim we been doin&#39; our thing
+But its never been the same since you had to go
+I ain&#39;t never met a friend more incredible
+Ohhh...
+
+[Verse 2: Chilli]
+I know you&#39;re in real good hands
+With God but damn I miss you
+Aaliyah if you see Left Eye
+Will you
+Tell her me and &#39;Boz miss her too
+Cuz no one&#39;s gonna fill her space (uh uh)
+T-C, L not replaced
+All the reasons we learned to love (love)
+Fly high wit&#39; your 22 doves
+
+[Chorus 2: TLC &amp; Missy]
+One day we&#39;ll see her again
+With the same ol&#39; beautiful smile
+Crazy but sexy cool
+And she&#39;ll be rappin&#39; them same ol&#39; songs
+Lisa can you hear me
+We hope that you&#39;re proud of us
+TLC has come a long way
+But its never been the same since you had to go
+Cuz the healin&#39; process will be long and slow
+Yeah
+
+[Verse 3: Missy Elliott, Chilli]
+Aaliyah I know you&#39;re in a safer place
+You&#39;re face to face with the creator and our maker
+And if you and Left Eye happen to chat
+Tell her me and Tionne we know she&#39;s much safer
+If you see Biggie smalls up in the clouds
+Tell him he&#39;s still the illest emcee we had around
+2Pac there is only one, Big Pun R.I.P
+We say one (one yeah yeah)
+[Chorus 3: Missy &amp; TLC]
+One day we&#39;ll see y&#39;all again
+With the same ol&#39; beautiful smiles
+All styles so many styles
+And y&#39;all be doin&#39; the same old things
+The last time we seen ya
+We hope y&#39;all can change the world
+Let &#39;em see how short life be
+It will never be the same since ya had to go
+To the music world y&#39;all are incredible
+
+[Outro: Chili]
+Yeah yeah yeah yeah
+Yeah yeah yeah
+Yeah yeah yeah yeah
+Yeah yeah yeah
+[Intro]
+DJ please, pick up your phone
+I&#39;m on the request line!
+
+[Intro 2: Missy Elliott &amp; 50 Cent]
+G-Unit!
+This is a Missy Elliot one-time exclusive (Come on!)
+
+[Chorus]
+Is it worth it? Let me work it
+I put my thing down, flip it and reverse it
+Ti esrever dna ti pilf, nwod gniht ym tup
+Ti esrever dna ti pilf, nwod gniht ym tup
+If you got a big (*elephant noise*), let me search you
+And find out how hard I gotta work ya
+Ti esrever dna ti pilf, nwod gniht ym tup
+Ti esrever dna ti pilf, nwod gniht ym tup
+Remix! (Uh, yeah)
+
+[Verse 1: 50]
+Now Missy she too much for me (I&#39;m freaky)
+Took me to the crib man, she told me (Eat me)
+Now my babymama told her ass not to beat me
+Her broke ass wanna fight, Missy know how to treat me (Yeah)
+She sitting on cash, she got money out the ass
+Gave her them back shots and got money out her ass
+Now you can see me in the coupe like WHAT
+Next time I&#39;ll hit her in that G5 TRUCK
+I&#39;ve got the magic stick, I can go for hours
+From the bed to the floor, to the sink to the shower
+With her back to the bed and her legs to the sky
+I can go hard, know why, big girls don&#39;t cry
+I had visions of Missy with her money by the tub
+Ching! Ching! Jackpot, I think I&#39;m in love
+I&#39;m looking for Missy now so I can get my back rubbed
+This the shit she hollered in my ear before we left the club
+[Verse 2: Missy]
+I&#39;d like to get to know ya, so I can show ya
+Put the pussy on ya, like I told ya
+Gimme all your numbers so I can phone ya
+Your girl acting stank than call me ov-ah
+Not on the bed, lay me on your sofa
+Call before you come, I need to shave my cho-cha
+You do or you don&#39;t or you will or you won&#39;t cha
+Go downtown and eat it like a vul-cha
+See my hips and my tips don&#39;tcha
+See my ass and my lips don&#39;tcha
+Lost a few pounds in my waist for ya
+This the kinda beat that go wa-ta-ta
+Ra-ta-ta-ta, ta-ta-ta-ta-ta
+Sex me so good I say blah-blah-blah
+Work it! I need a glass of wat-ah
+Boy oh boy its good to know ya
+
+[Hook]
+Is it worth it, let me work it
+I put my thing down, flip it and reverse it
+&quot;I put my thing down, flip and reverse it&quot;
+&quot;I put my thing down, flip and reverse it&quot;
+If you got a big , let me search ya
+To find out how hard I gotta work ya
+&quot;I put my thing down, flip and reverse it&quot;
+&quot;I put my thing down, flip and reverse it&quot;
+[Verse 3]
+If you&#39;re a fly gal, get your nails done
+Get a pedicure, get your hair did
+Boy lift it up, lets make a toast-ah
+Lets get drunk, its gon bring us clos-ah
+Don&#39;t I look like a Halle Berry post-ah?
+See dem Belvedere playin tricks on ya
+Girlfriend wanna be like me nev-ah
+You won&#39;t find a bitch that&#39;s even bett-ah
+I make it hot as Las Vegas weath-ah
+Listen up close while I take you backwards
+&quot;Watch the way Missy like to take it backwards&quot;
+I&#39;m not a prostitute but I can give you whatchu want
+I love your braids and your mouth full of funk
+Love the way my ass ba-bump ba-bump bump
+Keep your eyes on my ba-bump ba-bump bump
+And think you can handle this ga-donk ga-donk donk
+Take my thong off and my ass go boom
+Cut the lights off so you see what I can do
+
+[Hook]
+Is it worth it, let me work it
+I put my thing down, flip it and reverse it
+&quot;I put my thing down, flip and reverse it&quot;
+&quot;I put my thing down, flip and reverse it&quot;
+If you got a big , let me search ya
+To find out how hard I gotta work ya
+&quot;I put my thing down, flip and reverse it&quot;
+&quot;I put my thing down, flip and reverse it&quot;
+[Verse 4]
+Boys, boys, all type of boys
+Black, white, Puerto Rican, Chinese boys
+Why-thai,-thai-o-toy-o-thai-thai
+Rock-thai,-thai-o-toy-o-thai-thai
+Girls, girls, get that cash
+If its 9 to 5 or shakin ya ass
+Ain&#39;t no shame ladies, do your thang
+Just make sure you ahead of tha game
+
+Just cause I got a lot of fame sup-ah
+Prince couldn&#39;t get me change my name papa
+Kunta Kinte, enslave a game, no sir
+Picture black sayin, &quot;Oh yessuh massa&quot;
+Picture Lil&#39; Kim dating a pastor
+Minute man, big men can outlast ya
+Who is the best? I don&#39;t have to ask ya
+When I come out, you won&#39;t even matt-ah
+Why you act dumb like ughhh, duh
+So you act dumb like ughhh, duh
+And the drummer boy go pa-rum pa-pum pum
+Give ya some some some of this Cinnabon
+
+[Hook]
+Is it worth it, let me work it
+I put my thing down, flip it and reverse it
+&quot;I put my thing down, flip and reverse it&quot;
+&quot;I put my thing down, flip and reverse it&quot;
+If you got a big, let me search ya
+To find out how hard I gotta work ya
+&quot;I put my thing down, flip and reverse it&quot;
+&quot;I put my thing down, flip and reverse it&quot;
+
+To my fellas, ooooh
+Good God, I like the way you work that
+To my ladies, woo
+You sure know how to work that, good God
+This is a Missy Elliott (uh) heavy hitter
+Oh, now put your back into it, uh
+I&#39;m a pro, motherfuckers let me do it, let me do it
+To the left, one, two, three, move it, whoo
+Off beat, uh, yeah, watch my feet, yeah, whoo
+I&#39;m bout to just go lose it, uh
+Like somebody slippin&#39; x in my juices, uh
+And now I&#39;m dancin&#39; like I&#39;m under the influence
+Shake my ass, I don&#39;t owe you no excuses, ooh
+No, n-no, n-no, I didn&#39;t, uh
+See my jeans fittin&#39;, let me take you from your bitches, whoo
+Furs and cars, it make me no difference
+Independent woman but I still spend your riches
+What you got, I got the club so hot, so hot
+And they strippin&#39; from the boxers to the socks, uh
+I&#39;m in the corner cos I like to look a lot, uh
+I like to see what&#39;s hot then let me go to marry it
+
+If you chillin&#39; in New York, drop the bomb on it
+Livin&#39; in LA, drop the bomb on it
+Wildin&#39; in DC, drop the bomb on it
+You need to drop, drop, drop, drop the bomb on it
+If you&#39;re ridin&#39; in Detroit, drop the bomb on it
+Cadillac-ey too, drop the bomb on it
+ATL, dirty, drop the bomb on it
+You need to drop, drop, drop, drop the bomb on it
+Yeah, uh, go head and drop the bomb on me
+Call 9, 1, 1, this a crime on me, uh
+The flow that I throw be hard to follow
+From ? ? straight to Chicago, yeah, ooh
+I love the way the track sittin&#39;, yeah
+Me and Timothy, whoo, la, good rhythms
+Easy on the beat, whoo, la, you didn&#39;t, uh, uh
+Slidin&#39; in my slips like I&#39;m Rick James&#39; freak, freak
+I&#39;m havin&#39; fun with ya son, uh
+Ain&#39;t twenty-one, tell &#39;em don&#39;t need to come, uh
+Way too young to get the taste of yum yum
+I&#39;m way too drunk off Bacardi and rum, uh
+Don&#39;t act dumb, drop it where you from
+Rich or bum, it don&#39;t mean nothing, whoo
+You need this heat cos the track overdone, uh
+Radio drop the bomb on this one, whoo
+
+If you from Miami, drop the bomb on it
+From Louisville, drop the bomb on it
+Vacation in VA, drop the bomb on it
+You need to drop, drop, drop, drop the bomb on it
+If you live in Las Vegas, drop the bomb on it
+Or chillin&#39; in Philly, drop the bomb on it
+New Jersey, Brits, drop the bomb on it
+You need to drop, drop, drop, drop the bomb on it
+Ring the alarm, somebody dropping by, whoa, yay, whoo
+? ? I&#39;m a park it in valet, uh
+Let my ass shake like a truck on the highway, uh
+Stayin&#39; on my toes like I been doing ballet
+And if it snows I&#39;m going back to Cali, uh
+No, n-no, n-no you didn&#39;t, uh
+Put the track on, nigga, stop that bullshittin&#39;, uh
+Ain&#39;t got no time, need a track that&#39;s hittin&#39;
+And if it&#39;s hittin&#39;, here&#39;s a bomb for your listen, ooh
+
+If you live in Alabama, drop the bomb on it
+Stay in Mississippi, drop the bomb on it
+Chill in Ohio, drop the bomb on it
+You need to drop, drop, drop, drop the bomb on it
+If you live in Texas, drop the bomb on it
+From Mexico, drop the bomb on it
+People everywhere, drop the bomb on it, come on
+You need to drop, drop, drop, drop the bomb on it
+</pre></div>
+</div>
+</div>
+</div>
+<p>Make a new directory and save individual songs and lyrics</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">artist_title</span> <span class="o">=</span> <span class="n">album</span><span class="o">.</span><span class="n">artist</span><span class="o">.</span><span class="n">name</span>
+<span class="n">album_title</span> <span class="o">=</span> <span class="n">album</span><span class="o">.</span><span class="n">name</span>
+           
+<span class="c1">#A line of code that we need to create a directory</span>
+<span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">artist_title</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">album_title</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+ 
+<span class="k">for</span> <span class="n">track</span> <span class="ow">in</span> <span class="n">album</span><span class="o">.</span><span class="n">tracks</span><span class="p">:</span>
+    <span class="n">song_title</span> <span class="o">=</span> <span class="n">track</span><span class="o">.</span><span class="n">song</span><span class="o">.</span><span class="n">title</span>
+    <span class="n">song_title</span> <span class="o">=</span> <span class="n">song_title</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> 
+    
+    <span class="n">custom_filename</span><span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">artist_title</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">album_title</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">song_title</span><span class="si">}</span><span class="s2">&quot;</span>
+    
+    <span class="c1"># Save each song lyric file as a text file with</span>
+    <span class="c1"># a custom filename </span>
+    <span class="n">track</span><span class="o">.</span><span class="n">song</span><span class="o">.</span><span class="n">save_lyrics</span><span class="p">(</span><span class="n">extension</span><span class="o">=</span><span class="s1">&#39;txt&#39;</span><span class="p">,</span>
+                           <span class="n">filename</span><span class="o">=</span><span class="n">custom_filename</span><span class="p">,</span>
+                           <span class="n">sanitize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="counting-word-frequency">
+<h1>Counting Word Frequency<a class="headerlink" href="#counting-word-frequency" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>  
+<span class="kn">import</span> <span class="nn">glob</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">directory_path</span> <span class="o">=</span> <span class="s2">&quot;Missy Elliott_Under Construction&quot;</span>
+<span class="n">text_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">directory_path</span><span class="si">}</span><span class="s2">/*.txt&quot;</span><span class="p">)</span>
+<span class="n">text_titles</span> <span class="o">=</span> <span class="p">[</span><span class="n">Path</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">text_files</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Initialize CountVectorizer with desired parameters</span>
+<span class="n">count_vectorizer</span><span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="s1">&#39;filename&#39;</span><span class="p">,</span>
+                                  <span class="n">stop_words</span><span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="c1">#Plug in &quot;text_files&quot; to the initialized count_vectorizer</span>
+<span class="n">word_count_vector</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">text_files</span><span class="p">)</span>
+
+<span class="c1">#Make a DataFrame out of the word count vector and sort by title</span>
+<span class="n">word_count_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">word_count_vector</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span><span class="n">text_titles</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">count_vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">())</span>
+<span class="n">word_count_df</span> <span class="o">=</span> <span class="n">word_count_df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_count_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_count_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;missy&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./COURSE-Final-Project/Workbooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By <a href="https://melaniewalsh.org/">Melanie Walsh</a><br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            <div>
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This book is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>. The code is licensed under a <a href="https://choosealicense.com/licenses/gpl-3.0/#">GNU General Public License v3.0</a>.
+</div>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-86905362-3', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>
